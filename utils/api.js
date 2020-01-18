@@ -1,29 +1,14 @@
-import {
-  http
-} from '../utils/util.js'
+import {http} from '../utils/http.js'
 
 var url = {
   activityIndex: "/activity/index",
 }
 module.exports = {
-  // userLogin(code) {
-  //   return http({
-  //     url: url.userLogin,
-  //     data: { code: code },
-  //     header: {
-  //       "Content-Type": "application/x-www-form-urlencoded"
-  //     }
-  //   })
-  // },
   activityIndex() {
     return http({
       url: url.activityIndex,
+      method: "GET"
     })
   },
-  userCardReceive() {
-  return http({
-    url: url.userCardReceive,
-    method: "GET"
-  })
-},
 }
+

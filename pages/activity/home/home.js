@@ -1,7 +1,6 @@
-import {
-  http,
-  api
-} from '../../../utils/util.js'
+import api from '../../../utils/api.js'
+
+// import http from '../../../utils/http.js'
 Component({
   options: {
     addGlobalClass: true,
@@ -59,7 +58,7 @@ Component({
   },
   attached() {
 
-    http.activityIndex().then(data=>{ 
+    api.activityIndex().then(data=>{ 
       console.log(data)
     })
 

@@ -1,7 +1,7 @@
 /**
  * 封装http 请求方法
  */
-const apiUrl = "http://127.0.0.1/app/v1"; //服务器api地址
+const apiUrl = "http://127.0.0.1:8080/app/v1"; //服务器api地址
 const http = (params) => {
   //返回promise 对象
   return new Promise((resolve, reject) => {
@@ -35,17 +35,17 @@ const http = (params) => {
           var errMsg = res.data.message
           wx.showToast({
             icon: "none",
-            title: errMsg
+            title: res.data.message
           })
           console.log(res.data)
         }
       },
       fail: function (e) {
-        console.log(e)
         wx.showToast({
           icon: "none",
-          title: 123
+          title: e.errMsg
         })
+        reject(e)
       }
     })
   })
