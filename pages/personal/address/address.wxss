@@ -1,0 +1,24 @@
+.address_container{
+  border-bottom: 40rpx solid #f1f1f1;
+}
+
+.address_info{
+
+  padding: 20rpx 40rpx;
+  border-bottom: 2rpx solid #f1f1f1;
+  line-height: 60rpx
+
+}
+.address_op{
+  padding: 20rpx 40rpx
+}
+
+.default_address{
+  font-size: 1.1rem;
+  align-items: center;
+  margin: 10rpx 0 0 0
+
+}
+.default_address_text{
+  align-items: center;
+}

@@ -1,0 +1,92 @@
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+  <view slot="content">我要报名</view>
+</cu-custom>
+
+
+  <view class="UCenter-bg">
+
+    <text class='Text-logo'>SOULFIRE</text>
+
+    <view class="cu-card case ">
+      <view class="cu-item shadow container">
+
+        <view class="solids-bottom padding-xs flex align-center">
+          <view class="flex-sub text-center">
+            <view class="solid-bottom text-xl padding">
+              <text class="text-black text-bold">攀登人生中5000级雪山</text>
+            </view>
+            <view class="flex  padding-sm justify-start">
+              <view>活动开始时间：2018-12-12</view>
+            </view>
+            <view class="flex  padding-sm justify-start">
+              <view>活动结束时间：2018-12-25</view>
+            </view>
+            <view class="flex  padding-sm justify-start">
+              <view>联系电话：123456789</view>
+            </view>
+            <view class="flex  padding-sm justify-start">
+              <view>收费类型：一费制</view>
+            </view>
+            <view class="flex  padding-sm justify-start">
+              <view>会员价格：1680元/人</view>
+            </view>
+          </view>
+        </view>
+
+
+
+
+        <form>
+          <view class="cu-form-group">
+            <view class="title">姓名</view>
+            <input placeholder="这里填您的姓名哟~"></input>
+          </view>
+          <view class="cu-form-group">
+            <view class="title">性别</view>
+            <switch class="switch-sex" checked></switch>
+          </view>
+          <view class="cu-form-group">
+            <view class="title">手机号码</view>
+            <input placeholder="方便联系您哦~"></input>
+            <view class="cu-capsule radius">
+              <view class="cu-tag bg-blue">
+                +86
+              </view>
+              <view class="cu-tag line-blue">
+                中国大陆
+              </view>
+            </view>
+          </view>
+          <view class="cu-form-group solids-bottom">
+            <view class="title">验证码</view>
+            <input placeholder="验证下啦~"></input>
+            <button class="cu-btn bg-red shadow">验证码</button>
+          </view>
+        </form>
+
+        <view class="flex  padding-top justify-center">
+          <view class="grid">
+            <view class=" text-center">
+              <button class="cu-btn round bg-blue shadow lg">报名</button>
+            </view>
+          </view>
+        </view>
+
+        <view class="solids-bottom  flex align-center">
+          <view class="flex-sub text-center">
+            <view class="solid-bottom text-sm padding">
+              <checkbox class='form-checkbox'></checkbox>
+              <text class="text-black" decode='true'>&ensp;我已阅读 <text class='agreement' bindtap="showProtocol" data-target="Modal">《协议》</text>并同意</text>
+            </view>
+          </view>
+        </view>
+        
+
+      </view>
+    </view>
+
+
+
+  </view>
+
+  <view class='cu-tabbar-height'></view>

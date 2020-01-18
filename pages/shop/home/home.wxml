@@ -1,0 +1,91 @@
+
+  <view class="cu-bar bg-white">
+
+    <navigator class="action" url="/pages/shop/category/category">
+      <text class="cuIcon-circlefill text-gray"></text>
+    </navigator>
+
+    <navigator class="shop-home search-form radius" url="/pages/shop/search/search" hover-class='none'>
+
+       <text class="shop-home cuIcon-search center text-gray" decode='true'>&ensp;搜索商品</text>
+    </navigator>
+
+  </view>
+
+
+  <swiper class="shop-home screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="true" interval="4000" duration="500">
+    <swiper-item wx:for="{{swiperList}}" wx:key classs="shop-home swiper-item">
+      <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+    </swiper-item>
+  </swiper>
+
+
+  <view class="cu-list grid col-{{gridCol}} {{gridBorder?'':'no-border'}}">
+    <view class="cu-item" wx:for="{{iconList}}" wx:key wx:if="{{index<gridCol*2}}">
+      <view class="cuIcon-{{item.icon}} text-{{item.color}}">
+        <view class="cu-tag badge" wx:if="{{item.badge!=0}}">
+          <block wx:if="{{item.badge!=1}}">{{item.badge>99?"99+":item.badge}}</block>
+        </view>
+      </view>
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+
+
+  <view class="  flex align-center">
+    <view class="flex-sub text-center">
+      <view class=" text-df padding">
+        <text class="text-black cuIcon-hotfill">人气单品</text>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="shop-home cu-list grid col-2">
+
+    <view class="shop-home image bg-white cu-item" bindtap='GoToGoodsDetail' data-id='1'>
+      <image src='https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1878991123,2355764567&fm=26&gp=0.jpg'></image>
+      <view class="flex justify-start">
+        <text class='trade-name'>Air Jordan 1 Retro High OG Phantom</text>
+      </view>
+      <view class="flex  justify-between">
+        <text class='trade-price padding-top padding-bottom padding-left'>￥995</text>
+        <text class='trade-people padding-top padding-bottom padding-right'>3206人付款</text>
+      </view>
+    </view>
+
+    <view class="shop-home image bg-white cu-item">
+      <image src='https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1878991123,2355764567&fm=26&gp=0.jpg'></image>
+      <view class="flex justify-start">
+        <text class='trade-name'>Air Jordan 1 Retro High OG Phantom</text>
+      </view>
+      <view class="flex  justify-between">
+        <text class='trade-price padding-top padding-bottom padding-left'>￥995</text>
+        <text class='trade-people padding-top padding-bottom padding-right'>3206人付款</text>
+      </view>
+    </view>
+    
+    <view class="shop-home image bg-white cu-item">
+      <image src='https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1878991123,2355764567&fm=26&gp=0.jpg'></image>
+      <view class="flex justify-start">
+        <text class='trade-name'>Air Jordan 1 Retro High OG Phantom</text>
+      </view>
+      <view class="flex  justify-between">
+        <text class='trade-price padding-top padding-bottom padding-left'>￥995</text>
+        <text class='trade-people padding-top padding-bottom padding-right'>3206人付款</text>
+      </view>
+    </view>
+
+    <view class="shop-home image bg-white cu-item">
+      <image src='https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1878991123,2355764567&fm=26&gp=0.jpg'></image>
+      <view class="flex justify-start">
+        <text class='trade-name'>Air Jordan 1 Retro High OG Phantom</text>
+      </view>
+      <view class="flex  justify-between">
+        <text class='trade-price padding-top padding-bottom padding-left'>￥995</text>
+        <text class='trade-people padding-top padding-bottom padding-right'>3206人付款</text>
+      </view>
+    </view>
+  </view>
+
+<view class='cu-tabbar-height'></view>

@@ -1,0 +1,41 @@
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+  <view slot="content">反馈及建议</view>
+</cu-custom>
+
+<form>
+  <view class="cu-form-group margin-top">
+    <view class="title">标题</view>
+    <input placeholder="请填入标题哦~" bindinput="title"></input>
+  </view>
+  <view class="cu-form-group">
+    <textarea maxlength="-1" bindinput="textareaInput" placeholder="请填写10个字以上的问题描述以便我们提供更好的服务"></textarea>
+  </view>
+
+
+
+  <view class="cu-bar bg-white">
+    <view class="action">
+      图片上传
+    </view>
+    <view class="action">
+      {{imgList.length}}/5
+    </view>
+  </view>
+  <view class="cu-form-group">
+    <view class="grid col-4 grid-square flex-sub">
+      <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+        <image src='{{imgList[index]}}' mode='aspectFill'></image>
+        <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+          <text class="cuIcon-close"></text>
+        </view>
+      </view>
+      <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+        <text class="cuIcon-cameraadd"></text>
+      </view>
+    </view>
+  </view>
+
+  <view class="padding flex flex-direction">
+    <button class="cu-btn round bg-grey lg" bindtap="submit">提交</button>
+  </view>
+</form>

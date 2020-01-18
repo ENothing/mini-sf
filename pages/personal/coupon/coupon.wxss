@@ -1,0 +1,36 @@
+page {
+  padding-top: 60rpx;
+}
+
+.coupon_item{
+  width: 100%
+}
+
+
+.c_left{
+  width: 70%;
+  height: 200rpx;
+  position:relative;
+  overflow:hidden;
+}
+.c_left::before{
+  position:absolute;
+  width:70%;
+  height:200rpx;
+  top:-210px;
+  right:-210px;
+  border-radius:50%;
+  border:200px solid #252525;/*边框只要能够覆盖整个容器就行*/
+}
+
+.c_right{
+  width: 30%;
+  height: 200rpx;
+  /* background: red; */
+  line-height: 200rpx;
+  border-left: 1px dashed  #fafafa
+}
+
+.c_rule{
+  text-decoration: underline
+}

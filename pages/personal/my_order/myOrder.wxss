@@ -1,0 +1,68 @@
+page {
+  padding-top: 60rpx;
+}
+
+.order_container {
+  margin-top: 50rpx
+}
+
+.order_status {
+  border-bottom: 2rpx solid #fafafa;
+  padding: 20rpx 20rpx;
+  color: #000
+}
+
+.goods_thumb_container {
+  width: 30% !important;
+  height: 240rpx;
+  padding: 20rpx 0rpx 20rpx 20rpx;
+}
+
+.goods_thumb {
+  width: 200rpx;
+  height: 100%;
+  border: 2rpx solid #f4f4f4;
+}
+
+.miscellaneous_container {
+  width: 70% !important;
+  padding: 20rpx 30rpx 20rpx 10rpx;
+}
+
+.goods_name {
+  font-size: 1rem;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 40rpx;
+  color: #000
+}
+
+.size_num_price_container {
+  margin-top: 80rpx;
+}
+
+.size_and_num {
+  color: #1a1a1a;
+}
+
+.price {
+  font-size: 0.85rem;
+}
+
+.op{
+  border-top: 2rpx solid #fafafa
+}
+
+.op_buttons{
+  padding: 20rpx 20rpx
+}
+
+.checkpay{
+  border: 2rpx solid rgb(105, 103, 103);
+  padding: 10rpx 20rpx;
+  font-size: .68rem
+}

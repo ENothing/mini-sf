@@ -1,0 +1,56 @@
+<cu-custom bgColor="bg-gradual-red" isCustom="true">
+  <view slot="content">活动详情</view>
+</cu-custom>
+<view class="UCenter-bg">
+    <view class='Content-border'>
+      <view class=" padding-xs flex align-center">
+        <view class="flex-sub text-center">
+          <view class="text-lg padding">
+            <text class="text-black">活动|四姑娘山二峰圆梦之路——攀登人生中5000级雪山</text>
+            <view class='solid-bottom'></view>
+            <view class="flex justify-start">
+              <view class="padding-sm">
+                <text class='text-grey text-sm'>原创：SoulFire大猫儿</text>
+              </view>
+            </view>
+            <view class="flex justify-start">
+              <view class="padding-sm">
+                <text class='text-grey text-sm'>2018-12-08</text>
+              </view>
+            </view>
+          </view>
+
+          <image src='https://bpic.588ku.com//templet_water_pic/19/07/17/845712e5213891865ecfbcb95c265ec8.jpg!/fw/750/unsharp/true/compress/true' mode='widthFix'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+<view class='cu-tabbar-height'></view>
+
+
+
+<view class="cu-bar bg-white tabbar border shop foot">
+  <button class="action">
+    <view class="cuIcon-favor text-gray">
+      <view class="cu-tag badge">999+</view>
+    </view>
+    收藏
+  </button>
+  <view class="action">
+    <view class="cuIcon-appreciate text-gray">
+      <view class="cu-tag badge">999+</view>
+    </view> 点赞
+  </view>
+  <view class="action">
+    <view class="cuIcon-phone">
+    </view>
+    电话
+  </view>
+  <view class="btn-group">
+    <navigator url="/pages/activity/enter/enter" hover-class="none">
+      <button class="cu-btn bg-red round shadow-blur">我要报名</button>
+    </navigator>
+  </view>
+</view>

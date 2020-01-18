@@ -1,0 +1,143 @@
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+  <view slot="content">订单详情</view>
+</cu-custom>
+
+<view class="order_status">
+  <view class="o_status">交易成功</view>
+</view>
+
+
+<view class='deliver_contaniner'>
+  <view>
+    <view class="flex justify-between">
+      <view>
+        <text class='cuIcon-deliver' decode='true'>&emsp;</text>
+        <text class="deliver_status">买家已发货</text>
+      </view>
+      <view bindtap="goToDeliver">
+        <text class='deliver_follow' decode='true'>订单跟踪&ensp;</text>
+        <text class='cuIcon-right text-gray'></text>
+      </view>
+    </view>
+  </view>
+  <view class='deliver_time text-gray'>
+    <text>2019-11-30 10:53:21</text>
+  </view>
+</view>
+
+
+
+<view class='address_contaniner'>
+  <view>
+    <view class="flex justify-between">
+      <view>
+        <text class='cuIcon-location' decode='true'>&emsp;</text>
+        <text class="reveiver_name">收货人：gaoxiang</text>
+      </view>
+      <view>
+        <text class='phone' decode='true'>181****5061&ensp;</text>
+      </view>
+    </view>
+  </view>
+  <view class='address text-gray'>
+    <text>四川省成都市高新区中和街道中和镇</text>
+  </view>
+</view>
+
+<view class="order_goods_list">
+
+  <view class="order_goods_container radius shadow bg-white">
+    <view class="goods_img">
+      <image src="https://img.alicdn.com/imgextra/i4/2914266524/TB26zfNjx1YBuNjy1zcXXbNcXXa_!!2914266524.jpg_430x430q90.jpg" style="height:100%"></image>
+    </view>
+    <view class="goods_info">
+      <view class="goods_title">Converse All Star 70 高帮复古黑 1970s 2018新款</view>
+      <view class="goods_size">S码</view>
+      <view class="goods_param flex justify-between">
+        <view class="goods_num">数量x1</view>
+        <view>
+          <text class="goods_price text-price">80</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+</view>
+
+<view class="order_info cu-bar bg-white margin-top">
+  <view class='order_info_title action'>
+    <text class=' cuIcon-titles text-red '></text>
+    <text>订单信息</text>
+  </view>
+</view>
+<view class="order_info_container">
+
+  <view class="order_item_1">
+    <view class="order_info_item flex justify-between">
+      <view>
+        <text>商品总价</text>
+      </view>
+      <view>
+        <text class="text-price">1246</text>
+      </view>
+    </view>
+    <view class="order_info_item flex justify-between">
+      <view>
+        <text>顺丰速运</text>
+      </view>
+      <view>
+        <text class="text-price">23</text>
+      </view>
+    </view>
+    <view class="order_info_item flex justify-between">
+      <view>
+        <text>优惠券</text>
+      </view>
+      <view>
+        -
+        <text class="text-price">23</text>
+      </view>
+    </view>
+    <view class="order_info_item order_price_container flex justify-between">
+      <view>
+        <text>订单总价</text>
+      </view>
+      <view>
+        <text class="order_price text-price">1246</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="order_item_2">
+    <view class="order_info_item flex justify-between">
+      <view>
+        <text>订单编号</text>
+      </view>
+      <view bindtap='copyOrderNo' data-text="SF12345678987654321">
+        <text>SF12345678987654321</text>
+      </view>
+    </view>
+
+    <view class="order_info_item flex justify-between">
+      <view>
+        <text>创建时间</text>
+      </view>
+      <view>
+        <text>2019-09-01 19:39:00</text>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+<view class='cu-tabbar-height'></view>
+
+<view class="cu-bar bg-white tabbar  shop foot">
+  <button class="action bg-white" open-type="contact">
+    <view class="cuIcon-service text-red bg-white">
+    </view>
+    客服
+  </button>
+  <view class="bg-red submit">确认收货</view>
+</view>

@@ -1,0 +1,31 @@
+<cu-custom bgColor="bg-gradual-red">
+  <view slot="content">SoulFire</view>
+</cu-custom>
+
+<activity wx:if="{{PageCur=='activity'}}"></activity>
+<bbs wx:if="{{PageCur=='bbs'}}"></bbs>
+<shop wx:if="{{PageCur=='shop'}}"></shop>
+<personal wx:if="{{PageCur=='personal'}}"></personal>
+
+<view class="cu-bar tabbar bg-black shadow foot">
+  <view class="action {{PageCur=='activity'?'text-white':'text-gray'}}" bindtap="NavChange" data-cur="activity">
+    <view class="cuIcon-homefill lg "></view> 首页
+  </view>
+  <view class="action {{PageCur=='bbs'?'text-white':'text-gray'}}" bindtap="NavChange" data-cur="bbs">
+    <view class="cuIcon-friendfill"></view> 论坛
+  </view>
+  <view class="action text-gray add-action" bindtap="GoToEditor">
+    <button class="cu-btn cuIcon-add bg-gradual-red shadow"></button>
+    发布
+  </view>
+  <view class="action {{PageCur=='shop'?'text-white':'text-gray'}}" bindtap="NavChange" data-cur="shop">
+    <view class="cuIcon-goodsfill">
+    </view>
+    商城
+  </view>
+  <view class="action {{PageCur=='personal'?'text-white':'text-gray'}}" bindtap="NavChange" data-cur="personal">
+    <view class="cuIcon-peoplefill">
+    </view>
+    个人
+  </view>
+</view>

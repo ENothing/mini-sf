@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/activity/home/home",
+    "pages/activity/detail/detail",
+    "pages/activity/enter/enter",
+    "pages/shop/home/home",
+    "pages/personal/home/home",
+    "pages/bbs/home/home",
+    "pages/shop/detail/detail",
+    "pages/shop/search/search",
+    "pages/shop/category/category",
+    "pages/shop/order/order",
+    "pages/shop/coupon/coupon",
+    "pages/shop/pay_result/payResult",
+    "pages/shop/order_detail/orderDetail",
+    "pages/shop/goods_list/goodsList",
+    "pages/shop/deliver/deliver",
+    "pages/personal/address/address",
+    "pages/personal/address/address_form/addressForm",
+    "pages/personal/my_order/myOrder",
+    "pages/personal/feedback/feedback",
+    "pages/bbs/editor/editor",
+    "pages/bbs/article_detail/articleDetail",
+    "pages/personal/coupon/coupon"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "ColorUI",
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "white"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom",
+    "brick-layout": "/brickLayout/components/brickLayout"
+  },
+  "sitemapLocation": "sitemap51.json"
+}

@@ -1,0 +1,49 @@
+/* pages/component/nav/nav.wxss */
+.VerticalNav.nav {
+  width: 200rpx;
+  white-space: initial;
+}
+
+.VerticalNav.nav .cu-item {
+  width: 100%;
+  text-align: center;
+  background-color: #f1f1f1;
+  margin: 0;
+  border: none;
+  height: 50px;
+  position: relative;
+  line-height: 105rpx;
+
+}
+
+.VerticalNav.nav .cu-item.cur {
+  background-color: #fff;
+}
+.VerticalNav.nav .cu-item.cur::after {
+  content: "";
+  width: 8rpx;
+  height: 100rpx;
+  position: absolute;
+  top: 0;
+  right: 0rpx;
+  bottom: 0;
+  margin: auto;
+}
+.VerticalBox{
+  display: flex;
+}
+.VerticalMain{
+  background-color: #f1f1f1;
+}
+
+.cate_main_title{
+  font-size: .8rem;
+  margin-left: 165rpx;
+  white-space:nowrap;
+}
+
+.cu-list.grid>.cu-item::after{
+  border-bottom: unset;
+  border-right: unset;
+
+}

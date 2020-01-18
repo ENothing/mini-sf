@@ -1,0 +1,63 @@
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+  <view slot="content">我的订单</view>
+</cu-custom>
+
+
+
+<scroll-view scroll-x class="bg-white nav text-center fixed" style="top:{{CustomBar}}px">
+  <view class="flex text-center">
+    <view class="cu-item flex-sub {{index==TabCur?'text-red cur':''}}" wx:for="{{tabNav}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+      {{tabNav[index]}}
+    </view>
+
+  </view>
+
+</scroll-view>
+
+
+<view class="margin-top bg-white">
+
+  <view class="order_container">
+
+    <view class="order_status">
+      交易成功
+    </view>
+
+
+
+
+    <view class="cu-item">
+      <view class="grid col-2">
+        <view class="goods_thumb_container">
+          <image class="goods_thumb" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1878991123,2355764567&fm=26&gp=0.jpg"></image>
+        </view>
+        <view class="miscellaneous_container">
+          <text class="goods_name">adidas Yeezy 700 Wave Runner Solid Grey</text>
+          <view class="size_num_price_container">
+            <view class="flex  justify-between">
+              <view>
+                <text class="size_and_num" decode="true">L码&ensp;数量x1</text>
+              </view>
+              <view>
+                <text class="price text-bold text-black text-price">2749</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+
+
+
+    <view class="op">
+      <view class="flex justify-end op_buttons">
+        <view class="checkpay">确认付款</view>
+      </view>
+    </view>
+
+  </view>
+
+
+</view>

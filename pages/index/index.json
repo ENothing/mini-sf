@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "activity": "/pages/activity/home/home",
+    "bbs": "/pages/bbs/home/home",
+    "shop": "/pages/shop/home/home",
+    "personal": "/pages/personal/home/home"
+  }
+}

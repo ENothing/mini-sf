@@ -1,0 +1,23 @@
+<view class="bags_container flex  justify-center">
+  <image class="bags" src="/images/bags.png"></image>
+</view>
+
+<view class="res_container flex justify-center">
+  <text class="res">支付成功</text>
+</view>
+
+<view class="res_remark_container">
+  <view class="flex justify-center">
+    <text class="res_remark">您的包裹很快就会送到您的手中</text>
+  </view>
+  <view class="flex justify-center">
+    <text class="res_remark">感谢您选择我们！</text>
+  </view>
+</view>
+
+
+<view class="button_container">
+  <view class="padding flex flex-direction">
+    <button class="cu-btn round shadow bg-red margin-tb-sm lg" bindtap="goToOrderDetail">查看订单</button>
+  </view>
+</view>

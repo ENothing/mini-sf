@@ -1,0 +1,53 @@
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+  <view slot="content">订单跟踪</view>
+</cu-custom>
+
+<view class="deliverNo_container">
+<view class="flex justify-between">
+  <view class="deliverNo">快递单号：251587567644</view>
+  <view class="copyDeliverNoButton" bindtap='copyDeliverNo' data-text="251587567644">复制</view>
+</view>
+</view>
+
+
+<view class="cu-timeline">
+  <view class="cu-time">昨天</view>
+  <view class="cu-item">
+    <view class="content bg-grey shadow-blur">
+      <text>01:30</text> 【喵星】 MX-12138 已揽收，准备发往银河系
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content bg-grey shadow-blur">
+      <text>01:30</text> 【喵星】 MX-12138 已揽收，准备发往银河系
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content bg-grey shadow-blur">
+      <text>01:30</text> 【喵星】 MX-12138 已揽收，准备发往银河系
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content bg-grey shadow-blur">
+      <text>01:30</text> 【喵星】 MX-12138 已揽收，准备发往银河系
+    </view>
+  </view>
+</view>
+
+<view class="cu-timeline">
+  <view class="cu-time">06-17</view>
+  <view class="cu-item">
+    <view class="content bg-grey shadow-blur">
+      <text>01:30</text> 【喵星】 MX-12138 已揽收，准备发往银河系
+    </view>
+  </view>
+</view>
+
+<view class="cu-timeline">
+  <view class="cu-time">06-16</view>
+  <view class="cu-item">
+    <view class="content bg-grey shadow-blur">
+      <text>01:30</text> 【喵星】 MX-12138 已揽收，准备发往银河系
+    </view>
+  </view>
+</view>

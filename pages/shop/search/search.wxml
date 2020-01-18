@@ -1,0 +1,84 @@
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+  <view slot="content">搜索</view>
+</cu-custom>
+
+
+<view class="cu-bar search bg-white">
+  <view class="search-form">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="输入商品名称、货号" confirm-type="search" focus="true"></input>
+  </view>
+</view>
+<!-- 
+<view class="flex  padding justify-start">
+  <view class="margin-xs">历史搜索</view>
+</view> -->
+
+<view class="flex  padding justify-between">
+  <view class=" margin-xs text-bold"> 历史搜索</view>
+  <view class=" margin-xs"><text class="icon-delete lg text-gray"></text></view>
+</view>
+
+<view class="padding-left flex flex-wrap tags">
+  <view class="padding-xs">
+    <view class="cu-tag padding radius bg-white">测试</view>
+  </view>
+  <view class="padding-xs">
+    <view class="cu-tag padding radius bg-white">测试测试测试</view>
+  </view>
+  <view class="padding-xs">
+    <view class="cu-tag padding radius bg-white">测试测试试测试</view>
+  </view>
+  <view class="padding-xs">
+    <view class="cu-tag padding radius bg-white">测试测试试</view>
+  </view>
+  <view class="padding-xs">
+    <view class="cu-tag padding radius bg-white">测试测试</view>
+  </view>
+  <view class="padding-xs">
+    <view class="cu-tag padding radius bg-white">测试</view>
+  </view>
+  <view class="padding-xs">
+    <view class="cu-tag padding radius bg-white">测试测试试</view>
+  </view>
+  <view class="padding-xs">
+    <view class="cu-tag padding radius bg-white">测试测试</view>
+  </view>
+  <view class="padding-xs">
+    <view class="cu-tag padding radius bg-white">测试测</view>
+  </view>
+</view>
+
+<view class="flex  padding justify-start">
+  <view class=" margin-xs text-bold"> 热门搜索</view>
+</view>
+
+<view class="padding-left flex flex-wrap tags">
+  <view class="padding-xs">
+    <view class="cu-tag padding radius bg-white">测试</view>
+  </view>
+  <view class="padding-xs">
+    <view class="cu-tag padding radius bg-white">测试测试测试</view>
+  </view>
+  <view class="padding-xs">
+    <view class="cu-tag padding radius bg-white">测试测试试测试</view>
+  </view>
+  <view class="padding-xs">
+    <view class="cu-tag padding radius bg-white">测试测试试</view>
+  </view>
+  <view class="padding-xs">
+    <view class="cu-tag padding radius bg-white">测试测试</view>
+  </view>
+  <view class="padding-xs">
+    <view class="cu-tag padding radius bg-white">测试</view>
+  </view>
+  <view class="padding-xs">
+    <view class="cu-tag padding radius bg-white">测试测试试</view>
+  </view>
+  <view class="padding-xs">
+    <view class="cu-tag padding radius bg-white">测试测试</view>
+  </view>
+  <view class="padding-xs">
+    <view class="cu-tag padding radius bg-white">测试测</view>
+  </view>
+</view>

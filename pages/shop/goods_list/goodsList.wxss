@@ -1,0 +1,92 @@
+.search-keywords{
+  margin: auto !important
+}
+
+
+.goods_conditions{
+  height: 80rpx
+}
+
+.goods_conditions>.cu-item{
+  padding: unset !important;
+}
+.goods_conditions>.cu-item::after{
+  border: unset !important;
+}
+
+.goods_conditions>.cu-item text{
+  margin-top: unset !important;
+  line-height: 80rpx !important
+}
+
+.price_updown{
+  display: flex;
+  margin: 0 auto
+}
+.p_updown{
+  height: 10rpx;
+  padding-left: 5rpx
+}
+.p_up{
+  width: unset !important;
+  font-size: .5rem !important;
+}
+
+.p_down{
+  width: unset !important;
+  font-size: .5rem !important;
+  margin-top: unset!important;
+
+
+}
+.shop-home{
+  margin-top: 10rpx !important
+
+}
+
+.shop-home.icon-search {
+  padding-left: 260rpx;
+}
+
+
+.shop-home.swiper{
+  height: 100rpx
+}
+
+.shop-home.screen-swiper{
+  min-height: 310rpx
+}
+
+.shop-home.grid.col-2>view {
+
+  padding: 5rpx;
+
+}
+
+.image{
+
+  height: 310rpx
+}
+
+.shop-home.grid>.cu-item text{
+  color: unset;
+  margin-top: 5rpx
+}
+
+.trade-name{
+
+  font-family:  STKaiti;
+  font-weight: 100 !important;
+  overflow:hidden;
+}
+
+.trade-price{
+  font-size: .9rem !important;
+  font-weight: bold;
+  color: black !important
+}
+
+.trade-people{
+  color:gray !important;
+  font-size: .7rem !important;
+}

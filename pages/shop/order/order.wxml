@@ -1,0 +1,101 @@
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+  <view slot="content">确认订单</view>
+</cu-custom>
+
+
+<navigator url="/pages/personal/address/address?status=1" hover-class="none">
+<view class='address_contaniner'>
+  <view>
+    <view class="flex justify-between">
+      <view>
+        <text class='cuIcon-location' decode='true'>&emsp;</text>
+        <text class="reveiver_name">gaoxiang</text>
+      </view>
+      <view>
+        <text class='phone' decode='true'>181****5061&ensp;</text>
+        <text class='cuIcon-right text-gray'></text>
+      </view>
+    </view>
+  </view>
+  <view class='address text-gray'>
+    <text>四川省成都市高新区中和街道中和镇</text>
+  </view>
+</view>
+</navigator>
+
+
+<view class="cu-list menu sm-border">
+
+  <view class="cu-item">
+    <view class="grid col-2">
+      <view class="goods_thumb_container">
+        <image class="goods_thumb" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1878991123,2355764567&fm=26&gp=0.jpg"></image>
+      </view>
+      <view class="miscellaneous_container">
+        <text class="goods_name">adidas Yeezy 700 Wave Runner Solid Grey</text>
+        <view class="size_num_price_container">
+          <view class="flex  justify-between">
+            <view>
+              <text class="size_and_num" decode="true">L码&ensp;数量x1</text>
+            </view>
+            <view>
+              <text class="price text-bold text-black text-price">2749</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cu-item">
+    <view class="content">
+      <text class="title">顺丰速运</text>
+    </view>
+    <view class="action">
+      <text class="text-grey text-sm">￥30</text>
+    </view>
+  </view>
+
+  <view class="cu-item arrow">
+    <view class="content">
+      <text class="title">优惠券</text>
+    </view>
+    <view class="action">
+      <text class="text-grey text-sm">-￥110</text>
+    </view>
+  </view>
+
+  <view class="cu-item">
+    <view class="content">
+      <text class="title">合计支付</text>
+    </view>
+    <view class="action">
+      <text class="text-price text-bold text-xl">2669</text>
+    </view>
+  </view>
+
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<view class='cu-tabbar-height'></view>
+
+
+<view class="cu-bar bg-white tabbar border shop foot">
+  <view class='total_price_container text-red'>
+    <text class="total_price_text">实付款：￥</text>
+    <text class='total_price'>2669</text>
+  </view>
+  <view class="confirm-button bg-red submit" bindtap="goToSubmit">提交订单</view>
+</view>

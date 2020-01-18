@@ -1,0 +1,103 @@
+<cu-custom bgColor="bg-gradual-red" isBack="{{true}}">
+  <view slot="backText"></view>
+  <view slot="content">文章详情</view>
+</cu-custom>
+
+<view class="author_container flex  padding-sm justify-between">
+  <view>
+    <view class="flex">
+      <view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+      <view class="user_info">
+        <view class="username">抹茶味的夏天到了</view>
+        <view class="fans">粉丝：2568</view>
+      </view>
+    </view>
+  </view>
+  <view>
+    <view class=" text-center">
+      <button class="cu-btn round bg-red shadow" style="height:52rpx">关注</button>
+    </view>
+    <!-- <view class=" text-center">
+      <button class="cu-btn round bg-gray shadow" style="height:52rpx">已关注</button>
+    </view> -->
+  </view>
+</view>
+
+
+<swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+  <swiper-item wx:for="{{swiperList}}" wx:key>
+    <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+  </swiper-item>
+</swiper>
+
+
+
+<view class="title text-xl padding text-bold text-black bg-white">
+  {{article.title}}
+</view>
+
+<view class="article_content bg-white">
+  <rich-text nodes="{{article.content}}"></rich-text>
+  <view class="padding-top bg-white text-gray text-sm">10-12</view>
+
+</view>
+
+
+<view class="padding bg-white">
+  共238条评论
+</view>
+<view class="comment_container bg-white">
+  <view class="flex">
+    <view class="comment_avatar">
+      <view class=" cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+    </view>
+    <view class="comment_info">
+      <view class="flex justify-between">
+        <view class="comment_username padding-sm">努力的布里吉塔</view>
+        <view class="comment_date padding-sm text-sm text-gray">10-9</view>
+      </view>
+      <view class="comment_content padding-sm text-black">
+        平常咱们工作中单位都缴纳一部分的的住房公积金，也有一些已经工作了一定年限的朋友，自己的公积金账户里少则也有上万元，多则可能都有十几万元，一些朋友咨询到，自己交了那么多年的公积金分的的住房公积金，也有一些分的的住房公积金，也有一些
+      </view>
+      <view class="reply_container padding-sm bg-gray radius">
+        <view class="reply_content">
+          <text class="text-blue">努力的布里吉塔</text>
+          <text decode="true">&ensp;回复&nbsp;</text>
+          <text class="text-blue">@肥猫院长</text>：作了一定年限的朋友
+        </view>
+        <view class="reply_content">
+          <text class="text-blue">肥猫院长</text>：点了一下大指姆
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class='cu-tabbar-height'></view>
+
+
+  <view class="cu-bar bg-white tabbar border shop foot" hidden="{{comment_textarea == 0 ? false:true}}">
+    <view class="search-form round">
+      <text class="cuIcon-write"></text>
+      <input type="text" placeholder="说点什么 . . ." disabled="disabled" bindtap="getTextarea" value="{{input_val}}"></input>
+    </view>
+     <view class="action">
+      <view class="cuIcon-like"></view>2389
+    </view>
+    <view class="action">
+      <view class="cuIcon-favor"></view> 1250
+    </view>
+  <view class="action">
+      <view class="cuIcon-comment"></view> 238
+    </view>
+  </view>
+
+  <form bindsubmit="postComment"  class="back-page" hidden="{{comment_textarea == 0 ? true:false}}">
+    <view class="release">
+        <textarea  autoHeight="true" bindblur="hideKeyboard"  class="text" cursorSpacing="20" fixed="true" focus="{{focus}}" placeholder="说点什么..." placeholderClass="input_null" showConfirmBar="" name="comment"></textarea>
+          <view class="margin-tb-sm text-center" >
+    <button class="cu-btn round bg-red shadow submit"  form-type="submit">发送</button>
+  </view>
+    </view>
+</form>

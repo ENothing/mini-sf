@@ -1,0 +1,74 @@
+.notify_container {
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  background: rgb(36, 35, 35);
+  color: white;
+  font-size: 22rpx;
+  padding: 0 40rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: 100;
+  font-family: Yuanti SC;
+}
+
+.search_input{
+ text-align: center
+}
+
+.activity_pic {
+  height: 220rpx;
+  width: 50%;
+  display: inline-block;
+}
+
+.activity_list {
+  margin-top: 30rpx;
+}
+
+.activity_item {
+  height: 320rpx;
+  width: 100%;
+  border-bottom: 10px solid rgb(241, 241, 241);
+}
+
+.activity_all_content {
+  padding: 24rpx 24rpx;
+}
+
+.activity_tag {
+  font-size: 20rpx;
+  letter-spacing: 3rpx;
+}
+
+.activity_title {
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.activity_content {
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  font-size: .5rem;
+  color: rgb(128, 128, 128);
+  margin-top: 16rpx
+}
+
+.activity_miscellaneous{
+  margin-top: 60rpx
+}
+
+.activity_date{
+  font-size: 0.56rem;
+  letter-spacing:2rpx
+}
+
+.activity_data{
+  font-size: .56rem;
+  padding-left: 40rpx
+}

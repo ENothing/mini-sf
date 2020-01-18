@@ -1,0 +1,173 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false,
+		"checkSiteMap": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.9.4",
+	"appid": "wx276d9d32df17f41f",
+	"projectname": "ColorUI-template",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 17,
+			"list": [
+				{
+					"id": -1,
+					"name": "活动详情",
+					"pathName": "pages/activity/detail/detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "报名入口",
+					"pathName": "pages/activity/enter/enter",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人中心",
+					"pathName": "pages/personal/home/home",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人中心",
+					"pathName": "pages/shop/home/home",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品详情",
+					"pathName": "pages/shop/detail/detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "生成订单页",
+					"pathName": "pages/shop/order/order",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单结果页",
+					"pathName": "pages/shop/pay_result/payResult",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品分类页",
+					"pathName": "pages/shop/category/category",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "商品列表",
+					"pathName": "pages/shop/goods_list/goodsList",
+					"query": "brand_id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "查看订单详情",
+					"pathName": "pages/shop/order_detail/orderDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "快递流程",
+					"pathName": "pages/shop/deliver/deliver",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "地址管理",
+					"pathName": "pages/personal/address/address",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 12,
+					"name": "地址表单",
+					"pathName": "pages/personal/address/address_form/addressForm",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的订单",
+					"pathName": "pages/personal/my_order/myOrder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "反馈及建议",
+					"pathName": "pages/personal/feedback/feedback",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "文章发布",
+					"pathName": "pages/bbs/editor/editor",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "文章详情",
+					"pathName": "pages/bbs/article_detail/articleDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "卡券",
+					"pathName": "pages/personal/coupon/coupon",
+					"scene": null
+				}
+			]
+		}
+	}
+}

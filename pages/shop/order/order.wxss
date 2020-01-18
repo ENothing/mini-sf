@@ -1,0 +1,98 @@
+.address_contaniner {
+  padding: 24rpx 26rpx 30rpx 26rpx;
+  line-height: 47rpx;
+  background: #fff;
+  border-bottom: 4rpx solid transparent;
+  background: linear-gradient(white, white) padding-box,
+                repeating-linear-gradient(-45deg, red 0, red 12.5%, transparent 0, transparent 25%, #58a 0, #58a 37.5%, transparent 0, transparent 50%) 0/3em 3em;
+}
+
+.reveiver_name {
+  font-weight: bold;
+}
+
+.cuIcon-deliver {
+  font-size: 1.1rem;
+}
+
+.phone {
+  font-weight: bold;
+}
+
+.cuIcon-right {
+  font-size: 0.9rem;
+}
+
+.address {
+  padding-left: 80rpx;
+}
+
+.total_price_container {
+  width: 70%;
+  padding-left: 30rpx;
+}
+
+.total_price_text {
+  font-weight: bold;
+}
+
+.total_price {
+  font-size: 1.3rem;
+  font-weight: bolder;
+  font-stretch: condensed;
+}
+
+.confirm-button {
+  letter-spacing: 2rpx;
+  width: 340%;
+}
+
+.cu-list{
+  margin-top: 20rpx
+}
+
+.goods_thumb_container{
+  width: 30% !important;
+  height: 240rpx;
+  padding: 32rpx 20rpx 32rpx 0
+}
+
+
+.goods_thumb{
+  width: 200rpx;
+  height: 100%;
+  border:2rpx solid #f4f4f4
+}
+
+.miscellaneous_container{
+  width: 70% !important;
+  padding: 44rpx 0 40rpx 0
+}
+
+.goods_name{
+  font-size: 1rem;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient: vertical;
+  line-height: 40rpx
+}
+
+.size_num_price_container{
+  margin-top: 40rpx
+}
+
+.size_and_num{
+  color:#1a1a1a
+}
+
+.price{
+  font-size: .85rem
+}
+
+.title{
+  color: #5D5C62;
+  font-size: .9rem
+}

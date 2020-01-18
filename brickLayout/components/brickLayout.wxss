@@ -1,0 +1,141 @@
+/* plugin/components/brickLayout.wxss */
+/* list container */
+.list-container {
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx 10rpx 0 10rpx;
+}
+
+.list-side-box {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.list-side-box {
+  margin-right: 24rpx;
+}
+
+.list-side-box:last-child {
+  margin-right: 0;
+}
+
+.list-item {
+  break-inside: avoid;
+  box-sizing: border-box;
+  padding-bottom: 14rpx;
+}
+
+/* list-box themeA */
+.list-box {
+  position: relative;
+  padding: 8px;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.list-box_header {
+  height: 32px;
+  overflow: hidden;
+  padding: 0 10rpx 0 10rpx
+}
+
+.list-box_header .user-avatar {
+  float: left;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.list-box_header .user-info {
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 34px;
+  line-height: 26px;
+}
+
+.list-box_header .user-info .user-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  height: 20px;
+}
+
+.list-box_header .user-info .time {
+  font-size: 10px;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  height: 20px;
+}
+
+.list-box.is-expand .list-box_content {
+  height: auto;
+}
+
+.list-box_content {
+  height: 71px;
+  min-height: 71px;
+  font-size: 15px;
+  line-height: 24px;
+  overflow: hidden;
+}
+
+.list-box_footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  padding: 7.5px 0 0 0;
+  line-height: 25px
+
+}
+
+.expand-btn {
+  line-height: 20px;
+  font-size: 12px;
+  margin-top: 16px;
+  text-align: right;
+}
+
+.approve-btn {
+  font-size: 12px;
+}
+
+.approve-btn .approve-btn_wrapper {
+  min-width: 43px;
+  padding-right: 14rpx;
+  
+}
+
+.approve-btn .approve-btn-icon {
+  width: 15px;
+  height: 13px;
+  margin-right: 14rpx
+}
+
+.media-previewer image {
+  margin-top: 8px;
+  width: 100%;
+  border-radius: 4px;
+  line-height: 13px
+}
+
+.media-previewer image:first-child {
+  margin-top: 0;
+}
+
+/*新增*/
+.album-text-area_title {
+  font-weight: bold;
+  font-size: 0.80rem;
+  padding: 0 10rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

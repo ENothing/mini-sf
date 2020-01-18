@@ -1,0 +1,36 @@
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+  <view slot="content">收货地址</view>
+</cu-custom>
+
+
+<view class="address_container bg-white" wx:for="{{addresses}}" wx:key data-id="{{item.id}}">
+  <view class="address_info">
+    <view class="flex justify-between">
+      <view class="">gaoxiang</view>
+      <view class="">181****5061</view>
+    </view>
+    <view>四川省成都市高新区环球中心</view>
+  </view>
+  <view class="flex justify-between address_op">
+    <view>
+      <text class="default_address text-red {{item.is_default == 1?'cuIcon-roundcheckfill':'cuIcon-roundcheck'}}"></text>
+      <text class="default_address_text">默认地址</text>
+    </view>
+    <view class="op">
+      <text decode="true" bindtap="goToForm" data-id="{{item.id}}">编辑&emsp;&emsp;&emsp;&emsp;</text>
+      <text class="text-red" bindtap="delAddress" data-id="{{item.id}}">删除</text>
+    </view>
+  </view>
+</view>
+
+
+
+
+<view class='cu-tabbar-height'></view>
+
+
+
+
+<view class="cu-bar bg-white tabbar shadow foot" bindtap="goToForm">
+  <view class="bg-red submit text-xl">添加新地址</view>
+</view>

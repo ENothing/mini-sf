@@ -1,0 +1,11 @@
+<scroll-view scroll-y class="scrollPage"  bindscrolltolower='scrollBottom' style="height:{{scrollHeight-64}}px;background:#f1f1f1">
+<brick-layout 
+    dataSet="{{dataSet}}"  
+    option="{{brick_option}}" 
+    bind:tapCard="tapCard" 
+    bind:tapLike="handleLike" 
+    bind:tapUser="handleUserEvent" 
+    bind:onCardExpanded="handleExpand"/>
+
+    <view class='cu-tabbar-height'></view>
+</scroll-view>

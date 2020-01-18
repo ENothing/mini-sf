@@ -1,0 +1,45 @@
+.UCenter-bg {
+  background-size: 100% 300rpx;
+  background-repeat: no-repeat;
+  background-color: #2d2d2d;
+  height: 450rpx;
+}
+
+.UCenter-bg .gif-wave{
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  mix-blend-mode: screen;  
+  height: 500rpx;  
+  position:absolute;
+  top:0px;
+  margin-top: 130rpx;
+  z-index:11; 
+  opacity:0.15;
+}
+
+.personal.nickname{
+  font-weight: bold
+}
+
+.personal.avatar{
+  border: 4rpx solid #fff
+
+}
+
+.personal-text{
+  text-indent:20rpx
+}
+
+
+
+
+.cu-item.shadow.container {
+  margin-top: 65rpx;
+  z-index:12; 
+  position:absolute;
+  width: 693rpx
+
+}
+
+

@@ -1,0 +1,45 @@
+.shop-home.icon-search {
+  padding-left: 260rpx;
+}
+
+
+.shop-home.swiper{
+  height: 100rpx
+}
+
+.shop-home.screen-swiper{
+  min-height: 310rpx
+}
+
+.shop-home.grid.col-2>view {
+
+  padding: 5rpx;
+
+}
+
+.shop-home.image>image{
+
+  height: 350rpx
+}
+
+.cu-list.grid>.cu-item text{
+  color: unset
+}
+
+.trade-name{
+
+  font-family:  STKaiti;
+  font-weight: 100 !important;
+  overflow:hidden;
+}
+
+.trade-price{
+  font-size: .9rem !important;
+  font-weight: bold;
+  color: black !important
+}
+
+.trade-people{
+  color:gray !important;
+  font-size: .7rem !important;
+}

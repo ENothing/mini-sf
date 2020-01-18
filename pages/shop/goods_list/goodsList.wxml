@@ -1,0 +1,77 @@
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+  <view slot="content">商品列表</view>
+</cu-custom>
+
+
+<view class="search cu-bar bg-white">
+  <navigator class="search-form radius" url="/pages/shop/search/search" hover-class='none'>
+    <text class="search-keywords cuIcon-search center text-gray" decode='true'>&ensp;搜索商品</text>
+  </navigator>
+</view>
+
+<view class="goods_conditions cu-list grid col-3">
+  <view class="cu-item">
+    <text>销量</text>
+  </view>
+  <view class="cu-item">
+    <view class="price_updown">
+      <text>价格</text>
+      <view class="p_updown">
+        <view class="p_up cuIcon-fold "></view>
+        <view class="p_down cuIcon-unfold "></view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-item">
+    <text>新品</text>
+  </view>
+  <view class="cu-item">
+    <text></text>
+  </view>
+</view>
+
+<view class="shop-home cu-list grid col-2">
+  <view class="bg-white cu-item" bindtap='GoToGoodsDetail' data-id='1'>
+    <image class="image" src='http://img0.imgtn.bdimg.com/it/u=3745345034,1283484944&fm=26&gp=0.jpg'></image>
+    <view class="flex justify-start">
+      <text class='trade-name'>Air Jordan 1 Retro High OG Phantom</text>
+    </view>
+    <view class="flex  justify-between">
+      <text class='trade-price padding-top padding-bottom padding-left'>￥995</text>
+      <text class='trade-people padding-top padding-bottom padding-right'>3206人付款</text>
+    </view>
+  </view>
+
+  <view class=" bg-white cu-item">
+    <image class="image" src='http://wx3.sinaimg.cn/thumb300/006UTDZRly1g5w9tvfe3qj30ly0lyq40.jpg'></image>
+    <view class="flex justify-start">
+      <text class='trade-name'>Air Jordan 1 Retro High OG Phantom</text>
+    </view>
+    <view class="flex  justify-between">
+      <text class='trade-price padding-top padding-bottom padding-left'>￥995</text>
+      <text class='trade-people padding-top padding-bottom padding-right'>3206人付款</text>
+    </view>
+  </view>
+
+  <view class=" bg-white cu-item">
+    <image class="image" src='https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1878991123,2355764567&fm=26&gp=0.jpg'></image>
+    <view class="flex justify-start">
+      <text class='trade-name'>Air Jordan 1 Retro High OG Phantom</text>
+    </view>
+    <view class="flex  justify-between">
+      <text class='trade-price padding-top padding-bottom padding-left'>￥995</text>
+      <text class='trade-people padding-top padding-bottom padding-right'>3206人付款</text>
+    </view>
+  </view>
+
+  <view class=" bg-white cu-item">
+    <image class="image" src='https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1878991123,2355764567&fm=26&gp=0.jpg'></image>
+    <view class="flex justify-start">
+      <text class='trade-name'>Air Jordan 1 Retro High OG Phantom</text>
+    </view>
+    <view class="flex  justify-between">
+      <text class='trade-price padding-top padding-bottom padding-left'>￥995</text>
+      <text class='trade-people padding-top padding-bottom padding-right'>3206人付款</text>
+    </view>
+  </view>
+</view>

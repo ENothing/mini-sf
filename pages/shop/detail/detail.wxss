@@ -1,0 +1,93 @@
+
+.screen-swiper{
+  min-height: 500rpx
+}
+
+.trade-name {
+  font-family: 幼圆;
+  font-weight: 100 !important;
+  font-size: 1.2rem;
+  overflow: hidden;
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 12rpx;
+}
+
+.trade-price {
+  font-size: 1.3rem !important;
+  font-weight: bold;
+  color: black !important;
+  letter-spacing: -2rpx;
+}
+
+
+.cu-modal{
+    z-index: 99 !important;
+}
+
+.buy-button{
+  z-index: 1 !important;
+  position: absolute;
+}
+
+.mini-img{
+  border: .1rpx solid #EDEDED;
+  width: 160rpx;
+  height: 150rpx;
+}
+.mark2{
+  white-space: nowrap ;
+}
+
+.goods-block{
+  padding: 10rpx
+}
+.modal-close{
+  font-size: 32rpx;
+  padding-bottom:100rpx
+}
+
+
+.goods-dialog{
+  height: 670rpx;
+  background-color: rgb(248, 248, 248)
+
+}
+.goods-tags{
+    background-color: rgb(248, 248, 248) !important
+}
+.goods-tag{
+  border: 10rpx solid rgb(248, 248, 248);
+  background-color: #fff
+}
+
+.goods-tag.goods-tag-border{
+  border: 10rpx solid #000;
+
+
+}
+
+.goods-size{
+  font-size: 1.1rem !important;
+  color: black !important;
+  font-weight: bold
+
+}
+.goods-price{
+  letter-spacing: -1rpx;
+  font-size: 1rem !important
+}
+
+
+.modal-buy-button{
+
+  z-index: 999
+}
+
+.button-show{
+  display: unset
+}
+
+.button-hide{
+  display: none
+}

@@ -1,0 +1,51 @@
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+  <view slot="content">优惠券</view>
+</cu-custom>
+
+
+
+<scroll-view scroll-x class="bg-white nav text-center fixed" style="top:{{CustomBar}}px">
+  <view class="flex text-center">
+    <view class="cu-item flex-sub {{index==TabCur?'text-red cur':''}}" wx:for="{{tabNav}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+      {{tabNav[index]}}
+    </view>
+
+  </view>
+
+</scroll-view>
+
+
+<view class="coupon_container margin-top">
+
+  <view class="coupon_item  flex padding-left-sm padding-right-sm padding-top-sm ">
+    <view class="c_left flex padding align-center bg-white">
+      <view><text class="text-price text-black text-xxl text-bold">80</text></view>
+      <view class="padding-left text-black">
+        <view>满￥1000减￥80</view>
+        <view>2019.12.09-2019.12.16</view>
+        <!-- <view class="c_rule">使用规则</view> -->
+      </view>
+    </view>
+    <view class="c_right bg-red ">
+      <view class="text-center">
+        <text class="text-white text-lg ">去使用</text>
+      </view>
+    </view>
+  </view> 
+  <view class="coupon_item  flex padding-left-sm padding-right-sm padding-top-sm ">
+    <view class="c_left flex padding align-center bg-grey">
+      <view><text class="text-price text-white text-xxl text-bold">80</text></view>
+      <view class="padding-left text-white">
+        <view>满￥1000减￥80</view>
+        <view>2019.12.09-2019.12.16</view>
+        <!-- <view class="c_rule">使用规则</view> -->
+      </view>
+    </view>
+    <view class="c_right bg-grey">
+      <view class="text-center">
+        <text class="text-white text-lg ">已使用</text>
+      </view>
+    </view>
+  </view> 
+
+</view>

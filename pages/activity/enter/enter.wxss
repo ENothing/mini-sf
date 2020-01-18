@@ -1,0 +1,45 @@
+.UCenter-bg {
+  background-image: url(http://img.daimg.com/uploads/allimg/190215/3-1Z2151A121.jpg);
+  background-size: 100% 500rpx;
+  background-repeat: no-repeat;
+  border-bottom-left-radius: 20%;
+  border-bottom-right-radius: 20%;
+  height: 500rpx;
+}
+
+.Text-logo {
+  display: flex;
+  justify-content: center;
+  padding-top: 280rpx;
+  overflow: hidden;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  font-size: 1.2rem;
+  font-family: 微软雅黑;
+  text-shadow: 0 0 6rpx rgba(0,0,0,0.3);
+  font-weight: 600
+
+}
+
+.cu-item.shadow.container {
+  margin-top: 75rpx;
+}
+
+.cu-form-group .title {
+  min-width: calc(4em + 30rpx);
+}
+
+.agreement{
+  color: rgb(83, 51, 226);
+  text-decoration: underline
+}
+
+.protocol-model{
+  display: flex;
+
+  z-index: 9999;
+  position: relative;
+
+}
