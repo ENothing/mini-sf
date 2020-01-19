@@ -18,8 +18,8 @@ const http = (params) => {
         //接口访问正常返回数据
         if (res.statusCode == 200) {
           //1. 操作成功返回数据,原则上只针对服务器端返回成功的状态（如本例中为000000）
-          if (res.data.retCode == "000000") {
-            resolve(res.data)
+          if (res.data.code == 0) {
+            resolve(res.data.data)
           } else if (params.url == "/order/result" && res.data.retCode == "800020") {//支付结果未知      
             //需要特殊处理的接口，可以单独列出来返回数据
             resolve(res.data)
@@ -43,7 +43,7 @@ const http = (params) => {
       fail: function (e) {
         wx.showToast({
           icon: "none",
-          title: e.errMsg
+          title: "网络错误，请重试"
         })
         reject(e)
       }

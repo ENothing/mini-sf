@@ -72,3 +72,7 @@
   font-size: .56rem;
   padding-left: 40rpx
 }
+
+.activity-icon{
+  border-radius: 50%
+}

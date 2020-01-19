@@ -28,9 +28,34 @@ page {
   height: 200rpx;
   /* background: red; */
   line-height: 200rpx;
-  border-left: 1px dashed  #fafafa
+  border-left: 1px dashed  #fafafa;
+  position: relative;
 }
 
+.c_right::before{
+  position: absolute;
+  top: 0px;
+    margin-left: -7.5px;
+  left: 0;
+  width: 15px;
+  height: 7.5px;
+  background: #eee;
+  border-radius:  0 0 15px 15px;
+
+  content: '';
+}
+.c_right::after{
+  position: absolute;
+  bottom: 0;
+  margin-left: -7.5px;
+  left: 0;
+  width: 15px;
+  height: 7.5px;
+  background: #eee;
+ border-radius: 15px 15px 0 0 ;
+ 
+  content: '';
+}
 .c_rule{
   text-decoration: underline
 }

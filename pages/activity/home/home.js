@@ -1,67 +1,42 @@
 import api from '../../../utils/api.js'
 
-// import http from '../../../utils/http.js'
 Component({
   options: {
     addGlobalClass: true,
   },
   data: {
-    swiperList: [{
-      id: 0,
-      type: 'image',
-      url: 'https://bpic.588ku.com//back_origin_min_pic/19/05/10/912f323ee44993a99126070f8ea38e5e.jpg!/fw/750/quality/99/unsharp/true/compress/true'
-    }, {
-      id: 1,
-      type: 'image',
-      url: 'https://bpic.588ku.com//back_origin_min_pic/19/05/16/3f47ee6324f1f943500b5b85c6496fb5.jpg!/fw/750/quality/99/unsharp/true/compress/true',
-    }],
-    msgList: [{
-      title: "重要通知：因近日来连大雪，318国道至新都桥段实行交通管制，请过往游客车辆绕行。",
-      url: "test"
-    }, {
-      title: 'test2',
-      url: "test3"
-    }],
-    iconList: [{
-      icon: 'cardboardfill',
-      color: 'red',
-      badge: 0,
-      name: '自驾'
-    }, {
-      icon: 'recordfill',
-      color: 'orange',
-      badge: 0,
-      name: '徒步'
-    }, {
-      icon: 'picfill',
-      color: 'yellow',
-      badge: 0,
-      name: '露营'
-    }, {
-      icon: 'noticefill',
-      color: 'olive',
-      badge: 0,
-      name: '滑雪'
-    }, {
-      icon: 'upstagefill',
-      color: 'cyan',
-      badge: 0,
-      name: '登山'
-    }, {
-      icon: 'clothesfill',
-      color: 'blue',
-      badge: 0,
-      name: '探沙'
-    }],
-    gridCol: 3,
+    swiperList: [],
+    msgList: [],
+    activityList: [],
+    iconList:"",
+    video_url: "",
+    page:1,
+    last_page:0,
     skin: false,
   },
   attached() {
 
     api.activityIndex().then(data=>{ 
       console.log(data)
+      this.setData({
+        swiperList: data.activity_banners,
+        msgList: data.activity_ann,
+        video_url: data.activity_video.video_url,
+        iconList: data.activity_cates
+      })
     })
 
+
+
+
+    api.activityList(this.data.page).then(data => {
+      console.log(data)
+      this.setData({
+        last_page: data.last_page,
+        activityList: data.activities
+      })
+
+    })
 
     console.log("activity")
     wx.pageScrollTo({
@@ -80,6 +55,30 @@ Component({
         modalName: null
       })
     },
+
+
+    getList(){
+
+      if (this.data.last_page == this.data.page){
+        return
+      }
+      this.setData({
+        page:this.data.page+1
+      })
+      api.activityList(this.data.page).then(data => {
+
+        var that = this;
+
+        var arr1 = that.data.activityList; //从data获取当前datalist数组
+        var arr2 = data.activities
+        arr1 = arr1.concat(arr2); //合并数组
+        that.setData({
+          activityList: arr1 //合并后更新datalist
+        })
+      })
+    }
+
+
 
   },
 

@@ -15,7 +15,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.9.4",
 	"appid": "wx276d9d32df17f41f",
-	"projectname": "ColorUI-template",
+	"projectname": "mini-sf",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
@@ -40,13 +40,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 17,
+			"current": 0,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "活动详情",
 					"pathName": "pages/activity/detail/detail",
-					"query": "",
+					"query": "id=6",
 					"scene": null
 				},
 				{
@@ -165,6 +165,7 @@
 					"id": -1,
 					"name": "卡券",
 					"pathName": "pages/personal/coupon/coupon",
+					"query": "",
 					"scene": null
 				}
 			]
