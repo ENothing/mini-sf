@@ -3,7 +3,7 @@
 </cu-custom>
 
 
-  <view class="UCenter-bg">
+  <view class="UCenter-bg" style="background-image: url({{activity.thumb}})">
 
     <text class='Text-logo'>SOULFIRE</text>
 
@@ -13,22 +13,22 @@
         <view class="solids-bottom padding-xs flex align-center">
           <view class="flex-sub text-center">
             <view class="solid-bottom text-xl padding">
-              <text class="text-black text-bold">攀登人生中5000级雪山</text>
+              <text class="text-black text-bold">{{activity.title}}</text>
             </view>
             <view class="flex  padding-sm justify-start">
-              <view>活动开始时间：2018-12-12</view>
+              <view>活动开始时间：{{activity.start_at_format}}</view>
             </view>
             <view class="flex  padding-sm justify-start">
-              <view>活动结束时间：2018-12-25</view>
+              <view>活动结束时间：{{activity.end_at_format}}</view>
             </view>
-            <view class="flex  padding-sm justify-start">
-              <view>联系电话：123456789</view>
+            <view class="flex  padding-sm justify-start" wx:if="{{activity.mobile != ''}}">
+              <view>联系电话：{{activity.mobile}}</view>
             </view>
             <view class="flex  padding-sm justify-start">
               <view>收费类型：一费制</view>
             </view>
             <view class="flex  padding-sm justify-start">
-              <view>会员价格：1680元/人</view>
+              <view>会员价格： <text class="text-red text-xl">{{activity.cur_price}}</text> 元/人(原价：{{activity.ori_price}})</view>
             </view>
           </view>
         </view>

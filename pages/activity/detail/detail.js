@@ -8,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id:""
+    id:"",
+    activity:""
   },
 
   /**
@@ -19,13 +20,10 @@ Page({
     api.activityDetail(id).then(data => {
       console.log(data)
       this.setData({
-        last_page: data.last_page,
-        activityList: data.activities
+        activity: data
       })
 
     })
-
-
 
     this.setData({
       id: id

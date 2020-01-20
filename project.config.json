@@ -13,7 +13,7 @@
 		"checkSiteMap": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.9.4",
+	"libVersion": "2.10.1",
 	"appid": "wx276d9d32df17f41f",
 	"projectname": "mini-sf",
 	"debugOptions": {
@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 16,
 			"list": [
 				{
 					"id": 0,
@@ -50,10 +50,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "报名入口",
 					"pathName": "pages/activity/enter/enter",
-					"query": "",
+					"query": "id=6",
 					"scene": null
 				},
 				{
@@ -155,10 +155,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 16,
 					"name": "文章详情",
 					"pathName": "pages/bbs/article_detail/articleDetail",
-					"query": "",
+					"query": "id=6",
 					"scene": null
 				},
 				{

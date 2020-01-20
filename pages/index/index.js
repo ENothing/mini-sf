@@ -3,7 +3,9 @@ Page({
     PageCur: 'activity'
   },
   onReachBottom() {
-    this.selectComponent("#activity").getList();
+    if (this.data.PageCur =="activity"){
+      this.selectComponent("#activity").getList();
+    } 
   },
   NavChange(e) {
     this.setData({

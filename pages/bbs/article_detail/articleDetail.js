@@ -1,29 +1,47 @@
 // pages/bbs/article_detail/articleDetail.js
+import api from '../../../utils/api.js'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    swiperList: [{
-      id: 0,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
-    }],
-    article:{
-      title:"在成都一定要做的50件小事，每一件都值得",
-      content:"<h1>hahahaha</h1>",
-    },
+    // swiperList: [{
+    //   id: 0,
+    //   type: 'image',
+    //   url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
+    // }],
     comment_textarea:0,
     focus:false,
-    input_val:""
+    input_val:"",
+    id: "",
+    article_detail:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var id = options.id
+    console.log(id)
 
+
+    api.articleDetail(id).then(data => {
+      this.setData({
+        article_detail: data
+      })
+    })
+
+    api.articleCommentList(id).then(data => {
+      if(data != ""){
+        console.log(data)
+      }
+    })
+
+    this.setData({
+      id: id
+    })
   },
 
   getTextarea(e){

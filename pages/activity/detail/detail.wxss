@@ -1,5 +1,5 @@
 .UCenter-bg {
-  background-image: url(http://img.daimg.com/uploads/allimg/190215/3-1Z2151A121.jpg);
+  /* background-image: url(http://img.daimg.com/uploads/allimg/190215/3-1Z2151A121.jpg); */
   background-size: 100% 400rpx;
   background-repeat:no-repeat;
   display: flex;
@@ -8,7 +8,7 @@
   position: relative;
   flex-direction: column;
   align-items: center;
-  font-weight: 300;
+  /* font-weight: 300; */
   text-shadow: 0 0 6rpx rgba(0,0,0,0.3);
 }
 
@@ -23,6 +23,3 @@
 
 }
 
-.cu-tabbar-height{
-  
-}

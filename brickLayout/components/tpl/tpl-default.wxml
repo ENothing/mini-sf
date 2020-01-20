@@ -3,19 +3,18 @@
     <view class="list-box {{content_list[item]._expandStatus  ? 'is-expand' : ''}}" style="background-color:{{content_list[item]._background}};{{!!_fontColor?'color:'+_fontColor:''}}" data-card-id="{{content_list[item].id}}" bindtap="onBrickItemTap">
 
       <view class="list-box_content" >
-        {{content_list[item].content}}
-        <template is="images-viewer" data="{{images:content_list[item].images,_imageFillMode,card_id:content_list[item].id}}"></template>
+        <template is="images-viewer" data="{{images:content_list[item].thumb,_imageFillMode,card_id:content_list[item].id}}"></template>
       </view>
       <view wx:if="{{content_list[item].title}}" class="album-text-area_title">
         {{content_list[item].title}}
       </view>
       <view class="list-box_footer">
 
-        <view class="list-box_header" wx:if="{{content_list[item].user}}" catchtap="{{content_list[item].user.userId ? 'onUserAreaTap' : ''}}" data-user-id="{{content_list[item].user.userId}}">
-          <view wx:if="{{content_list[item].user.avatar}}" class="user-avatar" style="background-image:url('{{content_list[item].user.avatar}}')"></view>
+        <view class="list-box_header" wx:if="{{content_list[item]}}" catchtap="{{content_list[item].user_id ? 'onUserAreaTap' : ''}}" data-user-id="{{content_list[item].user.userId}}">
+          <view wx:if="{{content_list[item].avatar}}" class="user-avatar" style="background-image:url('{{content_list[item].avatar}}')"></view>
           <view class="user-info">
-            <view wx:if="{{content_list[item].user.username}}" class="user-name">
-              {{content_list[item].user.username}}
+            <view wx:if="{{content_list[item].nickname}}" class="user-name">
+              {{content_list[item].nickname}}
             </view>
             <!-- <view wx:if="{{content_list[item]._dateTime}}" class="time">
             {{content_list[item]._dateTime}}
@@ -24,10 +23,10 @@
 
         </view>
         <view class="approve-btn" catchtap="onLikeButtonTap" data-card-id="{{item}}">
-          <view class="approve-btn_wrapper" wx:if="{{content_list[item].likedCount === 0 || content_list[item].likedCount}}">
+          <view class="approve-btn_wrapper"  wx:if="{{content_list[item].likes === 0 || content_list[item].likes}}">
             <image class="approve-btn-icon" src="{{content_list[item].liked ? _likeIcon['like'] : _likeIcon['default'] }}" />
             
-            <text>{{content_list[item].likedCount}}</text>
+            <text>{{content_list[item].likes}}</text>
             
           </view>
         </view>
@@ -40,6 +39,6 @@
 </template>
 <template name="images-viewer">
   <view wx:if="{{ !!images && !!images.length}}" class="media-previewer" >
-    <image wx:for="{{ images }}" wx:key="{{images}}" src="{{item}}" mode="{{_imageFillMode}}" data-images="{{images}}" data-current-image="{{item}}" catchtap='_imagePreview' catchtap="onBrickItemTap" data-card-id='{{card_id}}'></image>
+    <image  src="{{images}}" mode="{{_imageFillMode}}" data-images="{{images}}" data-current-image="{{item}}" catchtap='_imagePreview' catchtap="onBrickItemTap" data-card-id='{{card_id}}'></image>
   </view>
 </template>

@@ -29,7 +29,7 @@
 /* list-box themeA */
 .list-box {
   position: relative;
-  padding: 8px;
+  /* padding: 8px; */
   border-radius: 4px;
   color: #fff;
 }
@@ -37,7 +37,9 @@
 .list-box_header {
   height: 32px;
   overflow: hidden;
-  padding: 0 10rpx 0 10rpx
+  padding: 0 10rpx 0 10rpx;
+  box-sizing: border-box;
+  width:110px;
 }
 
 .list-box_header .user-avatar {
@@ -61,6 +63,7 @@
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   height: 20px;
+  /* width: 60% */
 }
 
 .list-box_header .user-info .time {

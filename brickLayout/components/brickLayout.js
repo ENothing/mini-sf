@@ -145,7 +145,9 @@ Component({
       return new Promise((resolve, reject) => {
         let query = wx.createSelectorQuery().in(this)
         query.select('#card-' + card_id).boundingClientRect(res => {
-          resolve({card_id, height: res.height})
+          if(res != null){
+            resolve({ card_id, height: res.height })
+          }
         })
         query.exec()
       })
