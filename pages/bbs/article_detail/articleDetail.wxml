@@ -44,34 +44,42 @@
 
 
 <view class="padding bg-white">
-  共238条评论
+  共{{total}}条评论
 </view>
-<view class="comment_container bg-white">
+
+
+
+
+
+<view class="comment_container bg-white" wx:for="{{commentList}}" wx:key>
   <view class="flex">
     <view class="comment_avatar">
-      <view class=" cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
+      <view class=" cu-avatar round" style="background-image:url({{item.user_avatar}});"></view>
     </view>
     <view class="comment_info">
       <view class="flex justify-between">
-        <view class="comment_username padding-sm">努力的布里吉塔</view>
-        <view class="comment_date padding-sm text-sm text-gray">10-9</view>
+        <view class="comment_username padding-sm">{{item.username}}</view>
+        <view class="comment_date padding-sm text-sm text-gray">{{item.created_at_format}}</view>
       </view>
       <view class="comment_content padding-sm text-black">
-        平常咱们工作中单位都缴纳一部分的的住房公积金，也有一些已经工作了一定年限的朋友，自己的公积金账户里少则也有上万元，多则可能都有十几万元，一些朋友咨询到，自己交了那么多年的公积金分的的住房公积金，也有一些分的的住房公积金，也有一些
+        {{item.content}}
       </view>
-      <view class="reply_container padding-sm bg-gray radius">
-        <view class="reply_content">
-          <text class="text-blue">努力的布里吉塔</text>
-          <text decode="true">&ensp;回复&nbsp;</text>
-          <text class="text-blue">@肥猫院长</text>：作了一定年限的朋友
+      <view class="reply_container padding-sm bg-gray radius" wx:for="{{item.sub_comments}}" wx:for-item="sub_item" >
+        <view class="reply_content" wx:if="{{item.user_id == sub_item.reply_id}}">
+          <text class="text-blue">{{sub_item.username}}</text>：{{sub_item.content}}
         </view>
-        <view class="reply_content">
-          <text class="text-blue">肥猫院长</text>：点了一下大指姆
+        <view class="reply_content" wx:else>
+          <text class="text-blue">{{sub_item.username}}</text>
+          <text decode="true">&ensp;回复&nbsp;</text>
+          <text class="text-blue">@ {{sub_item.reply_username}}</text>：{{sub_item.content}}
         </view>
       </view>
     </view>
   </view>
 </view>
+
+
+
 
 
 <view class='cu-tabbar-height'></view>
@@ -82,15 +90,18 @@
       <text class="cuIcon-write"></text>
       <input type="text" placeholder="说点什么 . . ." disabled="disabled" bindtap="getTextarea" value="{{input_val}}"></input>
     </view>
-     <view class="action">
-      <view class="cuIcon-like"></view>2389
+     <view class="action" wx:if="{{article_detail.liked == true}}">
+      <view class="cuIcon-likefill text-red"></view>{{article_detail.likes}}
+    </view>
+    <view class="action" wx:else>
+      <view class="cuIcon-like"></view>{{article_detail.likes}}
     </view>
     <view class="action">
-      <view class="cuIcon-favor"></view> 1250
+      <view class="cuIcon-favor"></view> {{article_detail.favor}}
     </view>
-  <view class="action">
+    <!-- <view class="action">
       <view class="cuIcon-comment"></view> 238
-    </view>
+    </view> -->
   </view>
 
   <form bindsubmit="postComment"  class="back-page" hidden="{{comment_textarea == 0 ? true:false}}">

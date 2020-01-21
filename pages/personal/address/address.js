@@ -1,36 +1,31 @@
 // pages/personal/address/address.js
+import api from '../../../utils/api.js'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    addresses:[{
-      id:1,
-      name:"test",
-      phone:"181****5061",
-      address:"四川省成都市高新区环球中心",
-      is_default:1
-    }, {
-        id: 2,
-        name: "test",
-        phone: "181****5061",
-        address: "四川省成都市高新区环球中心",
-        is_default: 0
-      }, {
-        id: 3,
-        name: "test",
-        phone: "181****5061",
-        address: "四川省成都市高新区环球中心",
-        is_default: 0
-      }]
-
+    addresses:"",
+    last_page:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    api.addressList().then(data => {
+      console.log(data)
+      this.setData({
+        addresses: data.ship_addresses,
+        last_page: data.last_page
+      })
+
+    })
+
+
 
   },
 

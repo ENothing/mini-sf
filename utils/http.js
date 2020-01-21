@@ -26,7 +26,7 @@ const http = (params) => {
           } else {
             wx.showToast({
               icon: "none",
-              title: res.data.retMsg
+              title: res.data.message
             })
             console.log(res.data)
           }

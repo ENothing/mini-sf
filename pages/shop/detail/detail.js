@@ -1,4 +1,6 @@
 // pages/shop/detail/detail.js
+import api from '../../../utils/api.js'
+
 const app = getApp()
 Page({
 
@@ -6,68 +8,38 @@ Page({
    * 页面的初始数据
    */
   data: {
-    swiperList: [{
-      id: 0,
-      type: 'image',
-      url: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1878991123,2355764567&fm=26&gp=0.jpg'
-    }, {
-      id: 0,
-      type: 'image',
-      url: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1878991123,2355764567&fm=26&gp=0.jpg'
-    }],
-    goods: {
-      goods_thumb: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1878991123,2355764567&fm=26&gp=0.jpg',
-      low_price: "185",
-      sizes: [{
-        id: 1,
-        name: 'S',
-        now_price: '123'
-      }, {
-        id: 2,
-        name: 'L',
-        now_price: '312'
-      }, {
-        id: 3,
-        name: 'L',
-        now_price: '312'
-      }, {
-        id: 4,
-        name: 'L',
-        now_price: '312'
-      }, {
-        id: 5,
-        name: 'L',
-        now_price: '312'
-      }, {
-        id: 6,
-        name: 'L',
-        now_price: '312'
-      }, {
-        id: 7,
-        name: 'L',
-        now_price: '312'
-      }, {
-        id: 8,
-        name: 'L',
-        now_price: '312'
-      }, {
-        id: 9,
-        name: 'L',
-        now_price: '312'
-      }]
-    },
-
-
-
-
-
-
     modalName: null,
     modalButton: null,
     choose_key: null,
-    choose_name: null
-
+    choose_name: null,
+    id:"",
+    shop_goods_detail:"",
+    purchasers:"",
+    p_total:0
   },
+  onLoad(options) {
+
+    var id = options.id
+    this.setData({
+      id: id
+    })
+
+    api.shopGoodsDetail(id).then(data => {
+      console.log(data)
+      this.setData({
+        shop_goods_detail: data.shop_goods_detail,
+        shop_goods_spus: data.shop_goods_spus,
+        purchasers: data.purchasers,
+        p_total: data.p_total,
+      })
+
+    })
+
+
+    wx.hideLoading()
+  },
+
+
 
   showModal(e) {
     this.setData({
@@ -106,9 +78,7 @@ Page({
   },
 
 
-  onReady() {
-    wx.hideLoading()
-  },
+
 
 
 })

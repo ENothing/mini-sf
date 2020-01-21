@@ -6,20 +6,20 @@
 
 
 <swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
-  <swiper-item wx:for="{{swiperList}}" wx:key>
-    <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
-    <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+  <swiper-item wx:for="{{shop_goods_detail.decode_banners}}" wx:key>
+    <image src="{{item}}" mode="aspectFill" ></image>
+    <!-- <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video> -->
   </swiper-item>
 </swiper>
 
 <view class="solid-bottom padding-xs flex align-center bg-white ">
   <view class="flex-sub text-center ">
     <view class="trade-name">
-      <text class="  text-black">Nike x Ambush 金属联名正反两穿3M反光运动机能男女夹克</text>
+      <text class="  text-black">{{shop_goods_detail.name}}</text>
     </view>
     <view>
       <text class='text-bold text-black'>￥</text>
-      <text class='trade-price'>819</text>
+      <text class='trade-price'>{{shop_goods_detail.cur_price}}</text>
     </view>
   </view>
 </view>
@@ -50,59 +50,33 @@
   </view>
   <view class="flex  padding-left padding-right  justify-between">
     <view class="  margin-xs text-gray">发售价格</view>
-    <view class="  margin-xs text-gray">￥1299仅供参考</view>
+    <view class="  margin-xs text-gray">￥{{shop_goods_detail.ori_price}}仅供参考</view>
   </view>
   <view class="flex  padding-left padding-right justify-between">
     <view class="  margin-xs text-gray">发售日期</view>
-    <view class="  margin-xs text-gray">2019.02.07</view>
+    <view class="  margin-xs text-gray">{{shop_goods_detail.publish_at_format}}</view>
   </view>
 </view>
 
 
-<view class=" bg-white margin-top solid-bottom">
+<view class=" bg-white margin-top solid-bottom" wx:if="{{purchasers != ''}}">
 
 
   <view class="flex  padding-left padding-right  justify-between">
-    <view class="  margin-xs text-gray">最近购买(841)</view>
+    <view class="  margin-xs text-gray">最近购买({{p_total}})</view>
     <view class="  margin-xs text-red">全部</view>
   </view>
-  <view class="flex  padding-left padding-right justify-between">
+
+  <view class="flex  padding-left padding-right justify-between" wx:for="{{purchasers}}">
     <view class="  margin-xs text-gray">
-      <view class="cu-avatar sm round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-      <text decode='true' space='true'>&nbsp;&nbsp;</text>我****4
-      <text decode='true' space='true'>&nbsp;&nbsp;</text>u
+      <view class="cu-avatar sm round" style="background-image:url({{item.avatar}});"></view>
+      <text decode='true' space='true'>&nbsp;&nbsp;</text>{{item.nickname}}
+      <text decode='true' space='true'>&nbsp;&nbsp;</text>{{item.specification}}
     </view>
-    <view class="  margin-xs text-gray">4分钟前</view>
+    <view class="  margin-xs text-gray">{{item.created_at_format}}</view>
   </view>
-  <view class="flex  padding-left padding-right  justify-between">
-    <view class="  margin-xs text-gray">
-      <view class="cu-avatar sm round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-      <text decode='true' space='true'>&nbsp;&nbsp;</text>我****4
-      <text decode='true' space='true'>&nbsp;&nbsp;</text>u
-    </view>
-    <view class="  margin-xs text-gray">1小时前</view>
-  </view>
-  <view class="flex  padding-left padding-right justify-between">
-    <view class="  margin-xs text-gray">
-      <view class="cu-avatar sm round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-      <text decode='true' space='true'>&nbsp;&nbsp;</text>我****4
-      <text decode='true' space='true'>&nbsp;&nbsp;</text>u</view>
-    <view class="  margin-xs text-gray">17小时前</view>
-  </view>
-  <view class="flex  padding-left padding-right justify-between">
-    <view class="  margin-xs text-gray">
-      <view class="cu-avatar sm round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-      <text decode='true' space='true'>&nbsp;&nbsp;</text>我****4
-      <text decode='true' space='true'>&nbsp;&nbsp;</text>u</view>
-    <view class="  margin-xs text-gray">17小时前</view>
-  </view>
-  <view class="flex  padding-left padding-right justify-between">
-    <view class="  margin-xs text-gray">
-      <view class="cu-avatar sm round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>
-      <text decode='true' space='true'>&nbsp;&nbsp;</text>我****4
-      <text decode='true' space='true'>&nbsp;&nbsp;</text>u</view>
-    <view class="  margin-xs text-gray">17小时前</view>
-  </view>
+
+
 
 </view>
 
@@ -110,14 +84,7 @@
 
 
 <view class=" bg-white margin-top solid-bottom">
-
-  <image src='https://www.haohua.com/upload/image/2018-11/19/25df6_111ab.jpg' mode='widthFix' style='width:100%'></image>
-  <image src='https://www.haohua.com/upload/image/2018-11/19/25df7_14a17.jpg' mode='widthFix' style='width:100%'></image>
-  <image src='https://www.haohua.com/upload/image/2018-11/19/25df7_8299.jpg' mode='widthFix' style='width:100%'></image>
-  <image src='https://www.haohua.com/upload/image/2018-11/19/25df8_f587.jpg' mode='widthFix' style='width:100%'></image>
-  <image src='https://www.haohua.com/upload/image/2018-11/19/25df9_55b3.jpg' mode='widthFix' style='width:100%'></image>
-  <image src='https://www.haohua.com/upload/image/2018-11/19/25df9_73e1.jpg' mode='widthFix' style='width:100%'></image>
-  <image src='https://www.haohua.com/upload/image/2018-11/19/25df9_b195.jpg' mode='widthFix' style='width:100%'></image>
+          <rich-text nodes="{{shop_goods_detail.goods_content}}" ></rich-text>
 
 </view>
 
@@ -129,13 +96,13 @@
   <view class="cu-dialog ">
     <view class="cu-bar bg-white">
       <view class="flex solid-bottom padding-left align-center goods-block">
-        <image class="margin-xs mini-img" src='{{goods.goods_thumb}}'></image>
+        <image class="margin-xs mini-img" src='{{shop_goods_detail.thumb}}'></image>
         <view class=" padding-sm margin-xs radius">
           <view class="bg-white">
             <view class="grid col-2  text-center">
               <view class=" ">
                 <text class='text-bold text-black'>￥</text>
-                <text class='trade-price'>{{goods.low_price}}</text> </view>
+                <text class='trade-price'>{{shop_goods_detail.cur_price}}</text> </view>
             </view>
             <view class="grid col-2  text-center">
               <view class="mark2">选择款式</view>
@@ -153,9 +120,9 @@
 
         <view class="cu-list grid col-4 goods-tags">
 
-          <view class="cu-item goods-tag {{choose_key==item.id?'goods-tag-border':''}} " bindtap="showButtonModal" data-target="choose_size" wx:for="{{goods.sizes}}" data-id='{{item.id}}' data-name='{{item.name}}'>
+          <view class="cu-item goods-tag {{choose_key==item.id?'goods-tag-border':''}} " bindtap="showButtonModal" data-target="choose_size" wx:for="{{shop_goods_spus}}" data-id='{{item.id}}' data-name='{{item.name}}'>
             <text class="goods-size">{{item.name}}</text>
-            <text class="goods-price">￥{{item.now_price}}</text>
+            <text class="goods-price">￥{{item.price}}</text>
           </view>
 
 

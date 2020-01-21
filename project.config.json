@@ -39,6 +39,10 @@
 			"currentL": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 16,
 			"list": [
@@ -71,10 +75,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "商品详情",
 					"pathName": "pages/shop/detail/detail",
-					"query": "",
+					"query": "id=4",
 					"scene": null
 				},
 				{

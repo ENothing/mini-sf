@@ -6,10 +6,10 @@
 <view class="address_container bg-white" wx:for="{{addresses}}" wx:key data-id="{{item.id}}">
   <view class="address_info">
     <view class="flex justify-between">
-      <view class="">gaoxiang</view>
-      <view class="">181****5061</view>
+      <view class="">{{item.name}}</view>
+      <view class="">{{item.mobile}}</view>
     </view>
-    <view>四川省成都市高新区环球中心</view>
+    <view>{{item.province}}{{item.city}}{{item.district}}{{item.detail_address}}</view>
   </view>
   <view class="flex justify-between address_op">
     <view>

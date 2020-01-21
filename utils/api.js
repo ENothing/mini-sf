@@ -7,7 +7,15 @@ var url = {
 
   articleList: "/bbs/list",
   articleDetail: "/bbs/detail",
-  articleCommentList:"/bbs/comment_list"
+  articleCommentList:"/bbs/comment_list",
+
+  shopIndex: "/shop/index",
+  shopList: "/shop/list",
+  shopGoodsDetail: "/shop/goods_detail",
+
+  addressList: "/address/list"
+
+
 
 }
 module.exports = {
@@ -62,5 +70,40 @@ module.exports = {
       method: "GET"
     })
   },
+
+
+  shopIndex() {
+    return http({
+      url: url.shopIndex,
+      method: "GET"
+    })
+  },
+  shopList(page) {
+    return http({
+      url: url.shopList + "?page=" + page,
+      method: "GET"
+    })
+  },
+  shopGoodsDetail(id) {
+    return http({
+      url: url.shopGoodsDetail + "/" + id,
+      method: "GET"
+    })
+  },
+
+
+  addressList() {
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJFcmljX05vdGhpbmdfIiwiZXhwIjoxNTc5Njg2NTM4LCJpYXQiOjE1Nzk2MDAxMzgsImlkIjoxLCJpc3MiOiJzb3VsZmlyZSIsIm5iZiI6MTU3OTYwMDEzOCwib3BlbmlkIjoib253a0QwVXhRdmdmSFRpejdxeVQtU0JTRUpYNCIsInNlc3Npb25fa2V5IjoicEVXTCtEUVk4R3YxZkMyZWZJM1VWQT09In0.8kD1k8r40jyoUmm5qLWlDWaFtVWE5Mslqh-L4ZgW7Ts"
+      },
+      url: url.addressList,
+      method: "GET"
+    })
+  },
+
+
+
 }
 

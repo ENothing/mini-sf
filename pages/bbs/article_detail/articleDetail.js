@@ -16,7 +16,10 @@ Page({
     focus:false,
     input_val:"",
     id: "",
-    article_detail:""
+    article_detail:"",
+    commentList:"",
+    last_page:0,
+    total: 0
   },
 
   /**
@@ -35,7 +38,13 @@ Page({
 
     api.articleCommentList(id).then(data => {
       if(data != ""){
+        this.setData({
+          commentList: data.articleComments,
+          total: data.total,
+          last_page: data.last_page,
+        })
         console.log(data)
+        console.log(data.articleComments)
       }
     })
 

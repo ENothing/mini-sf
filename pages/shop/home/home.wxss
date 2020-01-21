@@ -27,10 +27,17 @@
 }
 
 .trade-name{
-
+  width: 100%;
+  height: 80rpx;
   font-family:  STKaiti;
   font-weight: 100 !important;
-  overflow:hidden;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  align-content: center;
 }
 
 .trade-price{
@@ -42,4 +49,8 @@
 .trade-people{
   color:gray !important;
   font-size: .7rem !important;
+}
+
+.shop-icon{
+  border-radius: 50%
 }
