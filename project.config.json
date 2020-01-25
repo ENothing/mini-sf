@@ -44,7 +44,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 16,
+			"current": 18,
 			"list": [
 				{
 					"id": 0,
@@ -169,6 +169,13 @@
 					"id": -1,
 					"name": "卡券",
 					"pathName": "pages/personal/coupon/coupon",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 18,
+					"name": "选择登陆",
+					"pathName": "pages/personal/login/login",
 					"query": "",
 					"scene": null
 				}

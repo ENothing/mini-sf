@@ -22,7 +22,8 @@
     "pages/personal/feedback/feedback",
     "pages/bbs/editor/editor",
     "pages/bbs/article_detail/articleDetail",
-    "pages/personal/coupon/coupon"
+    "pages/personal/coupon/coupon",
+    "pages/personal/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",

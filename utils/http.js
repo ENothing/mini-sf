@@ -28,6 +28,7 @@ const http = (params) => {
               icon: "none",
               title: res.data.message
             })
+            return
             console.log(res.data)
           }
         } else {
@@ -35,7 +36,12 @@ const http = (params) => {
           var errMsg = res.data.message
           wx.showToast({
             icon: "none",
-            title: res.data.message
+            title: res.data.message,
+            success:function(){
+              wx.navigateTo({
+                url: 'pages/index/index?pageCur=personal',
+              })
+            }
           })
           console.log(res.data)
         }

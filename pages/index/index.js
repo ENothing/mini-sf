@@ -2,6 +2,14 @@ Page({
   data: {
     PageCur: 'activity'
   },
+  onLoad(options) {
+    var pageCur = options.pageCur
+    if (pageCur != ""){
+      this.setData({
+        pageCur: pageCur
+      })
+    }
+  },
   onReachBottom() {
     if (this.data.PageCur =="activity"){
       this.selectComponent("#activity").getList();

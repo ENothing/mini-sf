@@ -25,7 +25,6 @@ Page({
     })
 
     api.shopGoodsDetail(id).then(data => {
-      console.log(data)
       this.setData({
         shop_goods_detail: data.shop_goods_detail,
         shop_goods_spus: data.shop_goods_spus,

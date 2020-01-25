@@ -12,6 +12,8 @@ var url = {
   shopIndex: "/shop/index",
   shopList: "/shop/list",
   shopGoodsDetail: "/shop/goods_detail",
+  preOrderDetail: "/shop/pre_order_detail",
+
 
   addressList: "/address/list"
 
@@ -102,7 +104,12 @@ module.exports = {
       method: "GET"
     })
   },
-
+  preOrderDetail(id){
+    return http({
+      url: url.preOrderDetail + "/" + id,
+      method: "GET"
+    })
+  }
 
 
 }
