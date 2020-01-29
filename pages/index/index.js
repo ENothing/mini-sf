@@ -3,10 +3,11 @@ Page({
     PageCur: 'activity'
   },
   onLoad(options) {
-    var pageCur = options.pageCur
-    if (pageCur != ""){
+    console.log(options.PageCur)
+    var pageCur = options.PageCur
+    if (pageCur != undefined){
       this.setData({
-        pageCur: pageCur
+        PageCur: pageCur
       })
     }
   },

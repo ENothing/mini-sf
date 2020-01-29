@@ -1,13 +1,22 @@
-import {http} from '../utils/http.js'
+import {
+  http
+} from '../utils/http.js'
 
 var url = {
+
+  userLogin: "/user/login",
+
+
+
+
+
   activityIndex: "/activity/index",
   activityList: "/activity/list",
   activityDetail: "/activity/detail",
 
   articleList: "/bbs/list",
   articleDetail: "/bbs/detail",
-  articleCommentList:"/bbs/comment_list",
+  articleCommentList: "/bbs/comment_list",
 
   shopIndex: "/shop/index",
   shopList: "/shop/list",
@@ -15,12 +24,37 @@ var url = {
   preOrderDetail: "/shop/pre_order_detail",
 
 
-  addressList: "/address/list"
+  addressList: "/address/list",
+
+
+  userCoupons: "/coupon/user_coupons",
+
+
 
 
 
 }
+
+var base_token = wx.getStorageSync('token')
+
+
 module.exports = {
+
+  userLogin(code, iv, encryptedData) {
+    return http({
+      url: url.userLogin,
+      method: "POST",
+      data: {
+        code: code,
+        iv: iv,
+        encryptedData: encryptedData
+      }
+    })
+  },
+
+
+
+
 
   activityIndex() {
     return http({
@@ -30,7 +64,7 @@ module.exports = {
   },
   activityList(page) {
     return http({
-      url: url.activityList+"?page="+page,
+      url: url.activityList + "?page=" + page,
       method: "GET"
     })
   },
@@ -46,7 +80,7 @@ module.exports = {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJFcmljX05vdGhpbmdfIiwiZXhwIjoxNTc5NTkxOTIxLCJpYXQiOjE1Nzk1MDU1MjEsImlkIjoxLCJpc3MiOiJzb3VsZmlyZSIsIm5iZiI6MTU3OTUwNTUyMSwib3BlbmlkIjoib253a0QwVXhRdmdmSFRpejdxeVQtU0JTRUpYNCIsInNlc3Npb25fa2V5IjoiN2FPSXZmaXNwOXpRUEkwK3NiTFMxQT09In0.PyAVkKD-ugyhlsIJZ3sRSaB55rN4kc4z4ZeyO0RKVi8"
+        "Authorization": "Bearer " + base_token
       },
       url: url.articleList + "?page=" + page,
       method: "GET"
@@ -56,7 +90,7 @@ module.exports = {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJFcmljX05vdGhpbmdfIiwiZXhwIjoxNTc5NTkxOTIxLCJpYXQiOjE1Nzk1MDU1MjEsImlkIjoxLCJpc3MiOiJzb3VsZmlyZSIsIm5iZiI6MTU3OTUwNTUyMSwib3BlbmlkIjoib253a0QwVXhRdmdmSFRpejdxeVQtU0JTRUpYNCIsInNlc3Npb25fa2V5IjoiN2FPSXZmaXNwOXpRUEkwK3NiTFMxQT09In0.PyAVkKD-ugyhlsIJZ3sRSaB55rN4kc4z4ZeyO0RKVi8"
+        "Authorization": "Bearer " + base_token
       },
       url: url.articleDetail + "/" + id,
       method: "GET"
@@ -66,7 +100,7 @@ module.exports = {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJFcmljX05vdGhpbmdfIiwiZXhwIjoxNTc5NTkxOTIxLCJpYXQiOjE1Nzk1MDU1MjEsImlkIjoxLCJpc3MiOiJzb3VsZmlyZSIsIm5iZiI6MTU3OTUwNTUyMSwib3BlbmlkIjoib253a0QwVXhRdmdmSFRpejdxeVQtU0JTRUpYNCIsInNlc3Npb25fa2V5IjoiN2FPSXZmaXNwOXpRUEkwK3NiTFMxQT09In0.PyAVkKD-ugyhlsIJZ3sRSaB55rN4kc4z4ZeyO0RKVi8"
+        "Authorization": "Bearer " + base_token
       },
       url: url.articleCommentList + "?article_id=" + id,
       method: "GET"
@@ -98,19 +132,39 @@ module.exports = {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJFcmljX05vdGhpbmdfIiwiZXhwIjoxNTc5Njg2NTM4LCJpYXQiOjE1Nzk2MDAxMzgsImlkIjoxLCJpc3MiOiJzb3VsZmlyZSIsIm5iZiI6MTU3OTYwMDEzOCwib3BlbmlkIjoib253a0QwVXhRdmdmSFRpejdxeVQtU0JTRUpYNCIsInNlc3Npb25fa2V5IjoicEVXTCtEUVk4R3YxZkMyZWZJM1VWQT09In0.8kD1k8r40jyoUmm5qLWlDWaFtVWE5Mslqh-L4ZgW7Ts"
+        "Authorization": "Bearer " + base_token
       },
       url: url.addressList,
       method: "GET"
     })
   },
-  preOrderDetail(id){
+  preOrderDetail(id, token) {
     return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + token
+      },
       url: url.preOrderDetail + "/" + id,
       method: "GET"
+    })
+  },
+
+
+
+  userCoupons(status,page) {
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.userCoupons,
+      method: "GET",
+      data:{
+        status: status,
+        page: page
+      }
     })
   }
 
 
 }
-

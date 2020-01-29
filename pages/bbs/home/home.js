@@ -8,40 +8,43 @@ Component({
   data: {
     scrollHeight: app.globalData.scrollHeight,
     brick_option: {
-      backgroundColor:"#fafafa",
+      backgroundColor: "#fafafa",
       defaultExpandStatus: true,
-      imageFillMode:'widthFix',
+      imageFillMode: 'widthFix',
       columns: 2,
       forceRepaint: false,
       icon: {
         fill: '/images/likefill.png',
-        default:'/images/like.png',
+        default: '/images/like.png',
       },
-      fontColor:'black'
+      fontColor: 'black'
     },
-    page:1,
-    last_page:0,
-    articles:""
+    page: 1,
+    last_page: 0,
+    articles: ""
   },
   attached() {
-    api.articleList(this.data.page).then(data => {
+    var that = this
+    api.articleList(that.data.page).then(data => {
       console.log(data)
-      this.setData({
+      that.setData({
         last_page: data.last_page,
         articles: data.articles
       })
-
     })
+  },
+  ready() {
+
   },
   methods: {
 
-    handleExpand: function (event) {
+    handleExpand: function(event) {
       console.log(event.detail)
       console.log('expand call back')
     },
 
     // 点击卡片
-    tapCard: function (event) {
+    tapCard: function(event) {
       wx.navigateTo({
         url: '/pages/bbs/article_detail/articleDetail?id=' + event.detail.card_id,
       })
@@ -49,13 +52,13 @@ Component({
     },
 
     // 点赞
-    handleLike: function (event) {
+    handleLike: function(event) {
       console.log(event)
       console.log('like!')
     },
 
     // 点击用户头像区域
-    handleUserEvent: function (event) {
+    handleUserEvent: function(event) {
       console.log(event.detail)
       console.log('user!')
     },

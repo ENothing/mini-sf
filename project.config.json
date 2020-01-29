@@ -9,8 +9,7 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false,
-		"checkSiteMap": false
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.1",

@@ -51,7 +51,7 @@ const http = (params) => {
           icon: "none",
           title: "网络错误，请重试"
         })
-        reject(e)
+        return
       }
     })
   })

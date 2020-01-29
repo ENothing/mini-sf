@@ -1,15 +1,16 @@
 /* pages/personal/login/login.wxss */
+
 .logo_container{
-  margin-top: 120rpx
+  margin-top: 150rpx
 }
 
 
 .logo{
-  height: 300rpx
+  height: 150rpx
 }
 
 .slogan{
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-style:oblique;
   font-weight: bold;
   font-family:SimHei;

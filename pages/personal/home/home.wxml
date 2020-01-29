@@ -1,19 +1,24 @@
 <view class="UCenter-bg">
 
-  <view class=" padding-xs flex align-center">
+
+  <view class="flex padding-top-xl justify-center">
+    <view class="personal cu-avatar xl round avatar" style="background-image:url({{userInfo == null ?'/images/default_head.jpg':userInfo.avatarUrl}});" ></view>
+  </view>
+  <view class="  flex align-center" >
     <view class="flex-sub text-center">
-      <view class=" text-lg padding">
-        <text class="personal text-white nickname">ENothing</text>
+      <view class=" text-lg padding-top-xl" >
+        <text class="personal text-white nickname" >{{userInfo == null?'请先登录':userInfo.nickName}}</text>
       </view>
     </view>
   </view>
-  <view class="flex justify-center">
-    <view class="personal cu-avatar xl round avatar" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg);"></view>
-  </view>
-  <view class="flex justify-center padding-top personal-text">
+
+
+
+
+  <!-- <view class="flex justify-center padding-top personal-text">
     <text class=" personal cuIcon-crown text-xl text-yellow"></text>
     <text class="text-white">Vehocle ID:001</text>
-  </view>
+  </view> -->
 
   <image src="/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
 
@@ -34,28 +39,28 @@
         <view class="cu-list grid col-3 no-border">
 
           <view class="cu-item">
-          <navigator url="/pages/personal/my_order/myOrder" hover-class="none">
-            <view class="cuIcon-formfill text-red">
-            </view>
-            <text>活动订单</text>
+            <navigator url="/pages/personal/my_order/myOrder" hover-class="none">
+              <view class="cuIcon-formfill text-red">
+              </view>
+              <text>活动订单</text>
             </navigator>
           </view>
 
 
           <view class="cu-item">
-          <navigator url="/pages/personal/my_order/myOrder" hover-class="none">
-            <view class="cuIcon-formfill text-orange">
-            </view>
-            <text>商品订单</text>
+            <navigator url="/pages/personal/my_order/myOrder" hover-class="none">
+              <view class="cuIcon-formfill text-orange">
+              </view>
+              <text>商品订单</text>
             </navigator>
           </view>
 
           <view class="cu-item">
-          <navigator url="/pages/personal/coupon/coupon" hover-class="none">
+            <navigator url="/pages/personal/coupon/coupon" hover-class="none">
 
-            <view class="cuIcon-card text-purple">
-            </view>
-            <text>卡券</text>
+              <view class="cuIcon-card text-purple">
+              </view>
+              <text>卡券</text>
             </navigator>
 
           </view>
@@ -71,18 +76,18 @@
           </view>
 
           <view class="cu-item">
-          <navigator url="/pages/personal/address/address" hover-class="none">
-            <view class="cuIcon-locationfill text-mauve">
-            </view>
-            <text>地址管理</text>
+            <navigator url="/pages/personal/address/address" hover-class="none">
+              <view class="cuIcon-locationfill text-mauve">
+              </view>
+              <text>地址管理</text>
             </navigator>
           </view>
-          
+
           <view class="cu-item">
-          <navigator url="/pages/personal/feedback/feedback" hover-class="none">
-            <view class="cuIcon-writefill text-olive">
-            </view>
-            <text>反馈及建议</text>
+            <navigator url="/pages/personal/feedback/feedback" hover-class="none">
+              <view class="cuIcon-writefill text-olive">
+              </view>
+              <text>反馈及建议</text>
             </navigator>
           </view>
 
@@ -91,11 +96,11 @@
             </view>
             <text>关于我们</text>
           </view>
-          <view class="cu-item">
+          <!-- <view class="cu-item">
             <view class="cuIcon-lightfill text-blue">
             </view>
             <text>邀请有礼</text>
-          </view>
+          </view> -->
 
 
         </view>

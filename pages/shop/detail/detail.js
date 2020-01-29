@@ -71,6 +71,24 @@ Page({
   },
 
   goToOrder(e){
+
+    var token = wx.getStorageSync('token')
+    if (!token) {
+      wx.showToast({
+        icon: "none",
+        title: "请先登录",
+        duration: 1000,
+        success: function () {
+          wx.navigateTo({
+            url: '/pages/personal/login/login',
+          })
+        }
+      })
+      return
+    }
+
+
+
       wx.navigateTo({
           url: '/pages/shop/order/order?id=' + this.data.choose_key,
       })

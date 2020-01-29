@@ -3,9 +3,9 @@
 </cu-custom>
 
 <activity wx:if="{{PageCur=='activity'}}" id="activity"></activity>
-<bbs wx:if="{{PageCur=='bbs'}}"></bbs>
-<shop wx:if="{{PageCur=='shop'}}"></shop>
-<personal wx:if="{{PageCur=='personal'}}"></personal>
+<bbs wx:if="{{PageCur=='bbs'}}" id="bbs"></bbs>
+<shop wx:if="{{PageCur=='shop'}}" id="shop"></shop>
+<personal wx:if="{{PageCur=='personal'}}" id="personal"></personal>
 
 <view class="cu-bar tabbar bg-black shadow foot">
   <view class="action {{PageCur=='activity'?'text-white':'text-gray'}}" bindtap="NavChange" data-cur="activity" >

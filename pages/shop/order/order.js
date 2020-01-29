@@ -7,25 +7,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    goods_spu: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var id = options.id
     console.log(id)
 
+    var token = wx.getStorageSync('token')
+    console.log(token)
 
-    api.preOrderDetail(id).then(data => {
+    api.preOrderDetail(id, token).then(data => {
       console.log(data)
-      // this.setData({
-      //   shop_goods_detail: data.shop_goods_detail,
-      //   shop_goods_spus: data.shop_goods_spus,
-      //   purchasers: data.purchasers,
-      //   p_total: data.p_total,
-      // })
+      this.setData({
+        goods_spu: data.goods_spu,
+        default_address:data.default_address
+      })
 
     })
 
@@ -38,10 +38,24 @@ Page({
       id: id
     })
   },
-  goToSubmit(e){
+  goToSubmit(e) {
     wx.navigateTo({
       url: '/pages/shop/pay_result/payResult',
     })
-  }
+  },
+
+
+
+
+  showModal(e) {
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    })
+  },
 
 })

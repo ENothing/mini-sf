@@ -24,7 +24,7 @@
 }
 
 .address {
-  padding-left: 80rpx;
+  padding-left: 55rpx;
 }
 
 .total_price_container {

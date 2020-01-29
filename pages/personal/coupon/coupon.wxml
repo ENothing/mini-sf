@@ -17,12 +17,12 @@
 
 <view class="coupon_container margin-top">
 
-  <view class="coupon_item  flex padding-left-sm padding-right-sm padding-top-sm ">
+  <view class="coupon_item  flex padding-left-sm padding-right-sm padding-top-sm " wx:for="{{unusedCoupons}}" wx:key hidden="{{TabCur != 0}}">
     <view class="c_left flex padding align-center bg-white">
-      <view><text class="text-price text-black text-xxl text-bold">80</text></view>
+      <view><text class="text-price text-black text-xxl text-bold">{{item.coupon.reduction_price}}</text></view>
       <view class="padding-left text-black">
-        <view>满￥1000减￥80</view>
-        <view>2019.12.09-2019.12.16</view>
+        <view>{{item.coupon.name}}</view>
+        <view>{{item.receive_time_format}}-{{item.end_time_format}}</view>
         <!-- <view class="c_rule">使用规则</view> -->
       </view>
     </view>
@@ -32,12 +32,18 @@
       </view>
     </view>
   </view> 
-  <view class="coupon_item  flex padding-left-sm padding-right-sm padding-top-sm ">
+  
+
+
+
+
+
+  <view class="coupon_item  flex padding-left-sm padding-right-sm padding-top-sm " wx:for="{{usedCoupons}}" wx:key hidden="{{TabCur != 1}}">
     <view class="c_left flex padding align-center bg-grey">
-      <view><text class="text-price text-white text-xxl text-bold">80</text></view>
+      <view><text class="text-price text-white text-xxl text-bold">{{item.coupon.reduction_price}}</text></view>
       <view class="padding-left text-white">
-        <view>满￥1000减￥80</view>
-        <view>2019.12.09-2019.12.16</view>
+        <view>{{item.coupon.name}}</view>
+        <view>{{item.receive_time_format}}-{{item.end_time_format}}</view>
         <!-- <view class="c_rule">使用规则</view> -->
       </view>
     </view>
@@ -48,4 +54,25 @@
     </view>
   </view> 
 
+
+
+  <view class="coupon_item  flex padding-left-sm padding-right-sm padding-top-sm " wx:for="{{exusedCoupons}}" wx:key hidden="{{TabCur != 2}}">
+    <view class="c_left flex padding align-center bg-grey">
+      <view><text class="text-price text-white text-xxl text-bold">{{item.coupon.reduction_price}}</text></view>
+      <view class="padding-left text-white">
+        <view>{{item.coupon.name}}</view>
+        <view>{{item.receive_time_format}}-{{item.end_time_format}}</view>
+        <!-- <view class="c_rule">使用规则</view> -->
+      </view>
+    </view>
+    <view class="c_right bg-grey">
+      <view class="text-center">
+        <text class="text-white text-lg ">已过期</text>
+      </view>
+    </view>
+  </view> 
+
+
 </view>
+
+<view class='cu-tabbar-height'></view>
