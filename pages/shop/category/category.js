@@ -1,3 +1,5 @@
+import api from '../../../utils/api.js'
+
 const app = getApp()
 Page({
   data: {
@@ -23,42 +25,19 @@ Page({
     //   list[i].id = i;
     // }
 
-    var list = [{
-      'name': 'A',
-      'id': 1,
-      'brands': [{
-        'name': 'test',
-        'id': 1,
-        'img':'http://img.mp.itc.cn/upload/20170328/f960af1aa8f9499097a6be308a068975.png'
-      }, {
-          'name': 'test',
-          'id': 2,
-          'img': 'http://img.mp.itc.cn/upload/20170328/f960af1aa8f9499097a6be308a068975.png'
-        }, {
-          'name': 'test',
-          'id': 3,
-          'img': 'http://img.mp.itc.cn/upload/20170328/f960af1aa8f9499097a6be308a068975.png'
-        }]
-    }, {
-        'name': 'B',
-        'id': 2,
-        'brands': [{
-          'name': 'test',
-          'id': 4,
-          'img': 'http://img.mp.itc.cn/upload/20170328/f960af1aa8f9499097a6be308a068975.png'
-        }, {
-          'name': 'test',
-          'id': 5,
-          'img': 'http://img.mp.itc.cn/upload/20170328/f960af1aa8f9499097a6be308a068975.png'
-        }]
-      }];
 
-    console.log(list[0])
 
-    this.setData({
-      list: list,
-      listCur: list[0],
+
+    api.catesWithBrands().then(data => {
+      console.log(data)
+      this.setData({
+        list: data,
+        listCur: data[0],
+      })
     })
+
+
+
   },
   onReady() {
     wx.hideLoading()

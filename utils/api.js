@@ -19,7 +19,11 @@ var url = {
   articleCommentList: "/bbs/comment_list",
 
   shopIndex: "/shop/index",
-  shopList: "/shop/list",
+  shopGoodsList: "/shop/list",
+
+  catesWithBrands:"/shop/cates_with_brands",
+
+
   shopGoodsDetail: "/shop/goods_detail",
   preOrderDetail: "/shop/pre_order_detail",
 
@@ -114,12 +118,31 @@ module.exports = {
       method: "GET"
     })
   },
-  shopList(page) {
+  shopGoodsList(page, cate_id, brand_id, name, sort, sort_type) {
     return http({
-      url: url.shopList + "?page=" + page,
+      url: url.shopGoodsList,
+      method: "GET",
+      data: {
+        page: page,
+        cate_id: cate_id,
+        brand_id: brand_id,
+        name: name,
+        sort: sort,
+        sort_type: sort_type,
+      }
+    })
+  },
+
+  catesWithBrands() {
+    return http({
+      url: url.catesWithBrands ,
       method: "GET"
     })
   },
+
+
+
+
   shopGoodsDetail(id) {
     return http({
       url: url.shopGoodsDetail + "/" + id,

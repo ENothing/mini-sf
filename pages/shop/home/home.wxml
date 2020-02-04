@@ -47,7 +47,7 @@
   <view class="shop-home cu-list grid col-2">
 
     <view class="shop-home image bg-white cu-item" bindtap='GoToGoodsDetail' data-id='{{item.id}}' wx:for="{{goodsList}}" wx:key>
-      <image src='{{item.thumb}}'></image>
+        <image class="goods_thumb" src='{{item.thumb}}'></image>
       <view class="flex justify-start">
         <text class='trade-name'>{{item.name}}</text>
       </view>

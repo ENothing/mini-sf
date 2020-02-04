@@ -13,7 +13,7 @@
 
 .shop-home.grid.col-2>view {
 
-  padding: 5rpx;
+  padding: 10rpx;
 
 }
 
@@ -53,4 +53,8 @@
 
 .shop-icon{
   border-radius: 50%
+}
+
+.goods_thumb{
+  border-radius: 10px
 }

@@ -7,25 +7,11 @@
   height: 80rpx
 }
 
-.goods_conditions>.cu-item{
-  padding: unset !important;
-}
-.goods_conditions>.cu-item::after{
-  border: unset !important;
-}
-
-.goods_conditions>.cu-item text{
-  margin-top: unset !important;
-  line-height: 80rpx !important
-}
-
-.price_updown{
-  display: flex;
-  margin: 0 auto
-}
 .p_updown{
   height: 10rpx;
-  padding-left: 5rpx
+  padding-left: 7rpx;
+  padding-top: 5rpx;
+
 }
 .p_up{
   width: unset !important;
@@ -36,8 +22,6 @@
   width: unset !important;
   font-size: .5rem !important;
   margin-top: unset!important;
-
-
 }
 .shop-home{
   margin-top: 10rpx !important
@@ -65,7 +49,8 @@
 
 .image{
 
-  height: 310rpx
+  height: 350rpx;
+  border-radius:10px
 }
 
 .shop-home.grid>.cu-item text{
@@ -74,10 +59,17 @@
 }
 
 .trade-name{
-
+  width: 100%;
+  height: 80rpx;
   font-family:  STKaiti;
   font-weight: 100 !important;
-  overflow:hidden;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  align-content: center;
 }
 
 .trade-price{

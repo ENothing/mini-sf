@@ -11,7 +11,7 @@ Component({
     shop_banners:"",
     goodsList:"",
     page:1,
-    last_page:1
+    last_page:1,
   },
   attached() {
 
@@ -23,7 +23,7 @@ Component({
       })
     })
 
-    api.shopList(this.data.page).then(data => {
+    api.shopGoodsList(this.data.page).then(data => {
       console.log(data)
       this.setData({
         goodsList: data.goods,
@@ -41,6 +41,25 @@ Component({
     })
   },
   methods: {
+    getList() {
+      if (this.data.last_page == this.data.page) {
+        return
+      }
+      this.setData({
+        page: this.data.page + 1
+      })
+      api.shopGoodsList(this.data.page).then(data => {
+
+        var that = this;
+
+        var arr1 = that.data.goodsList; //从data获取当前datalist数组
+        var arr2 = data.goods
+        arr1 = arr1.concat(arr2); //合并数组
+        that.setData({
+          goodsList: arr1 //合并后更新datalist
+        })
+      })
+    },
     GoToGoodsDetail: function (res) {
       console.log(res);
       var id = res.currentTarget.dataset.id;

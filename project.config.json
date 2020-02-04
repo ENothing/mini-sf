@@ -177,6 +177,13 @@
 					"pathName": "pages/personal/login/login",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": 19,
+					"name": "商城",
+					"pathName": "pages/index/index",
+					"query": "PageCur=shop",
+					"scene": null
 				}
 			]
 		}

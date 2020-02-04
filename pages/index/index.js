@@ -15,6 +15,9 @@ Page({
     if (this.data.PageCur =="activity"){
       this.selectComponent("#activity").getList();
     } 
+    if (this.data.PageCur == "shop") {
+      this.selectComponent("#shop").getList();
+    } 
   },
   NavChange(e) {
     this.setData({

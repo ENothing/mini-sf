@@ -11,7 +11,6 @@
     "pages/shop/search/search",
     "pages/shop/category/category",
     "pages/shop/order/order",
-    "pages/shop/coupon/coupon",
     "pages/shop/pay_result/payResult",
     "pages/shop/order_detail/orderDetail",
     "pages/shop/goods_list/goodsList",

@@ -6,7 +6,7 @@
 
   <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation  style="height:{{scrollHeight-64}}px;background:#f1f1f1">
     <view class="cu-item {{index==TabCur?'text-red cur':''}}" wx:for="{{list}}" wx:key bindtap='tabSelect' data-id="{{index}}">
-      Tab-{{item.name}}
+      {{item.name}}
     </view>
   </scroll-view>
 
@@ -23,7 +23,7 @@
       <view class="cu-list grid col-3"  >
 
         <view class="cu-item" wx:for="{{listCur.brands}}" wx:key data-id="{{item.id}}" bindtap="goToGoodsList">
-          <image class="lg" src="{{item.img}}" style="height:100rpx;width:100rpx;margin:auto"></image>
+          <image class="lg" src="{{item.logo}}" style="height:100rpx;width:100rpx;margin:auto"></image>
           <text>{{item.name}}</text>
         </view>
 
