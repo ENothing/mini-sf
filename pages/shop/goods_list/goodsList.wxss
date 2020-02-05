@@ -82,3 +82,7 @@
   color:gray !important;
   font-size: .7rem !important;
 }
+
+.no-found{
+  margin-top: 200rpx
+}

@@ -41,6 +41,13 @@ Component({
     })
   },
   methods: {
+    goToGoodslist(e){
+      var cate_id = e.currentTarget.dataset.id
+      wx.navigateTo({
+        url: '/pages/shop/goods_list/goodsList?cate_id=' + cate_id,
+      })
+
+    },
     getList() {
       if (this.data.last_page == this.data.page) {
         return

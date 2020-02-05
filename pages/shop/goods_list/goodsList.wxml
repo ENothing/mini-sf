@@ -13,18 +13,19 @@
     销量
   </view>
   <view class="cu-item flex {{2==sort_type?'text-orange cur':''}}" bindtap="tabSelect" data-sort-type="2" data-updown="{{updown}}">
-      <view>价格</view>
-      <view class="p_updown">
-        <view class="p_up cuIcon-fold  {{updown==1&&2==sort_type?'text-orange':'text-gray'}} "></view>
-        <view class="p_down cuIcon-unfold {{updown==0&&2==sort_type?'text-orange':'text-gray'}} "></view>
-      </view>
+    <view>价格</view>
+    <view class="p_updown">
+      <view class="p_up cuIcon-fold  {{updown==1&&2==sort_type?'text-orange':'text-gray'}} "></view>
+      <view class="p_down cuIcon-unfold {{updown==0&&2==sort_type?'text-orange':'text-gray'}} "></view>
+    </view>
   </view>
   <view class="cu-item flex-sub {{3==sort_type?'text-orange cur':''}}" bindtap="tabSelect" data-sort-type="3">
     新品
   </view>
 </view>
 
-<view class="shop-home cu-list grid col-2">
+
+<view class="shop-home cu-list grid col-2" wx:if="{{goodsList.length != 0}}">
 
   <view class="bg-white cu-item" wx:for="{{goodsList}}" bindtap='GoToGoodsDetail' data-id="{{item.id}}">
     <image class="image" src='{{item.thumb}}'></image>
@@ -37,4 +38,13 @@
     </view>
   </view>
 
+</view>
+
+<view class="no-found" wx:else>
+  <view class="flex justify-center">
+    <image src="/images/empty_box.png" mode="aspectFill" style="height:200rpx;width:200rpx"></image>
+  </view>
+  <view class="text-center text-gray padding-top-sm">
+    暂未找到您想要的商品~
+  </view>
 </view>

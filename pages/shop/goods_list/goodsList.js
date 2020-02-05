@@ -22,6 +22,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    var brand_id = options.brand_id
+    var cate_id = options.cate_id
+    this.setData({
+      cate_id:cate_id,
+      brand_id:brand_id
+    })
+
 
     api.shopGoodsList(
       this.data.page, 
@@ -31,16 +38,13 @@ Page({
       this.data.sort, 
       this.data.sort_type
       ).then(data => {
-      console.log(data)
       this.setData({
         goodsList: data.goods,
         last_page: data.last_page
       })
+        console.log(this.data.goodsList)
+
     })
-
-
-
-
 
   },
   onReachBottom: function() {
@@ -70,7 +74,6 @@ Page({
     })
   },
   GoToGoodsDetail: function(res) {
-    console.log(res);
     var id = res.currentTarget.dataset.id;
     wx.navigateTo({
       url: '/pages/shop/detail/detail',

@@ -184,6 +184,13 @@
 					"pathName": "pages/index/index",
 					"query": "PageCur=shop",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "历史搜索",
+					"pathName": "pages/shop/search/search",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

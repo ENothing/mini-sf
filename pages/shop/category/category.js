@@ -51,9 +51,10 @@ Page({
     })
   },
   goToGoodsList(e){
-
+    var brand_id = e.currentTarget.dataset.id
+    var cate_id = e.currentTarget.dataset.cateId
     wx.navigateTo({
-      url: '/pages/shop/goods_list/goodsList?brand_id=' + e.currentTarget.dataset.id,
+      url: '/pages/shop/goods_list/goodsList?brand_id=' + brand_id + '&cate_id=' + cate_id,
     })
   }
 })

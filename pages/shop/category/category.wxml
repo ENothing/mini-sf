@@ -22,7 +22,7 @@
 
       <view class="cu-list grid col-3"  >
 
-        <view class="cu-item" wx:for="{{listCur.brands}}" wx:key data-id="{{item.id}}" bindtap="goToGoodsList">
+        <view class="cu-item" wx:for="{{listCur.brands}}" wx:key data-id="{{item.id}}" data-cate-id="{{item.cate_id}}" bindtap="goToGoodsList">
           <image class="lg" src="{{item.logo}}" style="height:100rpx;width:100rpx;margin:auto"></image>
           <text>{{item.name}}</text>
         </view>
