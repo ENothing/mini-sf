@@ -1,17 +1,31 @@
 // pages/shop/search/search.js
+import api from '../../../utils/api.js'
+const app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    inputkey:""
+    CustomBar: app.globalData.CustomBar,
+    inputkey:"",
+    history:"",
+    hot:null,
+    dynamic:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    api.searchHistory().then(data => {
+      this.setData({
+        history:data.history,
+        hot:data.hot
+      })
+    })
+    console.log( this.data.history)
 
   },
 
@@ -29,17 +43,58 @@ Page({
 
   },
   bindKeyInput(e){
-    var key = e.detail.value
+    var key = e.detail.value.replace(/\s+/g, '')
+    console.log(key)
+    if(key){
+      api.dynamicHistory(key).then(data => {
+        this.setData({
+          dynamic: data,
+        })
+      })
+    }else{
+      this.setData({
+        dynamic: null,
+      })
+    }
+
+
     this.setData({
       inputkey: key
     })
-    console.log(e)
   },
   clearInput(){
     this.setData({
-      inputkey: ""
+      inputkey: "",
+      dynamic: null,
+    })
+  },
+  goToGoodsList(e){
+    var kword = e.currentTarget.dataset.kword
+    console.log(e)
+    wx.navigateTo({
+      url: '/pages/shop/goods_list/goodsList?kword=' + kword,
+    })
+  },
+  searchSubmit(e){
+    var kword = e.detail.value.replace(/\s+/g, '')
+    if (kword) {
+      wx.navigateTo({
+        url: '/pages/shop/goods_list/goodsList?kword=' + kword,
+      })
+    }
+  },
+  delHistory(){
+    var that = this
+    api.delSearchHistory().then(data => {
+      wx.showToast({
+        icon: "none",
+        title: "清除历史搜索成功~",
+        success: function () {
+          that.setData({
+            history: "",
+          })
+        }
+      })
     })
   }
-
-
 })

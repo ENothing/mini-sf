@@ -21,7 +21,7 @@ var url = {
   shopIndex: "/shop/index",
   shopGoodsList: "/shop/list",
 
-  catesWithBrands:"/shop/cates_with_brands",
+  catesWithBrands: "/shop/cates_with_brands",
 
 
   shopGoodsDetail: "/shop/goods_detail",
@@ -34,6 +34,12 @@ var url = {
   userCoupons: "/coupon/user_coupons",
 
 
+  searchHistory: "/shop/search_history",
+  dynamicHistory: "/shop/dynamic_history",
+
+
+
+  delSearchHistory: "/shop/del_search_history",
 
 
 
@@ -118,15 +124,19 @@ module.exports = {
       method: "GET"
     })
   },
-  shopGoodsList(page, cate_id, brand_id, name, sort, sort_type) {
+  shopGoodsList(page, cate_id, brand_id, kword, sort, sort_type) {
     return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
       url: url.shopGoodsList,
       method: "GET",
       data: {
         page: page,
         cate_id: cate_id,
         brand_id: brand_id,
-        name: name,
+        kword: kword,
         sort: sort,
         sort_type: sort_type,
       }
@@ -135,7 +145,7 @@ module.exports = {
 
   catesWithBrands() {
     return http({
-      url: url.catesWithBrands ,
+      url: url.catesWithBrands,
       method: "GET"
     })
   },
@@ -174,7 +184,7 @@ module.exports = {
 
 
 
-  userCoupons(status,page) {
+  userCoupons(status, page) {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -182,10 +192,47 @@ module.exports = {
       },
       url: url.userCoupons,
       method: "GET",
-      data:{
+      data: {
         status: status,
         page: page
       }
+    })
+  },
+
+
+
+  searchHistory() {
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.searchHistory,
+      method: "GET",
+    })
+  },
+
+  dynamicHistory(kword) {
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      url: url.dynamicHistory,
+      method: "GET",
+      data: {
+        kword: kword,
+      }
+    })
+  },
+
+  delSearchHistory() {
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.delSearchHistory,
+      method: "GET",
     })
   }
 

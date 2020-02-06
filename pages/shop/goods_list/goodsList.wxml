@@ -4,7 +4,7 @@
 
 <view class="search cu-bar bg-white">
   <navigator class="search-form radius" url="/pages/shop/search/search" hover-class='none'>
-    <text class="search-keywords cuIcon-search center text-gray" decode='true'>&ensp;搜索商品</text>
+    <text class="search-keywords cuIcon-search center text-gray" decode='true'>&ensp;{{kword == ""?'搜索商品':kword}}</text>
   </navigator>
 </view>
 

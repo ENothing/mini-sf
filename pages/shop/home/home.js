@@ -23,7 +23,7 @@ Component({
       })
     })
 
-    api.shopGoodsList(this.data.page).then(data => {
+    api.shopGoodsList(this.data.page,0,0,"",0,1).then(data => {
       console.log(data)
       this.setData({
         goodsList: data.goods,

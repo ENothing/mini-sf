@@ -25,7 +25,6 @@ Page({
   },
 
   getUserInfo: function(e) {
-    console.log(123)
 
 
     wx.login({

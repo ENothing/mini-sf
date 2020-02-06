@@ -13,7 +13,7 @@ Page({
     updown: 0,
     cate_id: 0,
     brand_id: 0,
-    name: "",
+    kword: "",
     sort: 0,
     sort_type: 1
   },
@@ -24,9 +24,12 @@ Page({
   onLoad: function(options) {
     var brand_id = options.brand_id
     var cate_id = options.cate_id
+    var kword = options.kword
+    console.log(kword)
     this.setData({
       cate_id:cate_id,
-      brand_id:brand_id
+      brand_id:brand_id,
+      kword: kword
     })
 
 
@@ -34,7 +37,7 @@ Page({
       this.data.page, 
       this.data.cate_id, 
       this.data.brand_id, 
-      this.data.name, 
+      this.data.kword, 
       this.data.sort, 
       this.data.sort_type
       ).then(data => {
@@ -61,7 +64,7 @@ Page({
       this.data.page, 
       this.data.cate_id, 
       this.data.brand_id, 
-      this.data.name, 
+      this.data.kword, 
       this.data.sort, 
       this.data.sort_type
       ).then(data => {
@@ -99,7 +102,7 @@ Page({
       1,
       this.data.cate_id,
       this.data.brand_id,
-      this.data.name,
+      this.data.kword,
       this.data.sort,
       sort_type
     ).then(data => {

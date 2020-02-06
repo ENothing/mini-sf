@@ -28,7 +28,7 @@
         </view>
       </view> -->
       <view class="">
-      <image class="shop-icon" src="{{item.icon_url}}" mode="aspectFill" style="width:100rpx;height:100rpx"></image>
+      <image class="shop-icon" src="{{item.icon_url}}" mode="aspectFill" ></image>
     </view>
       <text>{{item.name}}</text>
     </view>

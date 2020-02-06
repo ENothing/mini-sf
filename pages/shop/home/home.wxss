@@ -52,7 +52,9 @@
 }
 
 .shop-icon{
-  border-radius: 50%
+  width:100rpx;
+  height:100rpx;
+  border-radius:50%
 }
 
 .goods_thumb{
