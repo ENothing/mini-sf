@@ -134,11 +134,11 @@ module.exports = {
       method: "GET",
       data: {
         page: page,
-        cate_id: cate_id,
-        brand_id: brand_id,
-        kword: kword,
-        sort: sort,
-        sort_type: sort_type,
+        cate_id: cate_id == undefined ? 0:cate_id,
+        brand_id: brand_id == undefined ? 0 : brand_id,
+        kword: kword==undefined ? "":kword,
+        sort: sort == undefined ? 0 : sort,
+        sort_type: sort_type == undefined ? 1 : sort_type,
       }
     })
   },

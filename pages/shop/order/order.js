@@ -7,7 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    goods_spu: null
+    goods_spu: null,
+    coupons:"",
+    default_address:""
   },
 
   /**
@@ -24,7 +26,8 @@ Page({
       console.log(data)
       this.setData({
         goods_spu: data.goods_spu,
-        default_address:data.default_address
+        default_address:data.default_address,
+        coupons: data.coupons
       })
 
     })

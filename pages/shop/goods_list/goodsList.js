@@ -79,7 +79,7 @@ Page({
   GoToGoodsDetail: function(res) {
     var id = res.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/shop/detail/detail',
+      url: '/pages/shop/detail/detail?id='+id,
     })
   },
   tabSelect(e) {

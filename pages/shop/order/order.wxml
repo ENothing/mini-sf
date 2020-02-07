@@ -52,7 +52,7 @@
       <text class="title">顺丰速运</text>
     </view>
     <view class="action">
-      <text class="text-grey text-sm">￥{{goods_spu.post_price}}</text>
+      <text class=" text-sm">￥{{goods_spu.post_price}}</text>
     </view>
   </view>
 
@@ -61,18 +61,51 @@
       <text class="title">优惠券</text>
     </view>
     <view class="action">
-      <text class="text-grey text-sm">-￥110</text>
+      <text class=" text-sm">-￥110</text>
     </view>
   </view>
   <view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
     <view class="cu-dialog">
       <view class="cu-bar bg-white">
-        <view class="action ">确定</view>
-        <view class="action text-grey" bindtap="hideModal">取消</view>
+        <view class="action flex-sub text-center text-bold text-black">选择可用优惠券</view>
+        <view class="action cuIcon-close text-gray" bindtap="hideModal"></view>
       </view>
-      <view class="padding-xl">
-        Modal 内容。
-      </view>
+      <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh - 550rpx)">
+
+
+
+        <view class="coupon_item  flex padding-left-sm padding-right-sm padding-top-sm " wx:for="{{coupons}}" wx:key>
+          <view class="c_left flex padding align-center bg-white">
+            <view>
+              <text class="coupon-price text-price text-red text-xxl text-bold" wx:if="{{item.coupon_type==1}}">{{item.reduction_price}}</text>
+              <text class="coupon-price text-price text-red text-xxl text-bold" wx:if="{{item.coupon_type==2}}">{{item.immediately_price}}</text>
+              <text class="coupon-price  text-red text-xxl text-bold" wx:if="{{item.coupon_type==3}}">{{item.discount}}折</text>
+            </view>
+            <view class="padding-left text-black">
+              <view class="padding-sm text-lg">{{item.coupon.name}}</view>
+              <view class="text-df">{{item.receive_time_format}}-{{item.end_time_format}}</view>
+              <!-- <view class="c_rule">使用规则</view> -->
+            </view>
+          </view>
+          <view class="c_right bg-white ">
+            <view class="text-center">
+            <text class="coupon-check text-red  text-lg {{index==0?'cuIcon-roundcheckfill':'cuIcon-round'}}     "></text>
+              <!-- <text class="text-white text-lg ">去使用</text> -->
+            </view>
+          </view>
+        </view>
+
+
+
+
+
+
+
+        
+        <view class='cu-tabbar-height'></view>
+
+
+      </scroll-view>
     </view>
   </view>
 
