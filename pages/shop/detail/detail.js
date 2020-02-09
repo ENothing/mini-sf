@@ -73,6 +73,7 @@ Page({
   goToOrder(e){
 
     var token = wx.getStorageSync('token')
+    console.log(token)
     if (!token) {
       wx.showToast({
         icon: "none",

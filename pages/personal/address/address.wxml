@@ -12,9 +12,9 @@
     <view>{{item.province}}{{item.city}}{{item.district}}{{item.detail_address}}</view>
   </view>
   <view class="flex justify-between address_op">
-    <view>
-      <text class="default_address text-red {{item.is_default == 1?'cuIcon-roundcheckfill':'cuIcon-roundcheck'}}"></text>
-      <text class="default_address_text">默认地址</text>
+    <view bindtap="setDefaultAddress" data-index="{{index}}" data-id="{{item.id}}">
+      <text class="default_address text-red {{index == checked?'cuIcon-roundcheckfill':'cuIcon-roundcheck'}}"></text>
+      <text class="default_address_text"> 默认地址</text>
     </view>
     <view class="op">
       <text decode="true" bindtap="goToForm" data-id="{{item.id}}">编辑&emsp;&emsp;&emsp;&emsp;</text>

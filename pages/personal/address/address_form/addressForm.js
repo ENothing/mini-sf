@@ -1,3 +1,5 @@
+import api from '../../../../utils/api.js'
+
 Page({
 
   /**
@@ -6,7 +8,10 @@ Page({
   data: {
     id:0,
     region: ['四川省', '成都市', '锦江区'],
-
+    address:"",
+    name:"",
+    mobile:"",
+    detail_address:""
   },
 
   /**
@@ -15,8 +20,16 @@ Page({
   onLoad: function (options) {
     var id = options.id
     if(id != undefined){
-      this.setData({
-        id: options.id
+      api.addressDetail(id).then(data => {
+        console.log(data)
+        this.setData({
+          id: options.id,
+          name:data.name,
+          mobile:data.mobile,
+          detail_address:data.detail_address,
+          region: [data.province, data.city, data.district]
+        })
+
       })
     }
   },

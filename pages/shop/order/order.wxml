@@ -61,7 +61,7 @@
       <text class="title">优惠券</text>
     </view>
     <view class="action">
-      <text class=" text-sm">-￥110</text>
+      <text class=" text-sm">-￥{{coupon_price}}</text>
     </view>
   </view>
   <view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
@@ -87,9 +87,9 @@
               <!-- <view class="c_rule">使用规则</view> -->
             </view>
           </view>
-          <view class="c_right bg-white ">
+          <view class="c_right bg-white " bindtap="chooseCoupon" data-index="{{index}}">
             <view class="text-center">
-            <text class="coupon-check text-red  text-lg {{index==0?'cuIcon-roundcheckfill':'cuIcon-round'}}     "></text>
+            <text class="coupon-check text-red  text-lg {{index==checked?'cuIcon-roundcheckfill':'cuIcon-round'}}     "></text>
               <!-- <text class="text-white text-lg ">去使用</text> -->
             </view>
           </view>
@@ -117,7 +117,7 @@
       <text class="title">合计支付</text>
     </view>
     <view class="action">
-      <text class="text-price text-bold text-xl">2669</text>
+      <text class="text-price text-bold text-xl">{{real_price}}</text>
     </view>
   </view>
 
@@ -142,7 +142,7 @@
 <view class="cu-bar bg-white tabbar border shop foot">
   <view class='total_price_container text-red'>
     <text class="total_price_text">实付款：￥</text>
-    <text class='total_price'>2669</text>
+    <text class='total_price'>{{real_price}}</text>
   </view>
   <view class="confirm-button bg-red submit" bindtap="goToSubmit">提交订单</view>
 </view>

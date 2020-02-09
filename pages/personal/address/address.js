@@ -8,7 +8,9 @@ Page({
    */
   data: {
     addresses:"",
-    last_page:0
+    last_page:0,
+    checked:0,
+    page_status:0
   },
 
   /**
@@ -28,25 +30,9 @@ Page({
 
 
   },
-
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
   goToForm(e){
-    console.log()
     var id = e.currentTarget.dataset.id;
+
     var url = '/pages/personal/address/address_form/addressForm'
 
     if(id != undefined){
@@ -70,6 +56,23 @@ Page({
 
         }
       }
+    })
+  },
+  setDefaultAddress(e){
+    var index = e.currentTarget.dataset.index
+    var id = e.currentTarget.dataset.id
+
+    api.updateDefaultAddress(id).then(data => {
+      console.log(data)
+      wx.showToast({
+        icon: "none",
+        title: "设置默认地址成功",
+        duration: 1000,
+      })
+      this.setData({
+        checked: index,
+      })
+
     })
   }
 

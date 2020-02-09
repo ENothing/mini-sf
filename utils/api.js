@@ -29,6 +29,8 @@ var url = {
 
 
   addressList: "/address/list",
+  updateDefaultAddress:"/address/update_default",
+  addressDetail:"/address/detail",
 
 
   userCoupons: "/coupon/user_coupons",
@@ -171,6 +173,32 @@ module.exports = {
       method: "GET"
     })
   },
+  updateDefaultAddress(id){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.updateDefaultAddress+"/"+id,
+      method: "GET"
+    })
+  },
+  addressDetail(id){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.addressDetail + "/" + id,
+      method: "GET"
+    })
+  },
+
+
+
+
+
+
   preOrderDetail(id, token) {
     return http({
       header: {
