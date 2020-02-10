@@ -26,6 +26,7 @@ Page({
     console.log(token)
 
     api.preOrderDetail(id, token).then(data => {
+      console.log(data)
 
       var coupon_price = 0
       var real_price = 0

@@ -31,7 +31,9 @@ var url = {
   addressList: "/address/list",
   updateDefaultAddress:"/address/update_default",
   addressDetail:"/address/detail",
-
+  addAddress:"/address/add",
+  updateAddress:"/address/update",
+  delAddress:"/address/del",
 
   userCoupons: "/coupon/user_coupons",
 
@@ -191,6 +193,52 @@ module.exports = {
       },
       url: url.addressDetail + "/" + id,
       method: "GET"
+    })
+  },
+  addAddress(name, mobile, province, city, district, detail_address){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.addAddress,
+      method: "POST",
+      data: {
+        name: name,
+        mobile: mobile,
+        province: province,
+        city: city,
+        district: district,
+        detail_address: detail_address
+      }
+    })
+  },
+  updateAddress(id, name, mobile, province, city, district, detail_address) {
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.updateAddress+"/"+id,
+      method: "POST",
+      data: {
+        name: name,
+        mobile: mobile,
+        province: province,
+        city: city,
+        district: district,
+        detail_address: detail_address
+      }
+    })
+  },
+  delAddress(id){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.delAddress + "/" + id,
+      method: "GET",
     })
   },
 

@@ -3,14 +3,14 @@
   <view slot="content" wx:if="{{id == 0}}">添加地址</view>
 </cu-custom>
 
-<form>
+<form bindsubmit="formSubmit">
   <view class="cu-form-group">
     <view class="title text-bold">收货人</view>
-    <input placeholder="填写姓名" value="{{name}}"></input>
+    <input placeholder="填写姓名" name="name" value="{{name}}"></input>
   </view>
   	<view class="cu-form-group">
 		<view class="title text-bold">联系电话</view>
-		<input placeholder="填写手机号" value="{{mobile}}"></input>
+		<input placeholder="填写手机号" name="mobile" value="{{mobile}}"></input>
 		<view class="cu-capsule radius">
 			<view class="cu-tag bg-blue">
 				+86
@@ -22,19 +22,19 @@
 	</view>
   	<view class="cu-form-group">
 		<view class="title text-bold">所在区域</view>
-		<picker mode="region" bindchange="RegionChange" value="{{region}}" custom-item="{{customItem}}">
+		<picker mode="region" bindchange="RegionChange" value="{{region}}" custom-item="{{customItem}}" name="region">
 			<view class="picker">
 				{{region[0]}}{{region[1]}}{{region[2]}}
 			</view>
 		</picker>
 	</view>
   	<view class="cu-form-group">
-		<textarea maxlength="30" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="填写详细地址" value="{{detail_address}}"></textarea>
+		<textarea maxlength="30" disabled="{{modalName!=null}}" bindinput="textareaAInput" name="detail_address" placeholder="填写详细地址" value="{{detail_address}}"></textarea>
 	</view>
 
 
 <view class="padding flex flex-direction">
-  <button class="cu-btn round bg-red margin-tb-sm lg">确认</button>
+  <button formType="submit" class="cu-btn round bg-red margin-tb-sm lg">确认</button>
 </view>
 
 

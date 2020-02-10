@@ -17,7 +17,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
 
+
+  },
+  onShow:function(){
     api.addressList().then(data => {
       console.log(data)
       this.setData({
@@ -26,9 +30,6 @@ Page({
       })
 
     })
-
-
-
   },
   goToForm(e){
     var id = e.currentTarget.dataset.id;
@@ -47,13 +48,26 @@ Page({
   },
 
   delAddress(e){
+    var id = e.currentTarget.dataset.id;
+
     wx.showModal({
       title: '删除地址',
       cancelText: '取消',
       confirmText: '确定',
       success: res => {
         if (res.confirm) {
-
+          api.delAddress(id).then(data => {
+            console.log(data)
+            this.setData({
+              checked: null,
+            })
+            wx.showToast({
+              icon: "none",
+              title: "删除地址成功",
+              duration: 1000,
+            })
+          })
+          this.onShow()
         }
       }
     })

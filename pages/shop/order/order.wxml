@@ -3,22 +3,22 @@
 </cu-custom>
 
 
-<navigator url="/pages/personal/address/address?status=1" hover-class="none">
+<navigator url="/pages/personal/address/address?status=1" hover-class="none" >
   <view class='address_contaniner'>
     <view>
       <view class="flex justify-between">
         <view>
           <text class='cuIcon-location' decode='true'>&emsp;</text>
-          <text class="reveiver_name">{{default_address.name}}</text>
+          <text class="reveiver_name">{{default_address != null ? default_address.name : '暂未设置默认收货地址'}}</text>
         </view>
         <view>
-          <text class='phone' decode='true'>{{default_address.mobile}}&ensp;</text>
+          <text class='phone' decode='true'>{{default_address != null ?default_address.mobile:''}}&ensp;</text>
           <text class='cuIcon-right text-gray'></text>
         </view>
       </view>
     </view>
     <view class='address text-gray'>
-      <text>{{default_address.province}}{{default_address.city}}{{default_address.district}}{{default_address.detail_address}}</text>
+      <text hidden="{{default_address == null}}">{{default_address.province}}{{default_address.city}}{{default_address.district}}{{default_address.detail_address}}</text>
     </view>
   </view>
 </navigator>
