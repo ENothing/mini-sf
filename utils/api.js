@@ -34,6 +34,7 @@ var url = {
   addAddress:"/address/add",
   updateAddress:"/address/update",
   delAddress:"/address/del",
+  detailToOrder: "/address/detail_to_order",
 
   userCoupons: "/coupon/user_coupons",
 
@@ -239,6 +240,19 @@ module.exports = {
       },
       url: url.delAddress + "/" + id,
       method: "GET",
+    })
+  },
+  detailToOrder(id){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.detailToOrder,
+      method: "GET",
+      data: {
+        id: id,
+      }
     })
   },
 

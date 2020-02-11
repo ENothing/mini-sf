@@ -3,25 +3,25 @@
 </cu-custom>
 
 
-<navigator url="/pages/personal/address/address?status=1" hover-class="none" >
+<view bindtap="goToChooseAddress">  
   <view class='address_contaniner'>
     <view>
       <view class="flex justify-between">
         <view>
           <text class='cuIcon-location' decode='true'>&emsp;</text>
-          <text class="reveiver_name">{{default_address != null ? default_address.name : '暂未设置默认收货地址'}}</text>
+          <text class="reveiver_name">{{address != '' ? address.name : '添加收货地址'}}</text>
         </view>
         <view>
-          <text class='phone' decode='true'>{{default_address != null ?default_address.mobile:''}}&ensp;</text>
+          <text class='phone' decode='true'>{{address != '' ?address.mobile:''}}&ensp;</text>
           <text class='cuIcon-right text-gray'></text>
         </view>
       </view>
     </view>
     <view class='address text-gray'>
-      <text hidden="{{default_address == null}}">{{default_address.province}}{{default_address.city}}{{default_address.district}}{{default_address.detail_address}}</text>
+      <text hidden="{{address == ''}}">{{address.province}}{{address.city}}{{address.district}}{{address.detail_address}}</text>
     </view>
   </view>
-</navigator>
+</view>
 
 
 <view class="cu-list menu sm-border">

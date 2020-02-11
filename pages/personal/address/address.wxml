@@ -3,7 +3,7 @@
 </cu-custom>
 
 
-<view class="address_container bg-white" wx:for="{{addresses}}" wx:key data-id="{{item.id}}">
+<view class="address_container bg-white" wx:for="{{addresses}}" wx:key data-id="{{item.id}}" bindtap="needGoToOrder">
   <view class="address_info">
     <view class="flex justify-between">
       <view class="">{{item.name}}</view>
@@ -12,13 +12,13 @@
     <view>{{item.province}}{{item.city}}{{item.district}}{{item.detail_address}}</view>
   </view>
   <view class="flex justify-between address_op">
-    <view bindtap="setDefaultAddress" data-index="{{index}}" data-id="{{item.id}}">
+    <view catchtap="setDefaultAddress" data-index="{{index}}" data-id="{{item.id}}">
       <text class="default_address text-red {{index == checked?'cuIcon-roundcheckfill':'cuIcon-roundcheck'}}"></text>
       <text class="default_address_text"> 默认地址</text>
     </view>
     <view class="op">
-      <text decode="true" bindtap="goToForm" data-id="{{item.id}}">编辑&emsp;&emsp;&emsp;&emsp;</text>
-      <text class="text-red" bindtap="delAddress" data-id="{{item.id}}">删除</text>
+      <text decode="true" catchtap="goToForm" data-id="{{item.id}}">编辑&emsp;&emsp;&emsp;&emsp;</text>
+      <text class="text-red" catchtap="delAddress" data-id="{{item.id}}">删除</text>
     </view>
   </view>
 </view>

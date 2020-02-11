@@ -48,32 +48,35 @@ Page({
     if (this.data.id != 0) {
       api.updateAddress(this.data.id, name, mobile, region[0], region[1], region[2], detail_address).then(data => {
         console.log(data)
-        wx.showToast({
-          icon: "none",
-          title: "修改地址成功",
-          duration: 1000,
-        })
+        if (data == null) {
+          wx.showToast({
+            icon: "none",
+            title: "修改地址成功",
+            duration: 1000,
+          })
+
+          wx.navigateBack({
+            delta: 1
+          })
+        }
       })
 
-      wx.navigateBack({
-        delta: 1
-      })
 
     } else {
 
       api.addAddress(name, mobile, region[0], region[1], region[2], detail_address).then(data => {
         console.log(data)
-        wx.showToast({
-          icon: "none",
-          title: "新增地址成功",
-          duration: 1000,
-        })
+        if (data == null){
+          wx.showToast({
+            icon: "none",
+            title: "新增地址成功",
+            duration: 1000,
+          })
+          wx.navigateBack({
+            delta: 1
+          })
+        }
       })
-
-      // wx.navigateBack({
-      //   delta: 1
-      // })
-
     }
   }
 

@@ -29,7 +29,7 @@
 		</picker>
 	</view>
   	<view class="cu-form-group">
-		<textarea maxlength="30" disabled="{{modalName!=null}}" bindinput="textareaAInput" name="detail_address" placeholder="填写详细地址" value="{{detail_address}}"></textarea>
+		<textarea maxlength="30"  name="detail_address" placeholder="填写详细地址" value="{{detail_address}}"></textarea>
 	</view>
 
 
