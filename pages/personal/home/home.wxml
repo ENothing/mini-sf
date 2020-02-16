@@ -39,7 +39,7 @@
         <view class="cu-list grid col-3 no-border">
 
           <view class="cu-item">
-            <navigator url="/pages/personal/my_order/myOrder" hover-class="none">
+            <navigator url="/pages/personal/aorder/aorder" hover-class="none">
               <view class="cuIcon-formfill text-red">
               </view>
               <text>活动订单</text>
@@ -48,7 +48,7 @@
 
 
           <view class="cu-item">
-            <navigator url="/pages/personal/my_order/myOrder" hover-class="none">
+            <navigator url="/pages/personal/gorder/gorder" hover-class="none">
               <view class="cuIcon-formfill text-orange">
               </view>
               <text>商品订单</text>

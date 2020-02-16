@@ -1,0 +1,60 @@
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+  <view slot="content">商品订单</view>
+</cu-custom>
+
+
+
+<scroll-view scroll-x class="bg-white nav text-center fixed" style="top:{{CustomBar}}px">
+  <view class="flex text-center">
+    <view class="cu-item flex-sub {{index==TabCur?'text-red cur':''}}" wx:for="{{tabNav}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+      {{tabNav[index]}}
+    </view>
+
+  </view>
+
+</scroll-view>
+
+
+<view class="main_container">
+
+  <view class="f_order_container bg-white" wx:for="{{orders}}">
+
+
+
+    <view class="order_container ">
+
+      <view class="order_status">
+        交易成功
+      </view>
+
+      <view class="cu-item">
+        <view class="grid col-2">
+          <view class="goods_thumb_container">
+            <image class="goods_thumb" src="{{item.thumb}}"></image>
+          </view>
+          <view class="miscellaneous_container">
+            <text class="goods_name">{{item.goods_name}}</text>
+            <view class="size_num_price_container">
+              <view class="flex  justify-between">
+                <view>
+                  <text class="size_and_num" decode="true">{{item.goods_spu_name}}&ensp;数量x1</text>
+                </view>
+                <view>
+                  <text class="price text-bold text-black text-price">{{item.unit_price}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="op">
+        <view class="flex justify-end op_buttons">
+          <view class="checkpay">确认付款</view>
+        </view>
+      </view>
+
+    </view>
+
+  </view>
+</view>

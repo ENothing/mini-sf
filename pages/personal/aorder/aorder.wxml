@@ -1,5 +1,5 @@
 <cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
-  <view slot="content">我的订单</view>
+  <view slot="content">活动订单</view>
 </cu-custom>
 
 

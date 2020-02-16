@@ -20,6 +20,7 @@ var url = {
 
   shopIndex: "/shop/index",
   shopGoodsList: "/shop/list",
+  shopOrderList:"/shop/order_list",
 
   catesWithBrands: "/shop/cates_with_brands",
 
@@ -147,6 +148,23 @@ module.exports = {
       }
     })
   },
+  shopOrderList(page,status){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.shopOrderList,
+      method: "GET",
+      data: {
+        page: page,
+        status: status == undefined ? 0 : status,
+      }
+    })
+  },
+
+
+
 
   catesWithBrands() {
     return http({

@@ -17,12 +17,13 @@
     "pages/shop/deliver/deliver",
     "pages/personal/address/address",
     "pages/personal/address/address_form/addressForm",
-    "pages/personal/my_order/myOrder",
     "pages/personal/feedback/feedback",
     "pages/bbs/editor/editor",
     "pages/bbs/article_detail/articleDetail",
     "pages/personal/coupon/coupon",
-    "pages/personal/login/login"
+    "pages/personal/login/login",
+    "pages/personal/aorder/aorder",
+    "pages/personal/gorder/gorder"
   ],
   "window": {
     "backgroundTextStyle": "light",
