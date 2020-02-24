@@ -32,15 +32,15 @@
     <view class="flex justify-between">
       <view>
         <text class='cuIcon-location' decode='true'>&emsp;</text>
-        <text class="reveiver_name">收货人：gaoxiang</text>
+        <text class="reveiver_name">收货人：{{order.name}}</text>
       </view>
       <view>
-        <text class='phone' decode='true'>181****5061&ensp;</text>
+        <text class='phone' decode='true'>{{order.mobile}}&ensp;</text>
       </view>
     </view>
   </view>
   <view class='address text-gray'>
-    <text>四川省成都市高新区中和街道中和镇</text>
+    <text>{{order.province}}{{order.city}}{{order.district}}{{order.detail_address}}</text>
   </view>
 </view>
 
@@ -51,12 +51,12 @@
       <image src="https://img.alicdn.com/imgextra/i4/2914266524/TB26zfNjx1YBuNjy1zcXXbNcXXa_!!2914266524.jpg_430x430q90.jpg" style="height:100%"></image>
     </view>
     <view class="goods_info">
-      <view class="goods_title">Converse All Star 70 高帮复古黑 1970s 2018新款</view>
-      <view class="goods_size">S码</view>
+      <view class="goods_title">{{order.goods_name}}</view>
+      <view class="goods_size">尺码：{{order.goods_spu_name}}</view>
       <view class="goods_param flex justify-between">
-        <view class="goods_num">数量x1</view>
+        <view class="goods_num">数量 x {{order.num}}</view>
         <view>
-          <text class="goods_price text-price">80</text>
+          <text class="goods_price text-price">{{order.unit_price}}</text>
         </view>
       </view>
     </view>
@@ -79,7 +79,7 @@
         <text>商品总价</text>
       </view>
       <view>
-        <text class="text-price">1246</text>
+        <text class="text-price">{{order.total_price}}</text>
       </view>
     </view>
     <view class="order_info_item flex justify-between">
@@ -87,7 +87,7 @@
         <text>顺丰速运</text>
       </view>
       <view>
-        <text class="text-price">23</text>
+        <text class="text-price">{{order.post_price}}</text>
       </view>
     </view>
     <view class="order_info_item flex justify-between">
@@ -96,7 +96,7 @@
       </view>
       <view>
         -
-        <text class="text-price">23</text>
+        <text class="text-price">{{order.discount_price}}</text>
       </view>
     </view>
     <view class="order_info_item order_price_container flex justify-between">
@@ -104,7 +104,7 @@
         <text>订单总价</text>
       </view>
       <view>
-        <text class="order_price text-price">1246</text>
+        <text class="order_price text-price">{{order.real_price}}</text>
       </view>
     </view>
   </view>
@@ -115,7 +115,7 @@
         <text>订单编号</text>
       </view>
       <view bindtap='copyOrderNo' data-text="SF12345678987654321">
-        <text>SF12345678987654321</text>
+        <text>{{order.order_n}}</text>
       </view>
     </view>
 
@@ -124,7 +124,7 @@
         <text>创建时间</text>
       </view>
       <view>
-        <text>2019-09-01 19:39:00</text>
+        <text>{{order.created_at_format}}</text>
       </view>
     </view>
   </view>

@@ -3,7 +3,7 @@
 </cu-custom>
 
 
-<view bindtap="goToChooseAddress">  
+<view bindtap="goToChooseAddress">
   <view class='address_contaniner'>
     <view>
       <view class="flex justify-between">
@@ -60,11 +60,14 @@
     <view class="content">
       <text class="title">优惠券</text>
     </view>
-    <view class="action">
+    <view class="action" wx:if="{{coupon_id != 0}}">
       <text class=" text-sm">-￥{{coupon_price}}</text>
     </view>
+    <view class="action" wx:else>
+      <text class=" text-sm">暂无可用优惠券</text>
+    </view>
   </view>
-  <view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+  <view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}" wx:if="{{coupon_id != 0}}">
     <view class="cu-dialog">
       <view class="cu-bar bg-white">
         <view class="action flex-sub text-center text-bold text-black">选择可用优惠券</view>
@@ -89,7 +92,7 @@
           </view>
           <view class="c_right bg-white " bindtap="chooseCoupon" data-index="{{index}}">
             <view class="text-center">
-            <text class="coupon-check text-red  text-lg {{index==checked?'cuIcon-roundcheckfill':'cuIcon-round'}}     "></text>
+              <text class="coupon-check text-red  text-lg {{index==checked?'cuIcon-roundcheckfill':'cuIcon-round'}}     "></text>
               <!-- <text class="text-white text-lg ">去使用</text> -->
             </view>
           </view>
@@ -101,7 +104,7 @@
 
 
 
-        
+
         <view class='cu-tabbar-height'></view>
 
 

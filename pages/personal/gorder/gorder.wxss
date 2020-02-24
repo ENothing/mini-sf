@@ -58,7 +58,8 @@ page {
 }
 
 .op_buttons{
-  padding: 20rpx 20rpx
+  padding: 20rpx 20rpx;
+  margin-left: 20rpx
 }
 
 .checkpay{

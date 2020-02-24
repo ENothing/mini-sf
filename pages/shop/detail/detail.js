@@ -53,6 +53,8 @@ Page({
   },
   showButtonModal(e) {
     var id = e.currentTarget.dataset.id
+    console.log("id:"+id)
+    console.log("i1:" + this.data.choose_key)
 
     if (this.data.choose_key == id) {
       this.setData({
@@ -73,7 +75,6 @@ Page({
   goToOrder(e){
 
     var token = wx.getStorageSync('token')
-    console.log(token)
     if (!token) {
       wx.showToast({
         icon: "none",
@@ -87,7 +88,7 @@ Page({
       })
       return
     }
-
+    console.log(this.data.choose_key)
 
 
       wx.navigateTo({

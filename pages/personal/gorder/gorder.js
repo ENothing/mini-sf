@@ -4,15 +4,14 @@ const app = getApp();
 Page({
   data: {
     CustomBar: app.globalData.CustomBar,
-    TabCur: 0,
-    tabNav: ['全部', '待付款', '进行中', '已完成', '退款中'],
     page:1,
     orders:"",
     last_page:1,
+    status:""
   },
   onLoad: function (options) {
 
-    api.shopOrderList(this.data.page,0).then(data => {
+    api.shopOrderList(this.data.page, this.data.status).then(data => {
       console.log(data)
       this.setData({
         orders:data.orders,
@@ -24,11 +23,35 @@ Page({
 
 
   },
-  tabSelect(e) {
-    console.log(e);
+  onReachBottom: function () {
+    if (this.data.last_page == this.data.page) {
+      return
+    }
     this.setData({
-      TabCur: e.currentTarget.dataset.id,
-      scrollLeft: (e.currentTarget.dataset.id - 1) * 60
+      page: this.data.page + 1
+    })
+    var that = this;
+    api.shopOrderList(this.data.page, this.data.status).then(data => {
+      var arr1 = that.data.orders;
+      var arr2 = data.orders
+      arr1 = arr1.concat(arr2);
+      that.setData({
+        orders: arr1
+      })
+    })
+  },
+  tabSelect(e) {
+    // console.log(e);
+    var status =  e.currentTarget.dataset.id
+    api.shopOrderList(1, status).then(data => {
+      console.log(data)
+      this.setData({
+        orders: data.orders,
+        last_page: data.last_page
+      })
+    })
+    this.setData({
+      status: status,
     })
   }
 })

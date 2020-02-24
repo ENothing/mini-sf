@@ -27,6 +27,8 @@ var url = {
 
   shopGoodsDetail: "/shop/goods_detail",
   preOrderDetail: "/shop/pre_order_detail",
+  shopBuy:"/shop/buy",
+  shopOrderDetail:"/shop/order_detail",
 
 
   addressList: "/address/list",
@@ -269,7 +271,7 @@ module.exports = {
       url: url.detailToOrder,
       method: "GET",
       data: {
-        id: id,
+        id: id == undefined ? 0 : id,
       }
     })
   },
@@ -289,6 +291,34 @@ module.exports = {
       method: "GET"
     })
   },
+  shopBuy(num, goodsSpuId, goodsId, addressId, couponId){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.shopBuy,
+      method: "POST",
+      data: {
+        num: num,
+        goods_spu_id: goodsSpuId,
+        address_id: addressId,
+        coupon_id: couponId,
+        goods_id: goodsId
+      }
+    })
+  },
+  shopOrderDetail(id){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.shopOrderDetail + "/" + id,
+      method: "GET"
+    })
+  },
+
 
 
 

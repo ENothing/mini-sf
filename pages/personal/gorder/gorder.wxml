@@ -6,10 +6,24 @@
 
 <scroll-view scroll-x class="bg-white nav text-center fixed" style="top:{{CustomBar}}px">
   <view class="flex text-center">
-    <view class="cu-item flex-sub {{index==TabCur?'text-red cur':''}}" wx:for="{{tabNav}}" wx:key bindtap='tabSelect' data-id="{{index}}">
-      {{tabNav[index]}}
+    <view class="cu-item flex-sub {{status=='' ?'text-red cur':''}}" bindtap='tabSelect' data-id="">
+      全部
     </view>
-
+    <view class="cu-item flex-sub {{status=='0' ?'text-red cur':''}}" bindtap='tabSelect' data-id="0">
+      待付款
+    </view>
+    <view class="cu-item flex-sub {{status=='2'?'text-red cur':''}}" bindtap='tabSelect' data-id="2">
+      待发货
+    </view>
+    <view class="cu-item flex-sub {{status=='3'?'text-red cur':''}}" bindtap='tabSelect' data-id="3">
+      待收货
+    </view>
+    <view class="cu-item flex-sub {{status=='4'?'text-red cur':''}}" bindtap='tabSelect' data-id="4">
+      已完成
+    </view>
+    <view class="cu-item flex-sub {{status=='5'?'text-red cur':''}}" bindtap='tabSelect' data-id="5">
+      退款中
+    </view>
   </view>
 
 </scroll-view>
@@ -23,9 +37,50 @@
 
     <view class="order_container ">
 
-      <view class="order_status">
-        交易成功
-      </view>
+
+      <block wx:if="{{item.refund_id == 0}}">
+
+        <view class="order_status" wx:if="{{item.status == 0}}">
+          待付款
+        </view>
+        <view class="order_status" wx:if="{{item.status == 1}}">
+          订单取消
+        </view>
+        <view class="order_status" wx:if="{{item.status == 2}}">
+          待发货
+        </view>
+        <view class="order_status" wx:if="{{item.status == 3}}">
+          待收货
+        </view>
+        <view class="order_status" wx:if="{{item.status == 4}}">
+          已完成
+        </view>
+      </block>
+      <block wx:else>
+
+        <view class="order_status" wx:if="{{item.shop_order_refund.status == 0}}">
+          待审批退款申请
+        </view>
+        <view class="order_status" wx:if="{{item.shop_order_refund.status == 1}}">
+          取消退款
+        </view>
+        <view class="order_status" wx:if="{{item.shop_order_refund.status == 2}}">
+          退款中
+        </view>
+        <view class="order_status" wx:if="{{item.shop_order_refund.status == 3}}">
+          已退款
+        </view>
+        <view class="order_status" wx:if="{{item.shop_order_refund.status == 4}}">
+          退款失败
+        </view>
+        <view class="order_status" wx:if="{{item.shop_order_refund.status == 5}}">
+          等待审核
+        </view>
+        <view class="order_status" wx:if="{{item.shop_order_refund.status == 6}}">
+          退款审核中
+        </view>
+
+      </block>
 
       <view class="cu-item">
         <view class="grid col-2">
@@ -37,7 +92,7 @@
             <view class="size_num_price_container">
               <view class="flex  justify-between">
                 <view>
-                  <text class="size_and_num" decode="true">{{item.goods_spu_name}}&ensp;数量x1</text>
+                  <text class="size_and_num" decode="true">{{item.goods_spu_name}}&ensp;数量x{{item.num}}</text>
                 </view>
                 <view>
                   <text class="price text-bold text-black text-price">{{item.unit_price}}</text>
@@ -49,9 +104,25 @@
       </view>
 
       <view class="op">
-        <view class="flex justify-end op_buttons">
-          <view class="checkpay">确认付款</view>
-        </view>
+
+
+
+
+        <block wx:if="{{item.refund_id == 0}}">
+          <view class="flex solid-bottom padding-sm justify-end" wx:if="{{item.status == 0}}">
+            <view class="solid  bg-red padding-sm margin-xs radius">确认付款</view>
+            <view class="solid  padding-sm margin-xs radius">取消订单</view>
+          </view>
+          <view class="flex solid-bottom padding-sm justify-end" wx:if="{{item.status == 2 || item.status == 3 || item.status == 4}}">
+            <view class="solid  bg-red  padding-sm margin-xs radius" wx:if="{{item.status == 3}}">确认收货</view>
+            <view class="solid  padding-sm margin-xs radius">查看物流</view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="flex solid-bottom padding-sm justify-end" wx:if="{{item.shop_order_refund.status == 1}}">
+            <view class="solid  bg-red padding-sm margin-xs radius">取消退款</view>
+          </view>
+        </block>
       </view>
 
     </view>
