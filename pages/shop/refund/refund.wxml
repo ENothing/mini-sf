@@ -1,0 +1,51 @@
+<cu-custom bgColor="bg-gradual-red" isBack="{{true}}">
+  <view slot="backText"></view>
+  <view slot="content">申请退款</view>
+</cu-custom>
+
+<form bindsubmit="formSubmit">
+  <view class="cu-form-group margin-top">
+    <view class="title">退款类型</view>
+    <picker bindchange="bindPickerChange" value="{{rTypeArr[r_index].type}}" range='{{rTypeArr}}' range-key="{{'text'}}" name="rtype">
+      <view class="picker">
+        {{rTypeArr[r_index].text}}
+      </view>
+    </picker>
+  </view>
+
+  <view class="cu-form-group align-start">
+    <view class="title">原因</view>
+    <textarea maxlength="255" placeholder=" (ಥ﹏ಥ) 请填写原因哦~" name="reason"></textarea>
+  </view>
+
+  <view class="cu-bar bg-white solid-top">
+    <view class="action">
+      上传凭证
+    </view>
+    <view class="action">
+      {{imgList.length}}/3
+    </view>
+  </view>
+  <view class="cu-form-group">
+    <view class="grid col-3 grid-square flex-sub">
+      <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+        <image src='{{imgList[index]}}' mode='aspectFill'></image>
+        <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+          <text class="cuIcon-close"></text>
+        </view>
+      </view>
+      <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<3}}">
+        <text class="cuIcon-cameraadd"></text>
+      </view>
+    </view>
+  </view>
+  <view class=" text-sm padding">
+    <text class="text-red">tips：</text><text class="text-gray">退款退货类型申请审核通过后需要亲提供运单号哦~</text>
+  </view>
+
+
+  <view class="padding flex flex-direction">
+    <button class="cu-btn bg-red margin-tb-sm lg" formType="submit">确认</button>
+  </view>
+
+</form>

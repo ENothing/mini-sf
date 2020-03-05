@@ -57,5 +57,6 @@ const http = (params) => {
   })
 }
 module.exports = {
-  http: http
+  http: http,
+  apiUrl: apiUrl
 }

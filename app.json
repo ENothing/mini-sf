@@ -23,7 +23,8 @@
     "pages/personal/coupon/coupon",
     "pages/personal/login/login",
     "pages/personal/aorder/aorder",
-    "pages/personal/gorder/gorder"
+    "pages/personal/gorder/gorder",
+    "pages/shop/refund/refund"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -53,5 +53,12 @@ Page({
     this.setData({
       status: status,
     })
+  },
+  goToOrderDetail(e){
+    console.log(e)
+    var id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/shop/order_detail/orderDetail?id=' + id,
+    })
   }
 })

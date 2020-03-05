@@ -3,25 +3,44 @@
 </cu-custom>
 
 <view class="order_status">
-  <view class="o_status">交易成功</view>
+  <block wx:if="{{order.refund_id == 0}}">
+    <view class="o_status" wx:if="{{order.status == 0}}">待付款</view>
+    <view class="o_status" wx:if="{{order.status != 0 && order.status != 1}}">交易成功</view>
+    <view class="o_status" wx:if="{{order.status == 1}}">订单取消</view>
+
+  </block>
+  <block wx:else>
+
+
+  </block>
+
+
 </view>
 
 
-<view class='deliver_contaniner'>
+<view class='deliver_contaniner' wx:if='{{order.refund_id != 0 || (order.status != 0 && order.status != 1)}}'>
   <view>
     <view class="flex justify-between">
       <view>
         <text class='cuIcon-deliver' decode='true'>&emsp;</text>
-        <text class="deliver_status">买家已发货</text>
+
+        <text class="deliver_status" wx:if='{{ order.status == 2}}'>等待发货</text>
+
+        <text class="deliver_status" wx:if='{{ order.status == 3}}'>卖家已发货</text>
+
+        <text class="deliver_status" wx:if='{{ order.status == 4}}'>买家已收货</text>
+
+
+
       </view>
       <view bindtap="goToDeliver">
-        <text class='deliver_follow' decode='true'>订单跟踪&ensp;</text>
+        <text class='deliver_follow' decode='true'>查看物流&ensp;</text>
         <text class='cuIcon-right text-gray'></text>
       </view>
     </view>
   </view>
   <view class='deliver_time text-gray'>
-    <text>2019-11-30 10:53:21</text>
+    <text decode='true'>&nbsp;{{order.updated_at_format}}</text>
   </view>
 </view>
 
@@ -40,7 +59,7 @@
     </view>
   </view>
   <view class='address text-gray'>
-    <text>{{order.province}}{{order.city}}{{order.district}}{{order.detail_address}}</text>
+    <text decode='true'>&nbsp;{{order.province}}{{order.city}}{{order.district}}{{order.detail_address}}</text>
   </view>
 </view>
 
@@ -48,7 +67,7 @@
 
   <view class="order_goods_container radius shadow bg-white">
     <view class="goods_img">
-      <image src="https://img.alicdn.com/imgextra/i4/2914266524/TB26zfNjx1YBuNjy1zcXXbNcXXa_!!2914266524.jpg_430x430q90.jpg" style="height:100%"></image>
+      <image src="{{order.thumb}}" style="height:100%"></image>
     </view>
     <view class="goods_info">
       <view class="goods_title">{{order.goods_name}}</view>
@@ -84,7 +103,7 @@
     </view>
     <view class="order_info_item flex justify-between">
       <view>
-        <text>顺丰速运</text>
+        <text>运费</text>
       </view>
       <view>
         <text class="text-price">{{order.post_price}}</text>
@@ -114,7 +133,7 @@
       <view>
         <text>订单编号</text>
       </view>
-      <view bindtap='copyOrderNo' data-text="SF12345678987654321">
+      <view bindtap='copyOrderNo' data-text="{{order.order_n}}">
         <text>{{order.order_n}}</text>
       </view>
     </view>
@@ -139,5 +158,20 @@
     </view>
     客服
   </button>
-  <view class="bg-red submit">确认收货</view>
+  <block wx:if="{{order.refund_id == 0}}">
+    <view class="bg-red submit" wx:if="{{order.status == 0}}">确认付款</view>
+    <view class="margin-right-sm text-center" wx:if="{{order.status == 1}}">
+      <button class="cu-btn round bg-white shadow" >删除订单</button>
+    </view>
+    <view class="margin-right-sm text-center" wx:if="{{order.status >= 2}}">
+      <button class="cu-btn margin-right-sm round bg-white shadow" bindtap="goToRefund">申请退款</button>
+      <button class="cu-btn margin-right-sm round bg-white shadow">查看物流</button>
+      <button class="cu-btn round bg-red shadow" wx:if="{{order.status == 3}}">确认收货</button>
+    </view>
+  </block>
+  <block wx:else>
+
+  </block>
+
+
 </view>

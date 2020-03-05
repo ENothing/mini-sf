@@ -12,7 +12,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.1",
+	"libVersion": "2.10.2",
 	"appid": "wx276d9d32df17f41f",
 	"projectname": "mini-sf",
 	"debugOptions": {
@@ -190,6 +190,13 @@
 					"name": "我的商品订单",
 					"pathName": "pages/personal/gorder/gorder",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "发起退款",
+					"pathName": "pages/shop/refund/refund",
+					"query": "id=82",
 					"scene": null
 				}
 			]
