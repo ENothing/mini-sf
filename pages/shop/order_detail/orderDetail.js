@@ -21,15 +21,16 @@ Page({
     this.setData({
       order_id: id,
     })
-
+  },
+  onShow:function(options){
+    var id = this.data.order_id
     api.shopOrderDetail(id).then(data => {
       console.log(data)
       this.setData({
-        order:data.order,
-        refund_order:data.refund_order
+        order: data.order,
+        refund_order: data.refund_order
       })
     })
-    
   },
   goToDeliver(e){
     wx.navigateTo({
@@ -39,6 +40,16 @@ Page({
   goToRefund(){
     wx.navigateTo({
       url: '/pages/shop/refund/refund?order_id=' + this.data.order_id,
+    })
+  },
+  showModal(e) {
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
     })
   },
   copyOrderNo: function (e) {

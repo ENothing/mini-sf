@@ -1,6 +1,6 @@
 // pages/shop/refund/refund.js
 import http from '../../../utils/http.js'
-
+import api from '../../../utils/api.js'
 Page({
 
   /**
@@ -16,7 +16,7 @@ Page({
         text: "退款退货",
       },
     ],
-    r_index: 0,
+    r_index: 0, 
     order_id: 0,
     imgList: [],
   },
@@ -25,7 +25,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var order_id = options.id
+    var order_id = options.order_id
     this.setData({
       order_id: order_id
     })
@@ -37,10 +37,31 @@ Page({
   },
   formSubmit: function(e) {
     var order_id = this.data.order_id
-    var r_type = e.detail.rtype
+    var r_type = e.detail.value.rtype
+    var reason = e.detail.value.reason
+    var imgs = this.data.imgList
+    if (reason == "" || reason == undefined) {
+      wx.showToast({
+        icon: "none",
+        title: "申请原因不能为空哦~"
+      })
+      return 
+    }
+    api.initiateRefund(order_id, reason, r_type, imgs).then(data => {
 
-    console.log(this.data.imgList)
-    console.log(e)
+      wx.showToast({
+        icon: "none",
+        title: "申请退款成功，等待审批",
+        duration: 1000,
+        success: function () {
+          wx.navigateBack({
+            delta: 1
+          })
+        }
+      })
+      console.log(data)
+    })
+
   },
   ChooseImage() {
     var token = wx.getStorageSync('token')

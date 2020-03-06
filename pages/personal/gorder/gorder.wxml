@@ -59,7 +59,7 @@
       <block wx:else>
 
         <view class="order_status" wx:if="{{item.shop_order_refund.status == 0}}">
-          待审批退款申请
+          等待审核
         </view>
         <view class="order_status" wx:if="{{item.shop_order_refund.status == 1}}">
           取消退款
@@ -119,8 +119,8 @@
           </view>
         </block>
         <block wx:else>
-          <view class="flex solid-bottom padding-sm justify-end" wx:if="{{item.shop_order_refund.status == 1}}">
-            <view class="solid  bg-red padding-sm margin-xs radius">取消退款</view>
+          <view class="flex solid-bottom padding-sm justify-end" wx:if="{{item.shop_order_refund.status == 0 || item.shop_order_refund.status == 1}}">
+            <view class="solid   padding-sm margin-xs radius">取消退款</view>
           </view>
         </block>
       </view>

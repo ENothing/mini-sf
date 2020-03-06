@@ -29,6 +29,7 @@ var url = {
   preOrderDetail: "/shop/pre_order_detail",
   shopBuy:"/shop/buy",
   shopOrderDetail:"/shop/order_detail",
+  initiateRefund:"/shop/initiate_refund",
 
 
   addressList: "/address/list",
@@ -164,6 +165,29 @@ module.exports = {
       }
     })
   },
+
+
+  initiateRefund(order_id, reason, r_type, imgs){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.initiateRefund,
+      method: "POST",
+      data: {
+        order_id: order_id,
+        reason: reason,
+        r_type: r_type,
+        reason_pics: imgs
+      }
+    })
+  },
+
+
+
+
+  
 
 
 

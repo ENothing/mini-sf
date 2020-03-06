@@ -10,15 +10,15 @@
 
   </block>
   <block wx:else>
-
-
+    <view class="o_status" wx:if="{{refund_order.status == 0}}">等待审核</view>
+    <view class="o_status" wx:if="{{refund_order.status == 4}}">退款审核未通过</view>
   </block>
 
 
 </view>
 
 
-<view class='deliver_contaniner' wx:if='{{order.refund_id != 0 || (order.status != 0 && order.status != 1)}}'>
+<view class='deliver_contaniner' wx:if='{{(order.refund_id != 0 && order.status>2) || (order.status != 0 && order.status != 1 && order.refund_id == 0)}}'>
   <view>
     <view class="flex justify-between">
       <view>
@@ -148,6 +148,12 @@
     </view>
   </view>
 
+
+
+</view>
+<view class=" text-sm padding">
+  <text class="text-red">tips：</text>
+  <text class="text-gray">点击订单编号可直接复制哦~</text>
 </view>
 
 <view class='cu-tabbar-height'></view>
@@ -161,7 +167,7 @@
   <block wx:if="{{order.refund_id == 0}}">
     <view class="bg-red submit" wx:if="{{order.status == 0}}">确认付款</view>
     <view class="margin-right-sm text-center" wx:if="{{order.status == 1}}">
-      <button class="cu-btn round bg-white shadow" >删除订单</button>
+      <button class="cu-btn round bg-white shadow">删除订单</button>
     </view>
     <view class="margin-right-sm text-center" wx:if="{{order.status >= 2}}">
       <button class="cu-btn margin-right-sm round bg-white shadow" bindtap="goToRefund">申请退款</button>
@@ -170,8 +176,32 @@
     </view>
   </block>
   <block wx:else>
-
+    <view class="margin-right-sm text-center">
+      <button class="cu-btn margin-right-sm round bg-white shadow" wx:if="{{refund_order.status == 0}}">取消退款</button>
+      <button class="cu-btn margin-right-sm round bg-white shadow" wx:if="{{refund_order.status == 4}}" bindtap="showModal" data-target="DialogModal2">查看驳回理由</button>
+    </view>
   </block>
 
 
+</view>
+
+<view class="cu-modal {{modalName=='DialogModal2'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">驳回理由</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      {{refund_order.reply_reason}}
+    </view>
+    <view class="cu-bar bg-white">
+      <view class="action margin-0 flex-sub text-red">
+        <text class="cuIcon-service"></text>
+        <button class="modal-button" open-type="contact">联系客服</button>
+      </view>
+      <view class="action margin-0 flex-sub  solid-left" bindtap="hideModal">确定</view>
+    </view>
+  </view>
 </view>

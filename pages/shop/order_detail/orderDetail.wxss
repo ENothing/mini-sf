@@ -39,7 +39,7 @@
 
 .address {
   padding-left: 60rpx;
-  font-size: .85rem;
+  font-size: 0.85rem;
 }
 
 .deliver_contaniner {
@@ -94,56 +94,78 @@
   -webkit-box-orient: vertical;
 }
 
-
 .goods_param {
   padding-top: 15rpx;
 }
+
 .goods_size {
   padding-top: 12rpx;
-  font-size: .75rem;
-  color: #000
+  font-size: 0.75rem;
+  color: #000;
 }
 
-.goods_num{
-  font-size: .75rem;
-  color: #000
+.goods_num {
+  font-size: 0.75rem;
+  color: #000;
 }
-.goods_price{
+
+.goods_price {
   font-weight: bold;
   font-size: 1rem;
-  color: #000
-}
-.order_info{
-
-  margin-top: 20rpx
-
-}
-.order_info_title{
-  font-size: .9rem !important
-}
-.order_info_container{
-
-  background: #fff
-
+  color: #000;
 }
 
-.order_info_item{
-  padding: 10rpx 50rpx
+.order_info {
+  margin-top: 20rpx;
 }
 
-.order_price_container{
-  border-bottom: 8rpx solid #f1f1f1
+.order_info_title {
+  font-size: 0.9rem !important;
 }
-.order_price{
+
+.order_info_container {
+  background: #fff;
+}
+
+.order_info_item {
+  padding: 10rpx 50rpx;
+}
+
+.order_price_container {
+  border-bottom: 8rpx solid #f1f1f1;
+}
+
+.order_price {
   font-size: 1.2rem;
-  font-weight: bold
+  font-weight: bold;
 }
 
-.order_item_1.order_item_2{
-  font-size: .8rem
-
+.order_item_1.order_item_2.order_item_3 {
+  font-size: 0.8rem;
 }
 
-.order_item_2{
-  color: #9B9B9B
+.order_item_2 {
+  color: #9b9b9b;
+}
+
+.modal-button {
+  background-color: rgb(247, 247, 247);
+  border-radius: 0rpx;
+  padding: 0rpx;
+  margin: 0rpx;
+  /* display: inline-block; */
+  line-height: unset;
+  font-size: 0.75rem;
+  color: rgb(233, 104, 66)
+}
+
+.modal-button::after {
+  /*button的边框样式是通过::after方式实现的*/
+  border: none;
+}
+
+.modal-button-hover {
+  /*点击后样式*/
+  color: #f1f1f1;
+  background-color: rgb(247, 247, 247);
 }
