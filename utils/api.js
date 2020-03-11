@@ -30,7 +30,7 @@ var url = {
   shopBuy:"/shop/buy",
   shopOrderDetail:"/shop/order_detail",
   initiateRefund:"/shop/initiate_refund",
-
+  shopReturnInfo: "/shop/post_return_info",
 
   addressList: "/address/list",
   updateDefaultAddress:"/address/update_default",
@@ -165,8 +165,6 @@ module.exports = {
       }
     })
   },
-
-
   initiateRefund(order_id, reason, r_type, imgs){
     return http({
       header: {
@@ -183,11 +181,21 @@ module.exports = {
       }
     })
   },
-
-
-
-
-  
+  shopReturnInfo(refund_id, express_n, express_id){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.shopReturnInfo,
+      method: "POST",
+      data: {
+        refund_id: refund_id,
+        express_n: express_n,
+        express_id: express_id,
+      }
+    })
+  },
 
 
 

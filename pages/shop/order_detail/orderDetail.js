@@ -42,6 +42,13 @@ Page({
       url: '/pages/shop/refund/refund?order_id=' + this.data.order_id,
     })
   },
+  goToWaybill(e){
+    console.log(e)
+    var refund_id = e.currentTarget.dataset.refundId
+    wx.navigateTo({
+      url: '/pages/shop/waybill/waybill?refund_id=' + refund_id,
+    })
+  },
   showModal(e) {
     this.setData({
       modalName: e.currentTarget.dataset.target

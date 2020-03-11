@@ -74,7 +74,7 @@
           退款失败
         </view>
         <view class="order_status" wx:if="{{item.shop_order_refund.status == 5}}">
-          等待审核
+          同意退款
         </view>
         <view class="order_status" wx:if="{{item.shop_order_refund.status == 6}}">
           退款审核中
@@ -119,8 +119,11 @@
           </view>
         </block>
         <block wx:else>
-          <view class="flex solid-bottom padding-sm justify-end" wx:if="{{item.shop_order_refund.status == 0 || item.shop_order_refund.status == 1}}">
+          <view class="flex solid-bottom padding-sm justify-end" wx:if="{{item.shop_order_refund.status == 0 }}">
             <view class="solid   padding-sm margin-xs radius">取消退款</view>
+          </view>
+          <view class="flex solid-bottom padding-sm justify-end" wx:if="{{item.shop_order_refund.status == 3}}">
+            <view class="solid   padding-sm margin-xs radius">删除订单</view>
           </view>
         </block>
       </view>

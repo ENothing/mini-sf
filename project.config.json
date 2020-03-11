@@ -12,7 +12,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.2",
+	"libVersion": "2.10.3",
 	"appid": "wx276d9d32df17f41f",
 	"projectname": "mini-sf",
 	"debugOptions": {
@@ -112,7 +112,7 @@
 					"id": 9,
 					"name": "查看订单详情",
 					"pathName": "pages/shop/order_detail/orderDetail",
-					"query": "id=82",
+					"query": "id=84",
 					"scene": null
 				},
 				{
@@ -197,6 +197,13 @@
 					"name": "发起退款",
 					"pathName": "pages/shop/refund/refund",
 					"query": "id=82",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "填写运单信息",
+					"pathName": "pages/shop/waybill/waybill",
+					"query": "refund_id=9",
 					"scene": null
 				}
 			]

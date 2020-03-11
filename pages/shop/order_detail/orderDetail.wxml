@@ -7,14 +7,25 @@
     <view class="o_status" wx:if="{{order.status == 0}}">待付款</view>
     <view class="o_status" wx:if="{{order.status != 0 && order.status != 1}}">交易成功</view>
     <view class="o_status" wx:if="{{order.status == 1}}">订单取消</view>
-
   </block>
   <block wx:else>
     <view class="o_status" wx:if="{{refund_order.status == 0}}">等待审核</view>
-    <view class="o_status" wx:if="{{refund_order.status == 4}}">退款审核未通过</view>
+    <view class="o_status" wx:if="{{refund_order.status == 2}}">
+      退款中
+      <view class="text-black text-sm">48小时内到账</view>
+    </view>
+    <view class="o_status" wx:if="{{refund_order.status == 3}}">已退款</view>
+    <view class="o_status" wx:if="{{refund_order.status == 4}}">退款失败</view>
+    <view class="o_status" wx:if="{{refund_order.status == 5}}">
+      <view wx:if="{{refund_order.r_type == 1}}">同意退款</view>
+      <view wx:if="{{refund_order.r_type == 2}}">同意退款退货</view>
+      <view class="text-black text-sm" wx:if="{{refund_order.r_type == 1}}">48小时内到账</view>
+      <view class="text-black text-sm" wx:if="{{refund_order.r_type == 2}}">等待填写运单信息进行审核</view>
+    </view>
+    <view class="o_status" wx:if="{{refund_order.status == 6}}">
+      <view>等待审核货运信息</view>
+    </view>
   </block>
-
-
 </view>
 
 
@@ -179,6 +190,8 @@
     <view class="margin-right-sm text-center">
       <button class="cu-btn margin-right-sm round bg-white shadow" wx:if="{{refund_order.status == 0}}">取消退款</button>
       <button class="cu-btn margin-right-sm round bg-white shadow" wx:if="{{refund_order.status == 4}}" bindtap="showModal" data-target="DialogModal2">查看驳回理由</button>
+      <button class="cu-btn round bg-white shadow" wx:if="{{refund_order.status == 3}}">删除订单</button>
+      <button class="cu-btn round bg-white shadow" wx:if="{{refund_order.status == 5 && refund_order.r_type == 2 }}" bindtap="goToWaybill" data-refund-id="{{refund_order.id}}">填写运单信息</button>
     </view>
   </block>
 

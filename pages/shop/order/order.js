@@ -82,7 +82,7 @@ Page({
   },
   goToSubmit(e) {
 
-    api.buy(1,this.data.goods_spu_id,this.data.goods_id,this.data.address_id,this.data.coupon_id).then(data => {
+    api.shopBuy(1,this.data.goods_spu_id,this.data.goods_id,this.data.address_id,this.data.coupon_id).then(data => {
       console.log(data)
       wx.navigateTo({
         url: '/pages/shop/pay_result/payResult?order_id='+data,

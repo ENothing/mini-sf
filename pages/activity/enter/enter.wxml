@@ -60,7 +60,8 @@
           <view class="cu-form-group solids-bottom">
             <view class="title">验证码</view>
             <input placeholder="验证下啦~"></input>
-            <button class="cu-btn bg-red shadow">验证码</button>
+            <button class="cu-btn bg-red shadow" bindtap="sendSmS" wx:if="{{countDownNum == 60}}">发送验证码</button>
+            <button class="cu-btn bg-red shadow" wx:else>{{countDownNum}}s</button>
           </view>
         </form>
 

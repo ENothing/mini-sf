@@ -24,7 +24,8 @@
     "pages/personal/login/login",
     "pages/personal/aorder/aorder",
     "pages/personal/gorder/gorder",
-    "pages/shop/refund/refund"
+    "pages/shop/refund/refund",
+    "pages/shop/waybill/waybill"
   ],
   "window": {
     "backgroundTextStyle": "light",
