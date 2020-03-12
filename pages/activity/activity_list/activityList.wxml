@@ -1,0 +1,61 @@
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+  <view slot="content">活动列表</view>
+</cu-custom>
+
+<view class="search cu-bar bg-white">
+  <navigator class="search-form radius" url="/pages/shop/search/search" hover-class='none'>
+    <text class="search-keywords cuIcon-search center text-gray" decode='true'>&ensp;{{kword == ""?'搜索活动':kword}}</text>
+  </navigator>
+</view>
+
+<!-- <view class="activity_conditions flex text-center align-center bg-white text-gray">
+  <view class="cu-item flex-sub {{1==sort_type?'text-orange cur':''}}" bindtap="tabSelect" data-sort-type="1">
+    销量
+  </view>
+  <view class="cu-item flex {{2==sort_type?'text-orange cur':''}}" bindtap="tabSelect" data-sort-type="2" data-updown="{{updown}}">
+    <view>价格</view>
+    <view class="p_updown">
+      <view class="p_up cuIcon-fold  {{updown==1&&2==sort_type?'text-orange':'text-gray'}} "></view>
+      <view class="p_down cuIcon-unfold {{updown==0&&2==sort_type?'text-orange':'text-gray'}} "></view>
+    </view>
+  </view>
+</view> -->
+<scroll-view scroll-x class="bg-white nav">
+
+  <view class="flex text-center">
+    <view class="cu-item flex-sub ">
+
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker text-gray">
+          活动类型{{array[index]}}
+          <text class="cuIcon-unfold"></text>
+        </view>
+      </picker>
+    </view>
+    <view class="cu-item flex-sub ">
+      <view>
+        时间
+      </view>
+    </view>
+
+  </view>
+</scroll-view>
+<view class="activity_list bg-white">
+  <navigator url="/pages/activity/detail/detail?id={{item.id}}" hover-class="none" wx:for="{{activityList}}">
+    <view class="activity_item grid col-2">
+      <view class="bg-img" style="background-image:url({{item.thumb}});"></view>
+      <view class='activity_all_content'>
+        <view class='activity_tag'>SOULFIRE</view>
+        <view class='activity_title'>{{item.title}}</view>
+        <view class='activity_content'>{{item.intro}}</view>
+        <view class="activity_miscellaneous flex  justify-between">
+          <view class='activity_date'>{{item.created_at_format}}</view>
+          <view class='activity_data'>
+            <text class='cuIcon-likefill text-red' decode='true'></text><text  decode='true'>&ensp;{{item.likes}}&ensp;</text>
+            <text class='cuIcon-attention' decode='true'>&ensp;{{item.view}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</view>

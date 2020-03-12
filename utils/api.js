@@ -11,8 +11,14 @@ var url = {
 
 
   activityIndex: "/activity/index",
+  activityCates: "/activity/cates",
+
   activityList: "/activity/list",
   activityDetail: "/activity/detail",
+
+  activitySearchHistory: "/activity/search_history",
+  activityDynamicHistory: "/activity/dynamic_history",
+  delactivitySearchHistory: "/activity/del_search_history",
 
   articleList: "/bbs/list",
   articleDetail: "/bbs/detail",
@@ -43,12 +49,12 @@ var url = {
   userCoupons: "/coupon/user_coupons",
 
 
-  searchHistory: "/shop/search_history",
-  dynamicHistory: "/shop/dynamic_history",
+  shopSearchHistory: "/shop/search_history",
+  shopDynamicHistory: "/shop/dynamic_history",
 
 
 
-  delSearchHistory: "/shop/del_search_history",
+  delShopSearchHistory: "/shop/del_search_history",
 
 
 
@@ -81,6 +87,12 @@ module.exports = {
       method: "GET"
     })
   },
+  activityCates(){
+    return http({
+      url: url.activityCates,
+      method: "GET"
+    })
+  },
   activityList(page) {
     return http({
       url: url.activityList + "?page=" + page,
@@ -94,6 +106,40 @@ module.exports = {
     })
   },
 
+  activitySearchHistory() {
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.activitySearchHistory,
+      method: "GET",
+    })
+  },
+
+  activityDynamicHistory(kword) {
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      url: url.activityDynamicHistory,
+      method: "GET",
+      data: {
+        kword: kword,
+      }
+    })
+  },
+
+  delactivitySearchHistory() {
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.delactivitySearchHistory,
+      method: "GET",
+    })
+  },
 
   articleList(page) {
     return http({
@@ -371,23 +417,23 @@ module.exports = {
 
 
 
-  searchHistory() {
+  shopSearchHistory() {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
         "Authorization": "Bearer " + base_token
       },
-      url: url.searchHistory,
+      url: url.shopSearchHistory,
       method: "GET",
     })
   },
 
-  dynamicHistory(kword) {
+  shopDynamicHistory(kword) {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      url: url.dynamicHistory,
+      url: url.shopDynamicHistory,
       method: "GET",
       data: {
         kword: kword,
@@ -395,13 +441,13 @@ module.exports = {
     })
   },
 
-  delSearchHistory() {
+  delShopSearchHistory() {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
         "Authorization": "Bearer " + base_token
       },
-      url: url.delSearchHistory,
+      url: url.delShopSearchHistory,
       method: "GET",
     })
   }

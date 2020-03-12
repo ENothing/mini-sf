@@ -1,0 +1,13 @@
+<cu-custom bgColor="bg-gradual-red" isCustom="true">
+  <view slot="content">活动类型</view>
+</cu-custom>
+
+
+<view class="cu-list grid col-3 no-border">
+  <view class="cu-item" wx:for="{{activityCates}}" wx:key data-id="{{item.id}}">
+    <view class="">
+      <image class="activity-icon round" src="{{item.icon_url}}" mode="aspectFill" style="width:100rpx;height:100rpx"></image>
+    </view>
+    <text>{{item.name}}</text>
+  </view>
+</view>

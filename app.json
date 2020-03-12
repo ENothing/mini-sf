@@ -25,7 +25,10 @@
     "pages/personal/aorder/aorder",
     "pages/personal/gorder/gorder",
     "pages/shop/refund/refund",
-    "pages/shop/waybill/waybill"
+    "pages/shop/waybill/waybill",
+    "pages/activity/category/category",
+    "pages/activity/search/search",
+    "pages/activity/activity_list/activityList"
   ],
   "window": {
     "backgroundTextStyle": "light",

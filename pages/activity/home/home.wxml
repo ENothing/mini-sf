@@ -1,78 +1,80 @@
-
 <scroll-view scroll-y class="scrollPage">
-<swiper class="screen-swiper" autoplay="true" interval="4000" duration="500">
-  <swiper-item wx:for="{{swiperList}}" wx:key>
-    <image src="{{item.thumb}}" mode="aspectFill" ></image>
-  </swiper-item>
-</swiper>
+  <swiper class="screen-swiper" autoplay="true" interval="4000" duration="500">
+    <swiper-item wx:for="{{swiperList}}" wx:key>
+      <image src="{{item.thumb}}" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
 
-<swiper class="notify_container" autoplay="true" circular="true" interval="3000" wx:if="{{msgList != ''}}">
-  <block wx:for="{{msgList}}" wx:key>
-    <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate">
-      <swiper-item>
-        <view class="swiper_item">
-          <text class='cuIcon-notification'></text> {{item.content}}
-        </view>
-      </swiper-item>
-    </navigator>
-  </block>
-</swiper>
+  <swiper class="notify_container" autoplay="true" circular="true" interval="3000" wx:if="{{msgList != ''}}">
+    <block wx:for="{{msgList}}" wx:key>
+      <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate">
+        <swiper-item>
+          <view class="swiper_item">
+            <text class='cuIcon-notification'></text> {{item.content}}
+          </view>
+        </swiper-item>
+      </navigator>
+    </block>
+  </swiper>
 
-<view class="cu-bar bg-white">
-  <view class="search-form round">
-    <text class="cuIcon-search"></text>
-    <input class='search_input' type="text" placeholder="搜索图片、文章、视频" confirm-type="search"></input>
-  </view>
-  <view class="action">
-    <!-- <button class="cu-btn bg-green shadow-blur round">搜索</button> -->
-  </view>
-</view>
-
-
-<view class="cu-list grid col-3 no-border">
-  <view class="cu-item" wx:for="{{iconList}}" wx:key data-id="{{item.id}}">
-    <view class="">
-      <image class="activity-icon" src="{{item.icon_url}}" mode="aspectFill" style="width:100rpx;height:100rpx"></image>
+  <view class="cu-bar bg-white" bindtap="goToSearch">
+    <view class="search-form round">
+      <text class="cuIcon-search"></text>
+      <input class='search_input' type="text" placeholder="搜索您感兴趣的活动~" disabled></input>
     </view>
-    <text>{{item.name}}</text>
   </view>
-</view>
-<view class="bg-video flex align-center" style="height: 422rpx;">
-  <video src="{{video_url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover"></video>
-</view>
+
+
+  <view class="cu-list grid col-3 no-border">
+    <view class="cu-item" wx:for="{{iconList}}" wx:key data-id="{{item.id}}">
+      <view class="">
+        <image class="activity-icon" src="{{item.icon_url}}" mode="aspectFill" style="width:100rpx;height:100rpx"></image>
+      </view>
+      <text>{{item.name}}</text>
+    </view>
+    <view class="cu-item" bindtap="goToActivityCates">
+      <view>
+        <view class="cuIcon-forwardfill text-black" style="font-size:2rem"></view>
+      </view>
+      <text class="margin-top-xl">看更多</text>
+    </view>
+  </view>
+  <view class="bg-video flex align-center" style="height: 422rpx;">
+    <video src="{{video_url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover"></video>
+  </view>
 
 
 
 
 
-<view class="activity_list bg-white">
+  <view class="activity_list bg-white">
 
-  <navigator url="/pages/activity/detail/detail?id={{item.id}}" hover-class="none" wx:for="{{activityList}}">
-    <view class="activity_item grid col-2">
-      <view class="bg-img" style="background-image:url({{item.thumb}});"></view>
-      <view class='activity_all_content'>
-        <view class='activity_tag'>SOULFIRE</view>
-        <view class='activity_title'>{{item.title}}</view>
-        <view class='activity_content'>{{item.intro}}</view>
-        <view class="activity_miscellaneous flex  justify-between">
-          <view class='activity_date'>{{item.created_at_format}}</view>
-          <view class='activity_data'>
-            <text class='cuIcon-like' decode='true'>&ensp;{{item.likes}}&ensp;</text>
-            <text class='cuIcon-attention' decode='true'>&ensp;{{item.view}}</text>
+    <navigator url="/pages/activity/detail/detail?id={{item.id}}" hover-class="none" wx:for="{{activityList}}">
+      <view class="activity_item grid col-2">
+        <view class="bg-img" style="background-image:url({{item.thumb}});"></view>
+        <view class='activity_all_content'>
+          <view class='activity_tag'>SOULFIRE</view>
+          <view class='activity_title'>{{item.title}}</view>
+          <view class='activity_content'>{{item.intro}}</view>
+          <view class="activity_miscellaneous flex  justify-between">
+            <view class='activity_date'>{{item.created_at_format}}</view>
+            <view class='activity_data'>
+              <text class='cuIcon-likefill text-red' decode='true'></text><text  decode='true'>&ensp;{{item.likes}}&ensp;</text>
+              <text class='cuIcon-attention' decode='true'>&ensp;{{item.view}}</text>
+            </view>
           </view>
         </view>
       </view>
-    </view>
-  </navigator>
+    </navigator>
 
 
 
 
 
-</view>
+  </view>
 
 
 
 
-<view class='cu-tabbar-height'></view>
+  <view class='cu-tabbar-height'></view>
 </scroll-view>

@@ -9,23 +9,23 @@ Page({
    */
   data: {
     CustomBar: app.globalData.CustomBar,
-    inputkey:"",
-    history:"",
-    hot:null,
-    dynamic:null
+    inputkey: "",
+    history: "",
+    hot: null,
+    dynamic: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    api.shopSearchHistory().then(data => {
+    api.activitySearchHistory().then(data => {
       this.setData({
-        history:data.history,
-        hot:data.hot
+        history: data.history,
+        hot: data.hot
       })
     })
-    console.log( this.data.history)
+    console.log(this.data.history)
 
   },
 
@@ -42,16 +42,16 @@ Page({
   onShow: function () {
 
   },
-  bindKeyInput(e){
+  bindKeyInput(e) {
     var key = e.detail.value.replace(/\s+/g, '')
     console.log(key)
-    if(key){
-      api.shopDynamicHistory(key).then(data => {
+    if (key) {
+      api.activityDynamicHistory(key).then(data => {
         this.setData({
           dynamic: data,
         })
       })
-    }else{
+    } else {
       this.setData({
         dynamic: null,
       })
@@ -62,30 +62,30 @@ Page({
       inputkey: key
     })
   },
-  clearInput(){
+  clearInput() {
     this.setData({
       inputkey: "",
       dynamic: null,
     })
   },
-  goToGoodsList(e){
+  goToGoodsList(e) {
     var kword = e.currentTarget.dataset.kword
     console.log(e)
     wx.navigateTo({
-      url: '/pages/shop/goods_list/goodsList?kword=' + kword,
+      url: '/pages/activity/activity_list/activityList?kword=' + kword,
     })
   },
-  searchSubmit(e){
+  searchSubmit(e) {
     var kword = e.detail.value.replace(/\s+/g, '')
     if (kword) {
       wx.navigateTo({
-        url: '/pages/shop/goods_list/goodsList?kword=' + kword,
+        url: '/pages/activity/activity_list/activityList?kword=' + kword,
       })
     }
   },
-  delHistory(){
+  delHistory() {
     var that = this
-    api.delShopSearchHistory().then(data => {
+    api.delactivitySearchHistory().then(data => {
       wx.showToast({
         icon: "none",
         title: "清除历史搜索成功~",

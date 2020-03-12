@@ -1,0 +1,48 @@
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+  <view slot="content">搜索</view>
+</cu-custom>
+
+<form bindsubmit="searchSubmit" action="">
+<view class="cu-bar search bg-white fixed" style="top:{{CustomBar}}px;">
+  <view class="search-form">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="输入活动名称~" confirm-type="search" focus="true" maxlength="20" bindinput="bindKeyInput" value="{{inputkey}}" bindconfirm="searchSubmit"></input>
+    <text class="cuIcon-roundclosefill text-gray lg" hidden="{{inputkey==''}}" bindtap="clearInput"></text>
+  </view>
+</view>
+</form>
+
+<view style="margin-top:50px" hidden="{{dynamic!=null}}">
+    <view class="flex  padding justify-between" hidden="{{history==''}}">
+      <view class=" margin-xs text-bold"> 历史搜索</view>
+      <view class=" margin-xs" bindtap="delHistory">
+        <text class="cuIcon-delete lg text-gray"></text>
+      </view>
+    </view>
+
+    <view class="padding-left flex flex-wrap tags" hidden="{{history==''}}">
+      <view class="padding-xs" wx:for="{{history}}" wx:key bindtap="goToGoodsList" data-kword="{{item.kword}}">
+        <view class="cu-tag padding radius bg-white">{{item.kword}}</view>
+      </view>
+    </view>
+  <view class="flex  padding justify-start">
+    <view class=" margin-xs text-bold"> 热门搜索</view>
+  </view>
+
+  <view class="padding-left flex flex-wrap tags">
+    <view class="padding-xs" wx:for="{{hot}}" wx:key  bindtap="goToGoodsList" data-kword="{{item.kword}}">
+      <view class="cu-tag padding radius bg-white" >{{item.kword}}</view>
+    </view>
+  </view>
+
+</view>
+
+<view class="dynamic" hidden="{{dynamic==null}}" style="margin-top:50px">
+  <view class="cu-list menu sm-border ">
+    <view class="cu-item" wx:for="{{dynamic}}" wx:key  bindtap="goToGoodsList" data-kword="{{item.kword}}">
+      <view class="content">
+        <text class="text-sm">{{item.kword}}</text>
+      </view>
+    </view>
+  </view>
+</view>

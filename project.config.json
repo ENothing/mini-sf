@@ -205,6 +205,27 @@
 					"pathName": "pages/shop/waybill/waybill",
 					"query": "refund_id=9",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "活动分类",
+					"pathName": "pages/activity/category/category",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "活动搜索页",
+					"pathName": "pages/activity/search/search",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "活动列表页",
+					"pathName": "pages/activity/activity_list/activityList",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

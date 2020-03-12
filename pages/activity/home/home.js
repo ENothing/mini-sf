@@ -76,11 +76,18 @@ Component({
           activityList: arr1 //合并后更新datalist
         })
       })
-    }
+    },
 
-
-
+    goToActivityCates(){
+      wx.navigateTo({
+        url: '/pages/activity/category/category'
+      })
+    },
+    goToSearch() {
+      wx.navigateTo({
+        url: '/pages/activity/search/search'
+      })
+    },
   },
-
 
 })
