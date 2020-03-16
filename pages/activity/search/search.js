@@ -77,11 +77,11 @@ Page({
   },
   searchSubmit(e) {
     var kword = e.detail.value.replace(/\s+/g, '')
-    if (kword) {
+    // if (kword) {
       wx.navigateTo({
         url: '/pages/activity/activity_list/activityList?kword=' + kword,
       })
-    }
+    // }
   },
   delHistory() {
     var that = this

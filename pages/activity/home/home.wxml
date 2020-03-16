@@ -26,7 +26,7 @@
 
 
   <view class="cu-list grid col-3 no-border">
-    <view class="cu-item" wx:for="{{iconList}}" wx:key data-id="{{item.id}}">
+    <view class="cu-item" wx:for="{{iconList}}" wx:key data-id="{{item.id}}" bindtap="goToActivityList">
       <view class="">
         <image class="activity-icon" src="{{item.icon_url}}" mode="aspectFill" style="width:100rpx;height:100rpx"></image>
       </view>

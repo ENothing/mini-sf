@@ -29,4 +29,19 @@ Page({
       id: id
     })
   },
+  goToEnter(e){
+    var id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/activity/enter/enter?id=' + id,
+    }) 
+  },
+  call(e){
+    console.log(e)
+    var mobile = e.currentTarget.dataset.mobile
+    wx.makePhoneCall({
+      phoneNumber: mobile //仅为示例，并非真实的电话号码
+    })
+  },
+  likeOrUnlike(e){
+  }
 })

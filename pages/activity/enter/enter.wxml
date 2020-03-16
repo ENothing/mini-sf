@@ -24,11 +24,11 @@
             <view class="flex  padding-sm justify-start" wx:if="{{activity.mobile != ''}}">
               <view>联系电话：{{activity.mobile}}</view>
             </view>
+            <!-- <view class="flex  padding-sm justify-start">
+              <view>收费类型：{{activity.charge_type == 0 ? '一费制':(activity.charge_type == 1 ? 'AA制':'自费制' )}}</view>
+            </view> -->
             <view class="flex  padding-sm justify-start">
-              <view>收费类型：一费制</view>
-            </view>
-            <view class="flex  padding-sm justify-start">
-              <view>会员价格： <text class="text-red text-xl">{{activity.cur_price}}</text> 元/人(原价：{{activity.ori_price}})</view>
+              <view>会员价格： <text class="text-red text-xl">￥{{activity.cur_price}}</text> 元/人 (原价：￥{{activity.ori_price}})</view>
             </view>
           </view>
         </view>
@@ -42,8 +42,14 @@
             <input placeholder="这里填您的姓名哟~"></input>
           </view>
           <view class="cu-form-group">
+
+
+
+
             <view class="title">性别</view>
             <switch class="switch-sex" checked></switch>
+
+            
           </view>
           <view class="cu-form-group">
             <view class="title">手机号码</view>

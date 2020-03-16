@@ -19,6 +19,7 @@ Page({
    */
   onLoad: function (options) {
     var status = options.status
+    console.log(status)
     var goods_spu_id = options.goods_spu_id
     if (status != undefined && goods_spu_id != undefined && goods_spu_id != 0){
       this.setData({
@@ -100,8 +101,7 @@ Page({
   },
   needGoToOrder(e){
     var id = e.currentTarget.dataset.id
-
-    if(this.page_status != 0){
+    if(this.data.page_status != 0){
       wx.navigateTo({
         url: '/pages/shop/order/order?id=' + this.data.goods_spu_id + "&address_id=" + id,
       })

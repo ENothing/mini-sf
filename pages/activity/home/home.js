@@ -88,6 +88,13 @@ Component({
         url: '/pages/activity/search/search'
       })
     },
+    goToActivityList(e){
+      var cate_id = e.currentTarget.dataset.id
+      console.log(e)
+      wx.navigateTo({
+        url: '/pages/activity/activity_list/activityList?cate_id=' + cate_id,
+      }) 
+    }
   },
 
 })

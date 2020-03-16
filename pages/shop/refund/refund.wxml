@@ -6,7 +6,7 @@
 <form bindsubmit="formSubmit">
   <view class="cu-form-group margin-top">
     <view class="title">退款类型</view>
-    <picker bindchange="bindPickerChange" value="{{rTypeArr[r_index].type}}" range='{{rTypeArr}}' range-key="{{'text'}}" name="rtype">
+    <picker bindchange="bindPickerChange" value="{{index}}" range='{{rTypeArr}}' range-key="{{'text'}}" name="rtype">
       <view class="picker">
         {{rTypeArr[r_index].text}}
       </view>

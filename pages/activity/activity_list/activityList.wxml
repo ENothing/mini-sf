@@ -3,53 +3,32 @@
 </cu-custom>
 
 <view class="search cu-bar bg-white">
-  <navigator class="search-form radius" url="/pages/shop/search/search" hover-class='none'>
+  <navigator class="search-form radius" url="/pages/activity/search/search" hover-class='none'>
     <text class="search-keywords cuIcon-search center text-gray" decode='true'>&ensp;{{kword == ""?'搜索活动':kword}}</text>
   </navigator>
 </view>
 
-<view class="goods_conditions flex text-center align-center bg-white text-gray">
-
-  <view class="cu-item flex {{2==sort_type?'text-orange cur':''}}" bindtap="tabSelect" data-sort-type="2" data-updown="{{updown}}">
-    <view>价格</view>
-    <view class="p_updown">
-      <view class="p_up cuIcon-fold  {{updown==1&&2==sort_type?'text-orange':'text-gray'}} "></view>
-      <view class="p_down cuIcon-unfold {{updown==0&&2==sort_type?'text-orange':'text-gray'}} "></view>
-    </view>
-  </view>
-  <view class="cu-item flex-sub {{3==sort_type?'text-orange cur':''}}" bindtap="tabSelect" data-sort-type="3">
-    新品
-  </view>
-</view>
 
 
 
-
-
-<!-- <scroll-view scroll-x class="bg-white nav">
-
+<scroll-view scroll-x class="bg-white nav">
   <view class="flex text-center">
-    <view class="cu-item ">
-      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-        <view class="picker text-gray">
-          活动类型{{array[index]}}
+    <view class="cu-item flex-sub " bindtap="tabSelect" data-sort="0">
+      <picker bindchange="bindPickerChange" value="{{a_index}}" range='{{activityCates}}' range-key="{{'name'}}">
+        <view class="picker {{0==sort?'text-orange':'text-gray'}}">
+          {{a_index?activityCates[a_index].name:'活动类型'}}
           <text class="cuIcon-unfold"></text>
         </view>
       </picker>
     </view>
-    <view class="cu-item">
-      <view class="flex">
-        <view class="text-gray">
-          时间
-        </view>
-        <view class="">
-          <view class=" cuIcon-fold   "></view>
-          <view class=" cuIcon-unfold "></view>
-        </view>
-      </view>
+    <view class="cu-item flex-sub  {{1==sort?'text-orange':'text-gray'}}" bindtap="tabSelect" data-sort="1" data-time-sort="{{time_sort}}">
+        时间
     </view>
   </view>
-</scroll-view> -->
+</scroll-view>
+
+
+
 <view class="activity_list bg-white">
   <navigator url="/pages/activity/detail/detail?id={{item.id}}" hover-class="none" wx:for="{{activityList}}">
     <view class="activity_item grid col-2">

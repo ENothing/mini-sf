@@ -93,10 +93,20 @@ module.exports = {
       method: "GET"
     })
   },
-  activityList(page) {
+  activityList(page,cateId,sort,kword) {
     return http({
-      url: url.activityList + "?page=" + page,
-      method: "GET"
+      url: url.activityList,
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      method: "GET",
+      data: {
+        page: page,
+        cate_id: cateId,
+        sort: sort,
+        title: kword == undefined ? "" : kword,
+      }
     })
   },
   activityDetail(id) {
