@@ -3,97 +3,106 @@
 </cu-custom>
 
 
-  <view class="UCenter-bg" style="background-image: url({{activity.thumb}})">
+<view class="UCenter-bg" style="background-image: url({{activity.thumb}})">
 
-    <text class='Text-logo'>SOULFIRE</text>
+  <text class='Text-logo'>SOULFIRE</text>
 
-    <view class="cu-card case ">
-      <view class="cu-item shadow container">
+  <view class="cu-card case ">
+    <view class="cu-item shadow container">
 
-        <view class="solids-bottom padding-xs flex align-center">
-          <view class="flex-sub text-center">
-            <view class="solid-bottom text-xl padding">
-              <text class="text-black text-bold">{{activity.title}}</text>
-            </view>
-            <view class="flex  padding-sm justify-start">
-              <view>活动开始时间：{{activity.start_at_format}}</view>
-            </view>
-            <view class="flex  padding-sm justify-start">
-              <view>活动结束时间：{{activity.end_at_format}}</view>
-            </view>
-            <view class="flex  padding-sm justify-start" wx:if="{{activity.mobile != ''}}">
-              <view>联系电话：{{activity.mobile}}</view>
-            </view>
-            <!-- <view class="flex  padding-sm justify-start">
+      <view class="solids-bottom padding-xs flex align-center">
+        <view class="flex-sub text-center">
+          <view class="solid-bottom text-xl padding">
+            <text class="text-black text-bold">{{activity.title}}</text>
+          </view>
+          <view class="flex  padding-sm justify-start">
+            <view>活动开始时间：{{activity.start_at_format}}</view>
+          </view>
+          <view class="flex  padding-sm justify-start">
+            <view>活动结束时间：{{activity.end_at_format}}</view>
+          </view>
+          <view class="flex  padding-sm justify-start" wx:if="{{activity.mobile != ''}}">
+            <view>联系电话：{{activity.mobile}}</view>
+          </view>
+          <!-- <view class="flex  padding-sm justify-start">
               <view>收费类型：{{activity.charge_type == 0 ? '一费制':(activity.charge_type == 1 ? 'AA制':'自费制' )}}</view>
             </view> -->
-            <view class="flex  padding-sm justify-start">
-              <view>会员价格： <text class="text-red text-xl">￥{{activity.cur_price}}</text> 元/人 (原价：￥{{activity.ori_price}})</view>
+          <view class="flex  padding-sm justify-start">
+            <view>会员价格：
+              <text class="text-red text-xl">￥{{activity.cur_price}}</text> 元/人 (原价：￥{{activity.ori_price}})</view>
+          </view>
+        </view>
+      </view>
+      <form bindsubmit="enterSubmit">
+        <view class="cu-form-group">
+          <view class="title">姓名</view>
+          <input placeholder="这里填您的姓名哟~" name="name"></input>
+        </view>
+        <radio-group class="block" name="sex">
+          <view class="cu-form-group">
+            <view class="title">性别</view>
+            <view>
+              <radio class="blue radio" checked value="1"></radio>男
+              <radio class="blue radio" value="2"></radio>女
+            </view>
+          </view>
+        </radio-group>
+        <view class="cu-form-group margin-top">
+          <view class="title">身份证号码</view>
+          <input type="idcard" placeholder="请填写您的身份证号哦~" name="idcard"></input>
+        </view>
+        <view class="cu-form-group">
+          <view class="title">手机号码</view>
+          <input placeholder="方便联系您哦~" name="mobile"></input>
+          <view class="cu-capsule radius">
+            <view class="cu-tag bg-blue">
+              +86
+            </view>
+            <view class="cu-tag line-blue">
+              中国大陆
             </view>
           </view>
         </view>
-
-
-
-
-        <form>
-          <view class="cu-form-group">
-            <view class="title">姓名</view>
-            <input placeholder="这里填您的姓名哟~"></input>
-          </view>
-          <view class="cu-form-group">
-
-
-
-
-            <view class="title">性别</view>
-            <switch class="switch-sex" checked></switch>
-
-            
-          </view>
-          <view class="cu-form-group">
-            <view class="title">手机号码</view>
-            <input placeholder="方便联系您哦~"></input>
-            <view class="cu-capsule radius">
-              <view class="cu-tag bg-blue">
-                +86
-              </view>
-              <view class="cu-tag line-blue">
-                中国大陆
-              </view>
-            </view>
-          </view>
-          <view class="cu-form-group solids-bottom">
-            <view class="title">验证码</view>
-            <input placeholder="验证下啦~"></input>
-            <button class="cu-btn bg-red shadow" bindtap="sendSmS" wx:if="{{countDownNum == 60}}">发送验证码</button>
-            <button class="cu-btn bg-red shadow" wx:else>{{countDownNum}}s</button>
-          </view>
-        </form>
-
-        <view class="flex  padding-top justify-center">
+        <view class="cu-form-group solids-bottom">
+          <view class="title">验证码</view>
+          <input placeholder="验证下啦~" name="code"></input>
+          <button class="cu-btn bg-red shadow" bindtap="sendSmS" wx:if="{{countDownNum == 60}}">发送验证码</button>
+          <button class="cu-btn bg-red shadow" wx:else>{{countDownNum}}s</button>
+        </view>
+        <!-- <view class="flex  padding-top justify-center">
           <view class="grid">
             <view class=" text-center">
-              <button class="cu-btn round bg-blue shadow lg">报名</button>
+              <button class="cu-btn round bg-blue shadow lg" formType="submit">报名</button>
             </view>
           </view>
-        </view>
-
+        </view> -->
         <view class="solids-bottom  flex align-center">
           <view class="flex-sub text-center">
             <view class="solid-bottom text-sm padding">
-              <checkbox class='form-checkbox'></checkbox>
-              <text class="text-black" decode='true'>&ensp;我已阅读 <text class='agreement' bindtap="showProtocol" data-target="Modal">《协议》</text>并同意</text>
+              <checkbox-group name="protocol">
+                <checkbox class='form-checkbox' value="1"></checkbox>
+                <text class="text-black" decode='true'>&ensp;我已阅读 <text class='agreement' bindtap="showProtocol" data-target="Modal" >《协议》</text>并同意</text>
+              </checkbox-group>
             </view>
           </view>
         </view>
-        
-
-      </view>
+      </form>
     </view>
-
-
-
   </view>
 
-  <view class='cu-tabbar-height'></view>
+<view class='cu-tabbar-height'></view>
+
+
+</view>
+
+
+
+
+
+<view class="cu-bar bg-white tabbar border shop foot">
+  <view class='total_price_container text-red'>
+    <text class="total_price_text">实付款：￥6099</text>
+    <text class='total_price'>{{real_price}}</text>
+  </view>
+  <view class="confirm-button bg-red submit" bindtap="goToSubmit">提交订单</view>
+</view>

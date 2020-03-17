@@ -28,20 +28,6 @@ Page({
     console.log(this.data.history)
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
   bindKeyInput(e) {
     var key = e.detail.value.replace(/\s+/g, '')
     console.log(key)

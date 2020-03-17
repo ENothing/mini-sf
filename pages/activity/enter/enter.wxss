@@ -43,3 +43,18 @@
   position: relative;
 
 }
+
+.total_price_container {
+  width: 70%;
+  padding-left: 30rpx;
+}
+
+.total_price_text {
+  font-weight: bold;
+}
+
+.total_price {
+  font-size: 1.3rem;
+  font-weight: bolder;
+  font-stretch: condensed;
+}

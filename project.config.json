@@ -226,6 +226,13 @@
 					"pathName": "pages/activity/activity_list/activityList",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": 26,
+					"name": "活动预订单",
+					"pathName": "pages/activity/order/order",
+					"query": "id=6&item= {\"name\":\"测试\",\"mobile\":\"18400000000\",\"idcard\":\"510000000000\",\"code\":\"2315\",\"sex\":\"1\"}",
+					"scene": null
 				}
 			]
 		}

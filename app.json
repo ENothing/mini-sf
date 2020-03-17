@@ -28,7 +28,8 @@
     "pages/shop/waybill/waybill",
     "pages/activity/category/category",
     "pages/activity/search/search",
-    "pages/activity/activity_list/activityList"
+    "pages/activity/activity_list/activityList",
+    "pages/activity/order_detail/orderDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
