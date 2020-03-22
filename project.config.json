@@ -233,6 +233,13 @@
 					"pathName": "pages/activity/order/order",
 					"query": "id=6&item= {\"name\":\"测试\",\"mobile\":\"18400000000\",\"idcard\":\"510000000000\",\"code\":\"2315\",\"sex\":\"1\"}",
 					"scene": null
+				},
+				{
+					"id": 27,
+					"name": "活动订单详情",
+					"pathName": "pages/activity/order_detail/orderDetail",
+					"query": "id=4",
+					"scene": null
 				}
 			]
 		}

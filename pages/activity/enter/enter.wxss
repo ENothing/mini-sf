@@ -58,3 +58,8 @@
   font-weight: bolder;
   font-stretch: condensed;
 }
+
+.confirm-button{
+  border-radius: unset;
+  font-size: unset
+}

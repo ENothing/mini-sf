@@ -1,2 +1,231 @@
-<!--pages/activity/order_detail/orderDetail.wxml-->
-<text>pages/activity/order_detail/orderDetail.wxml</text>
+<cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
+  <view slot="content">订单详情</view>
+</cu-custom>
+
+
+
+<view class="order_status">
+  <!-- <block wx:if="{{order.refund_id == 0}}"> -->
+  <!-- <view class="o_status" wx:if="{{order.status == 0}}">待付款</view> -->
+  <view class="o_status">待付款</view>
+
+  <!-- <view class="o_status" wx:if="{{order.status != 0 && order.status != 1}}">交易成功</view>
+    <view class="o_status" wx:if="{{order.status == 1}}">订单取消</view>
+  </block> -->
+  <!-- <block wx:else>
+    <view class="o_status" wx:if="{{refund_order.status == 0}}">等待审核</view>
+    <view class="o_status" wx:if="{{refund_order.status == 2}}">
+      退款中
+      <view class="text-black text-sm">48小时内到账</view>
+    </view>
+    <view class="o_status" wx:if="{{refund_order.status == 3}}">已退款</view>
+    <view class="o_status" wx:if="{{refund_order.status == 4}}">退款失败</view>
+    <view class="o_status" wx:if="{{refund_order.status == 5}}">
+      <view wx:if="{{refund_order.r_type == 1}}">同意退款</view>
+      <view wx:if="{{refund_order.r_type == 2}}">同意退款退货</view>
+      <view class="text-black text-sm" wx:if="{{refund_order.r_type == 1}}">48小时内到账</view>
+      <view class="text-black text-sm" wx:if="{{refund_order.r_type == 2}}">等待填写运单信息进行审核</view>
+    </view>
+    <view class="o_status" wx:if="{{refund_order.status == 6}}">
+      <view>等待审核货运信息</view>
+    </view>
+  </block> -->
+</view>
+
+
+
+<view class="cu-card case ">
+  <view class="cu-item shadow">
+    <view class="bg-img bg-mask " style="background-image: url('{{order.activity.thumb}}');height: 300rpx;">
+      <view class="padding text-white">
+        <view class=" ">
+          {{order.activity.title}}
+        </view>
+        <view class="">
+          {{order.activity.intro}}
+        </view>
+        <view class="padding-top flex justify-center align-center">
+          <view>
+            <text decode="true">06月11日&nbsp;&nbsp;</text>
+          </view>
+          <view class="text-center">
+            <view class="text-gray">{{order.activity.price_intro}}</view>
+            <view class="toline"></view>
+            <view class="text-gray">2020.3.17预订</view>
+          </view>
+          <view>
+            <text decode="true">&nbsp;&nbsp;06月13日</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+
+    <view class="order_info cu-bar bg-white margin-top">
+      <view class='order_info_title action'>
+        <text class=' cuIcon-titles text-red '></text>
+        <text>订单信息</text>
+      </view>
+    </view>
+    <view class="order_info_container">
+
+      <view class="order_item_1">
+
+
+        <view class="order_info_item flex justify-between">
+          <view>
+            <text>订单编号</text>
+          </view>
+          <view bindtap='copyOrderNo' data-text="{{order.order_n}}">
+            <text>{{order.order_n}}</text>
+          </view>
+        </view>
+
+
+        <view class="order_info_item flex justify-between">
+          <view>
+            <text>优惠券</text>
+          </view>
+          <view>
+            -
+            <text class="text-price">{{order.discount_price}}</text>
+          </view>
+        </view>
+
+        <view class="order_info_item order_price_container flex justify-between margin-bottom-sm">
+          <view>
+            <text>订单总价</text>
+          </view>
+          <view>
+            <text class="order_price text-price">{{order.real_price}}</text>
+          </view>
+        </view>
+
+      </view>
+
+      <view class="order_item_2">
+
+
+        <view class="order_info cu-bar bg-white">
+          <view class='order_info_title action'>
+            <text class=' cuIcon-titles text-red '></text>
+            <text>个人信息</text>
+          </view>
+        </view>
+
+        <view class="order_info_item flex justify-between">
+          <view>
+            <text>姓名</text>
+          </view>
+          <view>
+            <text>{{order.name}}</text>
+          </view>
+        </view>
+
+
+        <view class="order_info_item flex justify-between">
+          <view>
+            <text>性别</text>
+          </view>
+          <view>
+            <text wx:if="{{order.sex == 1}}">男</text>
+            <text wx:else>女</text>
+          </view>
+        </view>
+        <view class="order_info_item flex justify-between">
+          <view>
+            <text>手机号</text>
+          </view>
+          <view>
+            <text>{{order.mobile}}</text>
+          </view>
+        </view>
+
+        <view class="order_info_item  flex justify-between margin-bottom-sm">
+          <view>
+            <text>证件号</text>
+          </view>
+          <view>
+            <text>{{order.c_num}}</text>
+          </view>
+        </view>
+
+      </view>
+
+
+
+    </view>
+
+
+
+
+
+
+
+
+
+
+
+  </view>
+</view>
+
+
+
+
+
+
+
+
+
+<view class='cu-tabbar-height'></view>
+
+<view class="cu-bar bg-white tabbar  shop foot">
+  <button class="action bg-white" open-type="contact">
+    <view class="cuIcon-service text-red bg-white">
+    </view>
+    客服
+  </button>
+  <block wx:if="{{order.refund_id == 0}}">
+    <view class="bg-red submit" wx:if="{{order.status == 0}}">确认付款</view>
+    <view class="margin-right-sm text-center" wx:if="{{order.status == 1}}">
+      <button class="cu-btn round bg-white shadow">删除订单</button>
+    </view>
+    <view class="margin-right-sm text-center" wx:if="{{order.status >= 2}}">
+      <button class="cu-btn margin-right-sm round bg-white shadow" bindtap="goToRefund">申请退款</button>
+      <button class="cu-btn margin-right-sm round bg-white shadow">查看物流</button>
+      <button class="cu-btn round bg-red shadow" wx:if="{{order.status == 3}}">确认收货</button>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="margin-right-sm text-center">
+      <button class="cu-btn margin-right-sm round bg-white shadow" wx:if="{{refund_order.status == 0}}">取消退款</button>
+      <button class="cu-btn margin-right-sm round bg-white shadow" wx:if="{{refund_order.status == 4}}" bindtap="showModal" data-target="DialogModal2">查看驳回理由</button>
+      <button class="cu-btn round bg-white shadow" wx:if="{{refund_order.status == 3}}">删除订单</button>
+      <button class="cu-btn round bg-white shadow" wx:if="{{refund_order.status == 5 && refund_order.r_type == 2 }}" bindtap="goToWaybill" data-refund-id="{{refund_order.id}}">填写运单信息</button>
+    </view>
+  </block>
+
+
+</view>
+
+<view class="cu-modal {{modalName=='DialogModal2'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">驳回理由</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      {{refund_order.reply_reason}}
+    </view>
+    <view class="cu-bar bg-white">
+      <view class="action margin-0 flex-sub text-red">
+        <text class="cuIcon-service"></text>
+        <button class="modal-button" open-type="contact">联系客服</button>
+      </view>
+      <view class="action margin-0 flex-sub  solid-left" bindtap="hideModal">确定</view>
+    </view>
+  </view>
+</view>

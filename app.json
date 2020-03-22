@@ -29,7 +29,8 @@
     "pages/activity/category/category",
     "pages/activity/search/search",
     "pages/activity/activity_list/activityList",
-    "pages/activity/order_detail/orderDetail"
+    "pages/activity/order_detail/orderDetail",
+    "pages/activity/pay_result/payResult"
   ],
   "window": {
     "backgroundTextStyle": "light",

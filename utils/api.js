@@ -15,6 +15,8 @@ var url = {
 
   activityList: "/activity/list",
   activityDetail: "/activity/detail",
+  activityEnter:"/activity/enter",
+  activityOrderDetail:"/activity/order",
 
   activitySearchHistory: "/activity/search_history",
   activityDynamicHistory: "/activity/dynamic_history",
@@ -115,6 +117,39 @@ module.exports = {
       method: "GET"
     })
   },
+  activityEnter(data){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.activityEnter,
+      method: "POST",
+      data: {
+        id: data.id,
+        name: data.name == undefined ? "" : data.name,
+        gender: data.sex,
+        c_type: data.c_type,
+        c_num: data.c_num == undefined ? "" : data.c_num,
+        mobile: data.mobile == undefined ? "" : data.mobile,
+        sms_code: data.code == undefined ? "" : data.code ,
+        person_num: data.person_num == undefined ? 1 : data.person_num ,
+
+      }
+    })
+  },
+  activityOrderDetail(id){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.activityOrderDetail + "/" + id,
+      method: "GET"
+    })
+  },
+
+
 
   activitySearchHistory() {
     return http({

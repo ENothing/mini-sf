@@ -6,39 +6,44 @@
 <view class="UCenter-bg" style="background-image: url({{activity.thumb}})">
 
   <text class='Text-logo'>SOULFIRE</text>
+  <form bindsubmit="enterSubmit">
 
-  <view class="cu-card case ">
-    <view class="cu-item shadow container">
+    <view class="cu-card case ">
+      <view class="cu-item shadow container">
 
-      <view class="solids-bottom padding-xs flex align-center">
-        <view class="flex-sub text-center">
-          <view class="solid-bottom text-xl padding">
-            <text class="text-black text-bold">{{activity.title}}</text>
-          </view>
-          <view class="flex  padding-sm justify-start">
-            <view>活动开始时间：{{activity.start_at_format}}</view>
-          </view>
-          <view class="flex  padding-sm justify-start">
-            <view>活动结束时间：{{activity.end_at_format}}</view>
-          </view>
-          <view class="flex  padding-sm justify-start" wx:if="{{activity.mobile != ''}}">
-            <view>联系电话：{{activity.mobile}}</view>
-          </view>
-          <!-- <view class="flex  padding-sm justify-start">
+        <view class="solids-bottom padding-xs flex align-center">
+          <view class="flex-sub text-center">
+            <view class="solid-bottom text-xl padding">
+              <text class="text-black text-bold">{{activity.title}}</text>
+            </view>
+            <view class="flex  padding-sm justify-start">
+              <view>活动开始时间：{{activity.start_at_format}}</view>
+            </view>
+            <view class="flex  padding-sm justify-start">
+              <view>活动结束时间：{{activity.end_at_format}}</view>
+            </view>
+            <view class="flex  padding-sm justify-start" wx:if="{{activity.mobile != ''}}">
+              <view>联系电话：{{activity.mobile}}</view>
+            </view>
+            <!-- <view class="flex  padding-sm justify-start">
               <view>收费类型：{{activity.charge_type == 0 ? '一费制':(activity.charge_type == 1 ? 'AA制':'自费制' )}}</view>
             </view> -->
-          <view class="flex  padding-sm justify-start">
-            <view>会员价格：
-              <text class="text-red text-xl">￥{{activity.cur_price}}</text> 元/人 (原价：￥{{activity.ori_price}})</view>
+            <view class="flex  padding-sm justify-start">
+              <view>会员价格：
+                <text class="text-red text-xl">￥{{activity.cur_price}}</text> (原价：￥{{activity.ori_price}})</view>
+            </view>
+            <view class="flex  padding-sm justify-start">
+              <view>价格说明：
+                <text>{{activity.price_intro}}</text>
+              </view>
+            </view>
           </view>
         </view>
-      </view>
-      <form bindsubmit="enterSubmit">
-        <view class="cu-form-group">
+        <view class="cu-form-group ">
           <view class="title">姓名</view>
           <input placeholder="这里填您的姓名哟~" name="name"></input>
         </view>
-        <radio-group class="block" name="sex">
+        <radio-group class="block " name="sex">
           <view class="cu-form-group">
             <view class="title">性别</view>
             <view>
@@ -47,13 +52,21 @@
             </view>
           </view>
         </radio-group>
-        <view class="cu-form-group margin-top">
-          <view class="title">身份证号码</view>
-          <input type="idcard" placeholder="请填写您的身份证号哦~" name="idcard"></input>
+        <view class="cu-form-group">
+          <view class="title">证件类型</view>
+          <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}" name="c_type">
+            <view class="picker">
+              {{index?picker[index]:'选择证件类型'}}
+            </view>
+          </picker>
+        </view>
+        <view class="cu-form-group ">
+          <view class="title">证件号码</view>
+          <input type="idcard" placeholder="请填写您的证件号哦~" name="c_num"></input>
         </view>
         <view class="cu-form-group">
           <view class="title">手机号码</view>
-          <input placeholder="方便联系您哦~" name="mobile"></input>
+          <input placeholder="方便联系您哦~" name="mobile" bindinput="bindMobileInput"></input>
           <view class="cu-capsule radius">
             <view class="cu-tag bg-blue">
               +86
@@ -86,23 +99,17 @@
             </view>
           </view>
         </view>
-      </form>
+      </view>
     </view>
-  </view>
 
-<view class='cu-tabbar-height'></view>
+    <view class='cu-tabbar-height'></view>
+    <view class="cu-bar bg-white tabbar border shop foot">
+      <view class='total_price_container text-red'>
+        <text class="total_price_text">实付款：￥</text>
+        <text class='total_price'>{{activity.cur_price}}</text>
+      </view>
+      <button class="confirm-button bg-red submit" formType="submit">提交订单</button>
+    </view>
+  </form>
 
-
-</view>
-
-
-
-
-
-<view class="cu-bar bg-white tabbar border shop foot">
-  <view class='total_price_container text-red'>
-    <text class="total_price_text">实付款：￥6099</text>
-    <text class='total_price'>{{real_price}}</text>
-  </view>
-  <view class="confirm-button bg-red submit" bindtap="goToSubmit">提交订单</view>
 </view>

@@ -1,1 +1,51 @@
-/* pages/activity/order_detail/orderDetail.wxss */
+.order_status {
+  height: 150rpx;
+  background: #ee4662;
+}
+
+.o_status {
+  color: #fff;
+  padding: 30rpx 0 0 50rpx;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.toline{
+width:360rpx;
+margin:0 auto;
+border: 0;
+height: 0;
+border-top: 1px solid rgba(0, 0, 0, 0.1);
+border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+}
+
+.order_info {
+  margin-top: 20rpx;
+}
+
+.order_info_title {
+  font-size: 0.9rem !important;
+}
+
+.order_info_container {
+  background: #fff;
+}
+
+.order_info_item {
+  padding: 10rpx 50rpx;
+}
+
+.order_price_container {
+  border-bottom: 8rpx solid #f1f1f1;
+}
+
+.order_price {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.order_item_1.order_item_2.order_item_3 {
+  font-size: 0.8rem;
+}
+

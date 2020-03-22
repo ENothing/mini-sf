@@ -9,8 +9,10 @@ Page({
   data: {
     id: "",
     activity: "",
-    countDownNum: 60
-
+    countDownNum: 60,
+    picker: ['居民身份证', '护照'],
+    index: null,
+    mobile:""
   },
 
   /**
@@ -30,6 +32,12 @@ Page({
       id: id
     })
   },
+  PickerChange(e) {
+    console.log(e);
+    this.setData({
+      index: e.detail.value
+    })
+  },
   goToOrder(e) {
     wx.navigateTo({
       url: '/pages/activity/activity_list/activityList?kword=' + kword,
@@ -39,28 +47,38 @@ Page({
     var protocol = e.detail.value.protocol
     var name = e.detail.value.name
     var mobile = e.detail.value.mobile
-    var idcard = e.detail.value.idcard
+    var c_type = e.detail.value.c_type
+    var c_num = e.detail.value.c_num
     var code = e.detail.value.code
     var sex = e.detail.value.sex
 
-    if(name == ""){
+    console.log(e)
+    if (name == "") {
       wx.showToast({
         icon: "none",
         title: "请填写姓名哦~",
-      }) 
+      })
+      return;
+    }
+
+    if (c_type == null) {
+      wx.showToast({
+        icon: "none",
+        title: "请选择证件类型哦~",
+      })
+      return;
+    }
+    if (c_num == "") {
+      wx.showToast({
+        icon: "none",
+        title: "请填写证件号码哦~",
+      })
       return;
     }
     if (mobile == "") {
       wx.showToast({
         icon: "none",
         title: "请填写手机号码哦~",
-      })
-      return;
-    }
-    if (idcard == "") {
-      wx.showToast({
-        icon: "none",
-        title: "请填写身份证号码哦~",
       })
       return;
     }
@@ -79,25 +97,42 @@ Page({
       return;
     }
     var data = {
-      name:name,
+      id: this.data.id,
+      name: name,
       mobile: mobile,
-      idcard: idcard,
+      c_type: c_type,
+      c_num: c_num,
       code: code,
-      sex:sex
+      sex: sex
     }
+    api.activityEnter(data).then(resData => {
+      wx.navigateTo({
+        url: '/pages/activity/pay_result/payResult?order_id=' + resData,
+      })
+    })
 
-
-    data = JSON.stringify(data)
-
-    console.log(data)
-
-    wx.navigateTo({
-      url: '/pages/activity/order/order?id='+this.data.id+'&item=' + data,
+  },
+  bindMobileInput(e){
+    this.setData({
+      mobile:e.detail.value
     })
   },
   sendSmS() {
+    var mobile = this.data.mobile
+    var mobileReg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+    if (!mobileReg.test(mobile)) {
+      wx.showToast({
+        icon: "none",
+        title: "手机号有误哦~",
+      })
+      return;
+    }
     if (this.data.countDownNum == 60) {
       this.countDown();
+      wx.showToast({
+        icon: "none",
+        title: "验证码发送成功~",
+      })
     }
   },
   countDown: function() {
