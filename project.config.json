@@ -238,7 +238,21 @@
 					"id": 27,
 					"name": "活动订单详情",
 					"pathName": "pages/activity/order_detail/orderDetail",
-					"query": "id=4",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": 28,
+					"name": "活动申请退款",
+					"pathName": "pages/activity/refund/refund",
+					"query": "order_id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "活动订单列表",
+					"pathName": "pages/personal/aorder/aorder",
+					"query": "",
 					"scene": null
 				}
 			]

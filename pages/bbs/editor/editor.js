@@ -1,3 +1,5 @@
+import api from '../../../utils/api.js'
+
 Page({
   data: {
     formats: {},
@@ -5,15 +7,22 @@ Page({
     editorHeight: 400,
     keyboardHeight: 0,
     isIOS: false,
-    picker: ['喵喵喵', '汪汪汪', '哼唧哼唧'],
+    picker: [],
     imgList: [],
   },
-  readOnlyChange() {
-    this.setData({
-      readOnly: !this.data.readOnly
-    })
-  },
   onLoad() {
+    api.articleCate(this.data.order_id).then(data => {
+      this.setData({
+        picker: data
+      })
+
+    })
+
+
+
+
+
+
     const platform = wx.getSystemInfoSync().platform
     const isIOS = platform === 'ios'
     this.setData({

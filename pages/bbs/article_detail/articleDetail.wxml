@@ -37,7 +37,7 @@
 </view>
 
 <view class="article_content bg-white">
-  <rich-text nodes="{{article_detail.content}}"></rich-text>
+  <parser html="{{article_detail.content}}" />
   <view class="padding-top bg-white text-gray text-sm">{{article_detail.created_at_format}}</view>
 
 </view>
@@ -64,14 +64,19 @@
       <view class="comment_content padding-sm text-black">
         {{item.content}}
       </view>
-      <view class="reply_container padding-sm bg-gray radius" wx:for="{{item.sub_comments}}" wx:for-item="sub_item" >
+      <view class="flex padding-xs justify-end" bindtap="Reply" data-id="{{item.id}}" data-reply-id="{{item.user_id}}" data-username="{{item.username}}">
+        <view class=" margin-xs radius">回复</view>
+      </view>
+      <view class="reply_container padding-sm bg-gray radius" wx:for="{{item.sub_comments}}" wx:for-item="sub_item">
         <view class="reply_content" wx:if="{{item.user_id == sub_item.reply_id}}">
-          <text class="text-blue">{{sub_item.username}}</text>：{{sub_item.content}}
+          <text class="text-blue" bindtap="Reply" data-id="{{sub_item.parent_id}}" data-reply-id="{{sub_item.user_id}}" data-username="{{sub_item.username}}">{{sub_item.username}}</text>：
+          <text>{{sub_item.content}}</text>
         </view>
         <view class="reply_content" wx:else>
-          <text class="text-blue">{{sub_item.username}}</text>
+          <text class="text-blue" bindtap="Reply" data-id="{{sub_item.parent_id}}" data-reply-id="{{sub_item.user_id}}" data-username="{{sub_item.username}}">{{sub_item.username}}</text>
           <text decode="true">&ensp;回复&nbsp;</text>
-          <text class="text-blue">@ {{sub_item.reply_username}}</text>：{{sub_item.content}}
+          <text class="text-blue" bindtap="Reply" data-id="{{sub_item.parent_id}}" data-reply-id="{{sub_item.reply_id}}" data-username="{{sub_item.reply_username}}"> {{sub_item.reply_username}}</text>：
+          <text>{{sub_item.content}}</text>
         </view>
       </view>
     </view>
@@ -85,30 +90,30 @@
 <view class='cu-tabbar-height'></view>
 
 
-  <view class="cu-bar bg-white tabbar border shop foot" hidden="{{comment_textarea == 0 ? false:true}}">
-    <view class="search-form round">
-      <text class="cuIcon-write"></text>
-      <input type="text" placeholder="说点什么 . . ." disabled="disabled" bindtap="getTextarea" value="{{input_val}}"></input>
-    </view>
-     <view class="action" wx:if="{{article_detail.liked == true}}">
-      <view class="cuIcon-likefill text-red"></view>{{article_detail.likes}}
-    </view>
-    <view class="action" wx:else>
-      <view class="cuIcon-like"></view>{{article_detail.likes}}
-    </view>
-    <view class="action">
-      <view class="cuIcon-favor"></view> {{article_detail.favor}}
-    </view>
-    <!-- <view class="action">
+<view class="cu-bar bg-white tabbar border shop foot" hidden="{{comment_textarea == 0 ? false:true}}">
+  <view class="search-form round">
+    <text class="{{icon}}" bindtap="clearAt"></text>
+    <input type="text" placeholder="{{placeholder}}" disabled="disabled" bindtap="getTextarea" value="{{input_val}}"></input>
+  </view>
+  <view class="action" wx:if="{{article_detail.liked == true}}">
+    <view class="cuIcon-likefill text-red"></view>{{article_detail.likes}}
+  </view>
+  <view class="action" wx:else>
+    <view class="cuIcon-like"></view>{{article_detail.likes}}
+  </view>
+  <view class="action">
+    <view class="cuIcon-attentionfill"></view> {{article_detail.view}}
+  </view>
+  <!-- <view class="action">
       <view class="cuIcon-comment"></view> 238
     </view> -->
-  </view>
+</view>
 
-  <form bindsubmit="postComment"  class="back-page" hidden="{{comment_textarea == 0 ? true:false}}">
-    <view class="release">
-        <textarea  autoHeight="true" bindblur="hideKeyboard"  class="text" cursorSpacing="20" fixed="true" focus="{{focus}}" placeholder="说点什么..." placeholderClass="input_null" showConfirmBar="" name="comment"></textarea>
-          <view class="margin-tb-sm text-center" >
-    <button class="cu-btn round bg-red shadow submit"  form-type="submit">发送</button>
-  </view>
+<form bindsubmit="postComment" class="back-page" hidden="{{comment_textarea == 0 ? true:false}}">
+  <view class="release">
+    <textarea autoHeight="true" bindblur="hideKeyboard" class="text" cursorSpacing="20" fixed="true" focus="{{focus}}" placeholder="{{placeholder}}" placeholderClass="input_null" showConfirmBar="" name="comment" value="{{input_val}}"></textarea>
+    <view class="margin-tb-sm text-center">
+      <button class="cu-btn round bg-red shadow submit" form-type="submit">发送</button>
     </view>
+  </view>
 </form>

@@ -22,9 +22,17 @@ var url = {
   activityDynamicHistory: "/activity/dynamic_history",
   delactivitySearchHistory: "/activity/del_search_history",
 
+  activityInitiateRefund: "/activity/initiate_refund",
+  activityFinish: "/activity/finish",
+  activityOrderList:"/activity/order_list",
+  
+
   articleList: "/bbs/list",
   articleDetail: "/bbs/detail",
   articleCommentList: "/bbs/comment_list",
+  articleCate:"/bbs/article_cate",
+
+  articleCommentPost: "/bbs/post_comment",
 
   shopIndex: "/shop/index",
   shopGoodsList: "/shop/list",
@@ -174,7 +182,6 @@ module.exports = {
       }
     })
   },
-
   delactivitySearchHistory() {
     return http({
       header: {
@@ -185,6 +192,46 @@ module.exports = {
       method: "GET",
     })
   },
+
+  activityInitiateRefund(order_id, reason){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.activityInitiateRefund,
+      method: "POST",
+      data: {
+        order_id: order_id,
+        reason: reason,
+      }
+    })
+  },
+  activityFinish(id){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.activityFinish + "/" + id ,
+      method: "GET",
+    })
+  },
+  activityOrderList(page,status){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.activityOrderList,
+      method: "GET",
+      data: {
+        page: page,
+        status: status == undefined ? 0 : status,
+      }
+    })
+  },
+
 
   articleList(page) {
     return http({
@@ -206,14 +253,40 @@ module.exports = {
       method: "GET"
     })
   },
-  articleCommentList(id) {
+  articleCate(){
+    return http({
+      url: url.articleCate,
+      method: "GET"
+    })
+  },
+  articleCommentList(id,page) {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
         "Authorization": "Bearer " + base_token
       },
-      url: url.articleCommentList + "?article_id=" + id,
-      method: "GET"
+      url: url.articleCommentList,
+      method: "GET",
+      data: {
+        page: page,
+        article_id:id
+      }
+    })
+  },
+  articleCommentPost(data){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.articleCommentPost,
+      method: "POST",
+      data: {
+        id: data.id,
+        parent_id: data.parent_id,
+        reply_id: data.reply_id,
+        content: data.content
+      }
     })
   },
 

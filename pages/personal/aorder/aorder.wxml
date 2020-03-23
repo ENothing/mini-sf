@@ -6,58 +6,138 @@
 
 <scroll-view scroll-x class="bg-white nav text-center fixed" style="top:{{CustomBar}}px">
   <view class="flex text-center">
-    <view class="cu-item flex-sub {{index==TabCur?'text-red cur':''}}" wx:for="{{tabNav}}" wx:key bindtap='tabSelect' data-id="{{index}}">
-      {{tabNav[index]}}
+    <view class="cu-item flex-sub {{status=='' ?'text-red cur':''}}" bindtap='tabSelect' data-id="">
+      全部
     </view>
-
+    <view class="cu-item flex-sub {{status=='0' ?'text-red cur':''}}" bindtap='tabSelect' data-id="0">
+      待付款
+    </view>
+    <view class="cu-item flex-sub {{status=='2'?'text-red cur':''}}" bindtap='tabSelect' data-id="2">
+      已付款
+    </view>
+    <view class="cu-item flex-sub {{status=='3'?'text-red cur':''}}" bindtap='tabSelect' data-id="3">
+      已完成
+    </view>
+    <view class="cu-item flex-sub {{status=='4'?'text-red cur':''}}" bindtap='tabSelect' data-id="4">
+      退款
+    </view>
   </view>
 
 </scroll-view>
 
 
-<view class="margin-top bg-white">
+<view class="main_container">
 
-  <view class="order_container">
-
-    <view class="order_status">
-      交易成功
-    </view>
+  <view class="f_order_container bg-white shadow-warp" wx:for="{{orders}}">
 
 
 
+    <view class="order_container ">
 
-    <view class="cu-item">
-      <view class="grid col-2">
-        <view class="goods_thumb_container">
-          <image class="goods_thumb" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1878991123,2355764567&fm=26&gp=0.jpg"></image>
-        </view>
-        <view class="miscellaneous_container">
-          <text class="goods_name">adidas Yeezy 700 Wave Runner Solid Grey</text>
-          <view class="size_num_price_container">
-            <view class="flex  justify-between">
+      <view class="solid-bottom">
+
+        <block wx:if="{{item.refund_id == 0}}">
+
+          <view class="order_status" wx:if="{{item.status == 0}}">
+            待付款
+          </view>
+          <view class="order_status" wx:if="{{item.status == 1}}">
+            订单取消
+          </view>
+          <view class="order_status" wx:if="{{item.status == 2}}">
+            已付款
+          </view>
+          <view class="order_status" wx:if="{{item.status == 3}}">
+            已完成
+          </view>
+        </block>
+        <block wx:else>
+
+          <view class="order_status" wx:if="{{item.activity_refund_order.status == 0}}">
+            等待审核
+          </view>
+          <view class="order_status" wx:if="{{item.activity_refund_order.status == 1}}">
+            取消退款
+          </view>
+          <view class="order_status" wx:if="{{item.activity_refund_order.status == 2}}">
+            退款中
+          </view>
+          <view class="order_status" wx:if="{{item.activity_refund_order.status == 3}}">
+            已退款
+          </view>
+          <view class="order_status" wx:if="{{item.activity_refund_order.status == 4}}">
+            退款失败
+          </view>
+          <view class="order_status" wx:if="{{item.activity_refund_order.status == 5}}">
+            同意退款
+          </view>
+
+
+        </block>
+      </view>
+      <view class="cu-item" bindtap="goToOrderDetail" data-id="{{item.id}}">
+        <view class="  " style="height: 200rpx;">
+          <view class="padding text-white">
+            <view class="padding-left-sm text-black text-cut text-bold">
+              {{item.activity.title}}
+            </view>
+            <!-- <view class="">
+              {{item.activity.intro}}
+            </view> -->
+            <view class="padding-top flex justify-center align-center">
               <view>
-                <text class="size_and_num" decode="true">L码&ensp;数量x1</text>
+                <text class="text-black" decode="true">{{item.activity.start_at_format}}&nbsp;&nbsp;</text>
+              </view>
+              <view class="text-center">
+                <view class="text-gray">{{item.activity.price_intro}}</view>
+                <view class="toline"></view>
+                <view class="text-gray">{{item.created_at_format}}预订</view>
               </view>
               <view>
-                <text class="price text-bold text-black text-price">2749</text>
+                <text class="text-black" decode="true">&nbsp;&nbsp;{{item.activity.end_at_format}}</text>
               </view>
             </view>
           </view>
         </view>
       </view>
-    </view>
+
+      <view class="op padding-top-lg">
+        <view class="flex   justify-between">
+          <view class="padding-top-xs padding-left-xl padding-bottom-xl radius text-price text-xl text-red">{{item.real_price}}</view>
+          <view class="  radius">
+
+            <block wx:if="{{item.refund_id == 0}}">
+              <view class="flex  justify-end" wx:if="{{item.status == 0}}">
+                <view class="solid  bg-red padding-xs margin-xs radius">确认付款</view>
+                <view class="solid  padding-xs margin-xs radius">取消订单</view>
+              </view>
+              <view class="flex  padding-xs justify-end" wx:if="{{item.status == 2}}">
+                <view class="solid  bg-red  padding-xs margin-xs radius">确认完成</view>
+              </view>
+              <view class="flex  padding-xs justify-end" wx:if="{{item.status == 3}}">
+                <view class="solid   padding-xs margin-xs radius">删除订单</view>
+              </view>
+            </block>
+            <block wx:else>
+              <view class="flex  padding-xs justify-end" wx:if="{{item.activity_refund_order.status == 0 }}">
+                <view class="solid   padding-xs margin-xs radius">取消退款</view>
+              </view>
+              <view class="flex  padding-xs justify-end" wx:if="{{item.activity_refund_order.status == 3}}">
+                <view class="solid   padding-xs margin-xs radius">删除订单</view>
+              </view>
+            </block>
 
 
 
+          </view>
+        </view>
 
 
-    <view class="op">
-      <view class="flex justify-end op_buttons">
-        <view class="checkpay">确认付款</view>
+
       </view>
+
     </view>
 
   </view>
-
-
 </view>
+<view class='cu-tabbar-height'></view>

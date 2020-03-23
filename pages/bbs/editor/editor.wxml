@@ -1,15 +1,17 @@
 <cu-custom bgColor="bg-gradual-red" isCustom="{{true}}">
   <view slot="content">文章发布</view>
 </cu-custom>
+
+<form>
 <view class="cu-form-group">
   <view class="title">标题</view>
   <input placeholder="填入您想取的名字哦~"></input>
 </view>
 <view class="cu-form-group">
   <view class="title">文章类型</view>
-  <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+  <picker bindchange="PickerChange" value="{{picker[index].id}}" range='{{picker}}' range-key="{{'name'}}">
     <view class="picker">
-      {{index?picker[index]:'加个分类哦~'}}
+      {{index?picker[index].name:'加个分类哦~'}}
     </view>
   </picker>
 </view>
@@ -62,3 +64,4 @@
 <view class="cu-bar btn-group tabbar  foot">
   <button class="cu-btn bg-red shadow-blur round lg">发布</button>
 </view>
+</form>

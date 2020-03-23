@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "parser": "/../../parser.min/parser"
+  }
 }

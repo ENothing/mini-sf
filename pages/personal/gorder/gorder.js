@@ -47,7 +47,8 @@ Page({
       console.log(data)
       this.setData({
         orders: data.orders,
-        last_page: data.last_page
+        last_page: data.last_page,
+        page: 1
       })
     })
     this.setData({

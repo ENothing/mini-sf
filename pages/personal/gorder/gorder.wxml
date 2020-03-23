@@ -22,7 +22,7 @@
       已完成
     </view>
     <view class="cu-item flex-sub {{status=='5'?'text-red cur':''}}" bindtap='tabSelect' data-id="5">
-      退款中
+      退款
     </view>
   </view>
 
@@ -132,3 +132,4 @@
 
   </view>
 </view>
+<view class='cu-tabbar-height'></view>

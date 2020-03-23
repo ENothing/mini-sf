@@ -20,26 +20,51 @@ Page({
       order_id:order_id
     })
 
+  },
+  onShow: function (options) {
+    console.log(123)
 
-
-
-    api.activityOrderDetail(order_id).then(data => {
+    api.activityOrderDetail(this.data.order_id).then(data => {
       console.log(data)
       this.setData({
-        order:data
+        order: data
       })
 
     })
-
-
-
-
-
-
-
-
-
   },
-
-
+  showModal(e) {
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    })
+  },
+  copyOrderNo: function (e) {
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.text,
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            wx.showToast({
+              title: '复制成功'
+            })
+          }
+        })
+      }
+    })
+  },
+  goToRefund(){
+    wx.navigateTo({
+      url: '/pages/activity/refund/refund?order_id=' + this.data.order_id,
+    })
+  },
+  finishOrder(){
+    api.activityFinish(this.data.order_id).then(data => {
+      
+      this.onShow() 
+    })
+  }
 })

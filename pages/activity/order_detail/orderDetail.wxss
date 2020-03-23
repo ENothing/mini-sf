@@ -49,3 +49,25 @@ border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   font-size: 0.8rem;
 }
 
+.modal-button {
+  background-color: rgb(247, 247, 247);
+  border-radius: 0rpx;
+  padding: 0rpx;
+  margin: 0rpx;
+  /* display: inline-block; */
+  line-height: unset;
+  font-size: 0.75rem;
+  color: rgb(233, 104, 66)
+}
+
+.modal-button::after {
+  /*button的边框样式是通过::after方式实现的*/
+  border: none;
+}
+
+.modal-button-hover {
+  /*点击后样式*/
+  color: #f1f1f1;
+  background-color: rgb(247, 247, 247);
+}
+
