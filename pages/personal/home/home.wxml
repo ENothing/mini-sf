@@ -1,122 +1,117 @@
 <view class="UCenter-bg">
-
-
-  <view class="flex padding-top-xl justify-center">
-    <view class="personal cu-avatar xl round avatar" style="background-image:url({{userInfo == null ?'/images/default_head.jpg':userInfo.avatarUrl}});" ></view>
+  <image src="{{userInfo == null ?'/images/default_head.jpg':userInfo.avatarUrl}}" class="png cu-avatar xl round avatar" mode="widthFix"></image>
+  <view class="text-xl">
+    <text class="personal text-white nickname padding-top-sm">{{userInfo == null?'请先登录':userInfo.nickName}}</text>
   </view>
-  <view class="  flex align-center" >
-    <view class="flex-sub text-center">
-      <view class=" text-lg padding-top-xl" >
-        <text class="personal text-white nickname" >{{userInfo == null?'请先登录':userInfo.nickName}}</text>
-      </view>
-    </view>
-  </view>
-
-
-
-
-  <!-- <view class="flex justify-center padding-top personal-text">
-    <text class=" personal cuIcon-crown text-xl text-yellow"></text>
-    <text class="text-white">Vehocle ID:001</text>
-  </view> -->
-
   <image src="/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+</view>
+<view class="padding flex text-center text-grey bg-white shadow-warp">
+  <view class="flex flex-sub flex-direction solid-right">
+    <view class="text-xxl text-orange">{{follows}}</view>
+    <view class="margin-top-sm">
+      <text class="cuIcon-attentionfill"></text> 关注</view>
+  </view>
+  <view class="flex flex-sub flex-direction solid-right">
+    <view class="text-xxl text-blue">{{is_followed}}</view>
+    <view class="margin-top-sm">
+      <text class="cuIcon-friendfill"></text> 粉丝</view>
+  </view>
+</view>
+
+<view class="cu-card case ">
+  <view class="cu-item  container ">
 
 
-  <view class="cu-card case ">
-    <view class="cu-item shadow container">
+    <view class="cu-list menu sm-border card-menu ">
 
-
-      <view class="cu-list menu sm-border card-menu">
-
-        <!-- <navigator class="cu-item arrow" url="/pages/personal/setting/setting">
+      <!-- <navigator class="cu-item arrow" url="/pages/personal/setting/setting">
           <view class="content">
             <text class="cuIcon-profile lg text-grey"></text>
             <text class="text-grey">设置</text>
           </view>
         </navigator> -->
 
-        <view class="cu-list grid col-3 no-border">
+      <view class="cu-list grid col-3 no-border">
 
-          <view class="cu-item">
-            <navigator url="/pages/personal/aorder/aorder" hover-class="none">
-              <view class="cuIcon-formfill text-red">
-              </view>
-              <text>活动订单</text>
-            </navigator>
-          </view>
+        <view class="cu-item">
+          <navigator url="/pages/personal/aorder/aorder" hover-class="none">
+            <view class="cuIcon-formfill text-red">
+              <view class="cu-tag badge">{{aorder}}</view>
+            </view>
+            <text>活动订单</text>
+          </navigator>
+        </view>
 
 
-          <view class="cu-item">
-            <navigator url="/pages/personal/gorder/gorder" hover-class="none">
-              <view class="cuIcon-formfill text-orange">
-              </view>
-              <text>商品订单</text>
-            </navigator>
-          </view>
+        <view class="cu-item">
+          <navigator url="/pages/personal/gorder/gorder" hover-class="none">
+            <view class="cuIcon-formfill text-orange">
+              <view class="cu-tag badge">{{sorder}}</view>
+            </view>
+            <text>商品订单</text>
+          </navigator>
+        </view>
 
-          <view class="cu-item">
-            <navigator url="/pages/personal/coupon/coupon" hover-class="none">
+        <view class="cu-item">
+          <navigator url="/pages/personal/coupon/coupon" hover-class="none">
 
-              <view class="cuIcon-card text-purple">
-              </view>
-              <text>卡券</text>
-            </navigator>
+            <view class="cuIcon-card text-purple">
+            </view>
+            <text>卡券</text>
+          </navigator>
 
-          </view>
-          <view class="cu-item">
+        </view>
+        <!-- <view class="cu-item">
             <view class="cuIcon-notificationfill text-yellow">
             </view>
             <text>消息通知</text>
-          </view>
-          <view class="cu-item">
+          </view> -->
+        <view class="cu-item">
+          <navigator url="/pages/personal/likes/likes" hover-class="none">
             <view class="cuIcon-likefill text-red">
             </view>
-            <text>收藏</text>
-          </view>
+            <text>喜欢</text>
+          </navigator>
+        </view>
 
-          <view class="cu-item">
-            <navigator url="/pages/personal/address/address" hover-class="none">
-              <view class="cuIcon-locationfill text-mauve">
-              </view>
-              <text>地址管理</text>
-            </navigator>
-          </view>
-
-          <view class="cu-item">
-            <navigator url="/pages/personal/feedback/feedback" hover-class="none">
-              <view class="cuIcon-writefill text-olive">
-              </view>
-              <text>反馈及建议</text>
-            </navigator>
-          </view>
-
-          <view class="cu-item">
-            <view class="cuIcon-activityfill text-cyan">
+        <view class="cu-item">
+          <navigator url="/pages/personal/address/address" hover-class="none">
+            <view class="cuIcon-locationfill text-mauve">
             </view>
-            <text>关于我们</text>
+            <text>地址管理</text>
+          </navigator>
+        </view>
+
+        <view class="cu-item">
+          <navigator url="/pages/personal/feedback/feedback" hover-class="none">
+            <view class="cuIcon-writefill text-olive">
+            </view>
+            <text>反馈及建议</text>
+          </navigator>
+        </view>
+
+        <view class="cu-item">
+          <view class="cuIcon-activityfill text-cyan">
           </view>
-          <!-- <view class="cu-item">
+          <text>关于我们</text>
+        </view>
+        <!-- <view class="cu-item">
             <view class="cuIcon-lightfill text-blue">
             </view>
             <text>邀请有礼</text>
           </view> -->
 
 
-        </view>
-
-
-
       </view>
 
 
 
-
     </view>
+
+
+
+
   </view>
-
-
-
 </view>
 
-<view class='cu-tabbar-height'></view>
+<view class="cu-tabbar-height"></view>

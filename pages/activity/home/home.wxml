@@ -59,7 +59,7 @@
           <view class="activity_miscellaneous flex  justify-between">
             <view class='activity_date'>{{item.created_at_format}}</view>
             <view class='activity_data'>
-              <text class='cuIcon-likefill text-red' decode='true'></text><text  decode='true'>&ensp;{{item.likes}}&ensp;</text>
+              <!-- <text class='cuIcon-likefill text-red' decode='true'></text><text  decode='true'>&ensp;{{item.likes}}&ensp;</text> -->
               <text class='cuIcon-attention' decode='true'>&ensp;{{item.view}}</text>
             </view>
           </view>

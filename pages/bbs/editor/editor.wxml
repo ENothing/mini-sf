@@ -2,14 +2,14 @@
   <view slot="content">文章发布</view>
 </cu-custom>
 
-<form>
+<form bindsubmit="formSubmit">
 <view class="cu-form-group">
   <view class="title">标题</view>
-  <input placeholder="填入您想取的名字哦~"></input>
+  <input placeholder="填入您想取的标题哦~" name="title"></input>
 </view>
 <view class="cu-form-group">
   <view class="title">文章类型</view>
-  <picker bindchange="PickerChange" value="{{picker[index].id}}" range='{{picker}}' range-key="{{'name'}}">
+  <picker bindchange="PickerChange" value="{{picker[index].id}}" range='{{picker}}' range-key="{{'name'}}" name="cate_id">
     <view class="picker">
       {{index?picker[index].name:'加个分类哦~'}}
     </view>
@@ -53,7 +53,7 @@
   <i class="iconfont icon-youxupailie {{formats.list === 'ordered' ? 'ql-active' : ''}}" data-name="list" data-value="ordered"></i>
   <i class="iconfont icon-wuxupailie {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
 </view>
-  <editor id="editor" class="ql-container" placeholder="开始您的创作..." bindstatuschange="onStatusChange" bindready="onEditorReady">
+  <editor id="editor" class="ql-container" placeholder="开始您的创作..." bindstatuschange="onStatusChange" bindready="onEditorReady" bindinput="editorContent">
   </editor>
 
 </view>
@@ -62,6 +62,6 @@
 
 
 <view class="cu-bar btn-group tabbar  foot">
-  <button class="cu-btn bg-red shadow-blur round lg">发布</button>
+  <button class="cu-btn bg-red shadow-blur round lg" form-type="submit">发布</button>
 </view>
 </form>

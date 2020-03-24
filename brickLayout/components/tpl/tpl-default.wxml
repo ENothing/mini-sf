@@ -22,7 +22,7 @@
           </view>
 
         </view>
-        <view class="approve-btn" catchtap="onLikeButtonTap" data-card-id="{{item}}">
+        <view class="approve-btn" catchtap="onLikeButtonTap" data-card-id="{{item}}" data-liked ="{{content_list[item].liked}}">
           <view class="approve-btn_wrapper"  wx:if="{{content_list[item].likes === 0 || content_list[item].likes}}">
             <image class="approve-btn-icon" src="{{content_list[item].liked ? _likeIcon['like'] : _likeIcon['default'] }}" />
             

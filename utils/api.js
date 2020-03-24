@@ -5,8 +5,9 @@ import {
 var url = {
 
   userLogin: "/user/login",
-
-
+  userInfo: "/user/info",
+  per_collect:"/user/per_collect",
+  feedback: "/user/feedback",
 
 
 
@@ -31,6 +32,9 @@ var url = {
   articleDetail: "/bbs/detail",
   articleCommentList: "/bbs/comment_list",
   articleCate:"/bbs/article_cate",
+  articlePublish:"/bbs/publish_article",
+  articlelike: "/bbs/like",
+
 
   articleCommentPost: "/bbs/post_comment",
 
@@ -86,7 +90,44 @@ module.exports = {
       }
     })
   },
-
+  userInfo(){
+    return http({
+      url: url.userInfo,
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      method: "GET",
+    })
+  },
+  per_collect(page){
+    return http({
+      url: url.per_collect,
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      method: "GET",
+      data: {
+        page: page,
+      }
+    })
+  },
+  feedback(data){
+    return http({
+      url: url.feedback,
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + data.token
+      },
+      method: "POST",
+      data: {
+        title: data.title,
+        content: data.content,
+        pics: data.imgList,
+      }
+    })
+  },
 
 
 
@@ -273,6 +314,36 @@ module.exports = {
       }
     })
   },
+  articlePublish(data){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.articlePublish,
+      method: "POST",
+      data: {
+        thumb: data.imgList[0],
+        content: data.content,
+        cate_id: data.cate_id,
+        title: data.title
+      }
+    })
+  },
+  articlelike(id){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.articlelike+"/"+id,
+      method: "GET",
+    })
+  },
+
+
+
+
   articleCommentPost(data){
     return http({
       header: {

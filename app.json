@@ -31,7 +31,8 @@
     "pages/activity/activity_list/activityList",
     "pages/activity/order_detail/orderDetail",
     "pages/activity/pay_result/payResult",
-    "pages/activity/refund/refund"
+    "pages/activity/refund/refund",
+    "pages/personal/likes/likes"
   ],
   "window": {
     "backgroundTextStyle": "light",

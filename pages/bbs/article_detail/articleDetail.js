@@ -24,7 +24,9 @@ Page({
     parent_id: 0,
     reply_id: 0,
     placeholder:"说点什么...",
-    icon:"cuIcon-write"
+    icon:"cuIcon-write",
+    liked:false,
+    likes:0
   },
 
   /**
@@ -36,8 +38,11 @@ Page({
 
 
     api.articleDetail(id).then(data => {
+      console.log(data)
       this.setData({
-        article_detail: data
+        article_detail: data,
+        liked: data.liked,
+        likes: data.likes
       })
     })
 
@@ -141,6 +146,32 @@ Page({
       placeholder: "说点什么...",
       icon: "cuIcon-write"
     })
+  },
+  likeAndUnlike(){
+
+
+
+    api.articlelike(this.data.id).then(data => {
+
+      if (!this.data.liked) {
+        wx.showToast({
+          icon: "none",
+          title: "不喜欢！",
+        })
+      } else {
+        wx.showToast({
+          icon: "none",
+          title: "喜欢！",
+        })
+      }
+
+    })
+
+    this.setData({
+      liked:this.data.liked == false ? true:false,
+      likes:this.data.liked == false ? this.data.likes +1:this.data.likes -1 
+    })
+
   }
 
 })

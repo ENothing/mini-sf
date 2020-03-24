@@ -1,3 +1,5 @@
+import api from '../../../utils/api.js'
+
 const app = getApp()
 
 Component({
@@ -6,8 +8,15 @@ Component({
   },
   data: {
     userInfo: null,
+    follows:0,
+    is_followed:0,
+    aorder:0,
+    sorder: 0,
+
   },
   attached() {
+
+
     let that = this;
 
     var token = wx.getStorageSync('token')
@@ -26,13 +35,30 @@ Component({
     this.setData({
       userInfo: app.globalData.userInfo
     })
-
-    console.log(app.globalData.userInfo)
+    api.userInfo().then(data => {
+      console.log(data)
+      this.setData({
+        follows: data.user_info.follows,
+        is_followed: data.user_info.is_followed,
+        aorder: data.aorder_unpay,
+        sorder: data.sorder_unpay,
+      })
+    })
 
   },
   pageLifetimes: {
     // 组件所在页面的生命周期函数
     show: function () {
+
+
+
+
+
+
+
+
+
+
       this.setData({
         userInfo: app.globalData.userInfo
       })

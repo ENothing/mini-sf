@@ -1,0 +1,35 @@
+<cu-custom bgColor="bg-gradual-red" isBack="{{true}}">
+  <view slot="backText"></view>
+  <view slot="content">喜好</view>
+</cu-custom>
+
+
+<view class="cu-card case " wx:for="{{activity}}" wx:key>
+  <view class="cu-item ">
+    <view class="image">
+      <image src="{{item.thumb}}" mode="aspectFill" style="height:200rpx"></image>
+    </view>
+    <view class="cu-list">
+      <view class="cu-item">
+        <view class="flex padding justify-between">
+          <view class="text-cut">{{item.title}}</view>
+          <view class=" text-sm cuIcon-moreandroid">
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+
+
+
+
+
+
+  </view>
+
+
+
+
+
+</view>

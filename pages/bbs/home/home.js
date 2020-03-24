@@ -24,37 +24,42 @@ Component({
     articles: ""
   },
   attached() {
+
     var that = this
     api.articleList(that.data.page).then(data => {
       console.log(data)
       that.setData({
         last_page: data.last_page,
-        articles: data.articles
+        articles: data.articles,
       })
     })
   },
-  ready() {
-
-  },
   methods: {
-
-    handleExpand: function(event) {
-      console.log(event.detail)
-      console.log('expand call back')
-    },
-
-    // 点击卡片
     tapCard: function(event) {
       wx.navigateTo({
         url: '/pages/bbs/article_detail/articleDetail?id=' + event.detail.card_id,
       })
 
     },
+    handleLike: function(e) {
+      var liked = e.detail.liked
+      var id  = e.detail.card_id
 
-    // 点赞
-    handleLike: function(event) {
-      console.log(event)
-      console.log('like!')
+      api.articlelike(id).then(data => {
+
+        if(liked){
+          wx.showToast({
+            icon: "none",
+            title: "不喜欢！",
+          })
+        }else{
+          wx.showToast({
+            icon: "none",
+            title: "喜欢！",
+          })
+        }
+
+      })
     },
 
     // 点击用户头像区域

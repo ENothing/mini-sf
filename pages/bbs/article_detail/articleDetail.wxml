@@ -51,7 +51,7 @@
 
 
 
-<view class="comment_container bg-white" wx:for="{{commentList}}" wx:key>
+<view class="comment_container bg-white" wx:for="{{commentList}}" wx:key wx:if="{{commentList != ''}}">
   <view class="flex">
     <view class="comment_avatar">
       <view class=" cu-avatar round" style="background-image:url({{item.user_avatar}});"></view>
@@ -83,7 +83,12 @@
   </view>
 </view>
 
+<view class="text-center padding-xl"  wx:if="{{commentList == ''}}" >
 
+  <view class="iconfont icon-sofa sofa text-gray"></view>
+  <view class="text-gray">赶快留言吧~</view>
+
+</view>
 
 
 
@@ -95,11 +100,8 @@
     <text class="{{icon}}" bindtap="clearAt"></text>
     <input type="text" placeholder="{{placeholder}}" disabled="disabled" bindtap="getTextarea" value="{{input_val}}"></input>
   </view>
-  <view class="action" wx:if="{{article_detail.liked == true}}">
-    <view class="cuIcon-likefill text-red"></view>{{article_detail.likes}}
-  </view>
-  <view class="action" wx:else>
-    <view class="cuIcon-like"></view>{{article_detail.likes}}
+  <view class="action" bindtap="likeAndUnlike">
+    <view class="cuIcon-like{{liked == true ?  'fill text-red':''}} "></view>{{likes}}
   </view>
   <view class="action">
     <view class="cuIcon-attentionfill"></view> {{article_detail.view}}
@@ -117,3 +119,4 @@
     </view>
   </view>
 </form>
+

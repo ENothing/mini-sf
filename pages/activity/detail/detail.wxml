@@ -41,11 +41,11 @@
     </view>
     浏览
   </button> -->
-  <view class="action" bindtap="likeOrUnlike">
+  <!-- <view class="action" bindtap="likeOrUnlike">
     <view class="cuIcon-like text-gray">
       <view class="cu-tag badge">{{activity.likes}}</view>
     </view>喜欢
-  </view>
+  </view> -->
   <view class="action" bindtap="call" data-mobile="{{activity.mobile}}">
     <view class="cuIcon-phone"></view>电话
   </view>

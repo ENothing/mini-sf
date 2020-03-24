@@ -151,10 +151,10 @@
 					"scene": null
 				},
 				{
-					"id": 16,
+					"id": 15,
 					"name": "文章详情",
 					"pathName": "pages/bbs/article_detail/articleDetail",
-					"query": "id=6",
+					"query": "id=9",
 					"scene": null
 				},
 				{
@@ -252,6 +252,27 @@
 					"id": -1,
 					"name": "活动订单列表",
 					"pathName": "pages/personal/aorder/aorder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 30,
+					"name": "社区",
+					"pathName": "pages/index/index",
+					"query": "PageCur=bbs",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人中心",
+					"pathName": "pages/index/index",
+					"query": "PageCur=personal",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "喜好",
+					"pathName": "pages/personal/likes/likes",
 					"query": "",
 					"scene": null
 				}
