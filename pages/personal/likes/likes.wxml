@@ -4,8 +4,8 @@
 </cu-custom>
 
 
-<view class="cu-card case " wx:for="{{activity}}" wx:key>
-  <view class="cu-item ">
+<view class="cu-card case " wx:for="{{activity}}" wx:key wx:if="{{activity.length >0}}">
+  <view class="cu-item item" bindtap="goToAritlceDetial" data-id="{{item.id}}">
     <view class="image">
       <image src="{{item.thumb}}" mode="aspectFill" style="height:200rpx"></image>
     </view>
@@ -13,23 +13,29 @@
       <view class="cu-item">
         <view class="flex padding justify-between">
           <view class="text-cut">{{item.title}}</view>
-          <view class=" text-sm cuIcon-moreandroid">
+          <view class=" text-sm cuIcon-moreandroid" catchtap="showModal" data-id="{{item.id}}" data-target="bottomModal">
           </view>
         </view>
       </view>
     </view>
-
-
-
-
-
-
-
-
   </view>
+</view>
+
+<view wx:if="{{activity.length == 0}}">
+  <view class="iconfont icon-nothing2 nothing text-gray flex   justify-center align-center margin-top-xl"></view>
+  <view class="flex   justify-center align-center ">╮(๑•́ ₃•̀๑)╭再怎么找也没有啦</view>
+</view>
 
 
 
+<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+  <view class="cu-dialog">
 
-
+    <view class="flex solid-bottom  justify-center ">
+      <text class="bg-white padding-sm margin-xs radius" style="width:100%" bindtap="unlike">取消收藏</text>
+    </view>
+    <view class="flex solid-bottom  justify-center">
+      <view class="bg-white padding-sm margin-xs radius" style="width:100%" bindtap="hideModal">取消</view>
+    </view>
+  </view>
 </view>

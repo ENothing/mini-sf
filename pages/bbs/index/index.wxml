@@ -1,0 +1,86 @@
+<view class='cu-custom'>
+  <view class="cu-bar fixed bg-shadeTop" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='cuIcon-back'></text> 返回
+    </navigator>
+    <view class='content' style='top:{{StatusBar}}px;'>个人主页</view>
+  </view>
+</view>
+
+<view class="bg-img bg-mask padding-tb-xl" style="background-image: url('{{user.head_url}}');height: 490rpx;">
+  <view class="padding-xl text-white">
+    <view class="padding-xs margin-top-xl text-xl flex  justify-center ">
+      <view class="cu-avatar xl round margin-left" style="background-image:url('{{user.head_url}}');border: 4rpx solid #000;box-shadow: 1px 1px 10px 2px #f1f1f1;"></view>
+    </view>
+    <view class="padding-xs flex justify-center text-bold">
+      <text class="text-xs iconfont icon-{{user.gender == 1?'sexm text-blue':'sexw-copy text-pink'}}"></text> {{user.nickname}}
+    </view>
+    <view class=" padding-xs  text-center">
+      <text class="" decode="true">关注：{{user.follows}} &nbsp;&nbsp;</text>
+      <text>|</text>
+      <text class="" decode="true">&nbsp;&nbsp;粉丝：{{user.is_followed}}&nbsp;&nbsp;</text>
+      <text>|</text>
+      <text class="" decode="true">&nbsp;&nbsp;喜欢：{{user.likes}}</text>
+      <view class="padding-xs text-xl flex  justify-center">
+        <button class="cu-btn round bg-red shadow"  wx:if="{{user.attention == 0}}">关注</button>
+        <button class="cu-btn round bg-gray shadow" wx:else>已关注</button>
+      </view>
+    </view>
+
+  </view>
+</view>
+
+
+<scroll-view scroll-x class="bg-white nav">
+  <view class="flex  text-center">
+    <view class="cu-item flex-sub {{0==TabCur?'text-orange cur':''}}"  bindtap="tabSelect" data-id="0">
+      作品
+    </view>
+    <view class="cu-item flex-sub {{1==TabCur?'text-orange cur':''}}"  bindtap="tabSelect" data-id="1">
+      收藏
+    </view>
+  </view>
+</scroll-view>
+
+
+<scroll-view class="VerticalNav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:calc(100vh - 500rpx)" bindscrolltolower="lower" lower-threshold="10">
+
+
+  <view class="cu-card case " wx:for="{{articles}}" wx:key wx:if="{{articles.length >0}}">
+    <view class="cu-item item" bindtap="goToAritlceDetial" data-id="{{item.id}}">
+      <view class="image">
+        <image src="{{item.thumb}}" mode="aspectFill" style="height:200rpx"></image>
+      </view>
+      <view class="cu-list">
+        <view class="cu-item">
+          <view class="flex padding justify-between">
+            <view class="text-cut">{{item.title}}</view>
+            <view class=" text-sm cuIcon-moreandroid" catchtap="showModal" data-id="{{item.id}}" data-target="bottomModal">
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{articles.length == 0}}">
+    <view class="iconfont icon-nothing2 nothing text-gray flex   justify-center align-center margin-top-xl"></view>
+    <view class="flex   justify-center align-center ">╮(๑•́ ₃•̀๑)╭再怎么找也没有啦</view>
+  </view>
+
+  <view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+    <view class="cu-dialog">
+
+      <view class="flex solid-bottom  justify-center ">
+        <text class="bg-white padding-sm margin-xs radius" style="width:100%" bindtap="editArticle">编辑文章</text>
+      </view>
+      <view class="flex solid-bottom  justify-center">
+        <view class="bg-white padding-sm margin-xs radius" style="width:100%" bindtap="hideModal">取消</view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class='cu-tabbar-height'></view>
+
+</scroll-view>

@@ -35,6 +35,7 @@ function init(config) {
   }
 
   _this.onUserAreaTap = e => {
+    console.log(e)
     let user_id = e.currentTarget.dataset.userId
     this.triggerEvent('tapUser', {
       user_id

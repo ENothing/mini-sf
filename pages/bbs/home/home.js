@@ -63,9 +63,11 @@ Component({
     },
 
     // 点击用户头像区域
-    handleUserEvent: function(event) {
-      console.log(event.detail)
-      console.log('user!')
+    handleUserEvent: function(e) {
+      var user_id = e.detail.user_id
+      wx.navigateTo({
+        url: '/pages/bbs/index/index?id=' + user_id,
+      })
     },
 
     scrollBottom(e) {

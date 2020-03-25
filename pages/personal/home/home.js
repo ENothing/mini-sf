@@ -8,15 +8,13 @@ Component({
   },
   data: {
     userInfo: null,
-    follows:0,
-    is_followed:0,
-    aorder:0,
+    follows: 0,
+    is_followed: 0,
+    aorder: 0,
     sorder: 0,
 
   },
   attached() {
-
-
     let that = this;
 
     var token = wx.getStorageSync('token')
@@ -44,27 +42,15 @@ Component({
         sorder: data.sorder_unpay,
       })
     })
-
   },
   pageLifetimes: {
     // 组件所在页面的生命周期函数
-    show: function () {
-
-
-
-
-
-
-
-
-
-
+    show: function() {
       this.setData({
         userInfo: app.globalData.userInfo
       })
-     },
+    },
   },
   methods: {
-
   }
 })

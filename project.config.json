@@ -275,6 +275,13 @@
 					"pathName": "pages/personal/likes/likes",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "社区个人页面",
+					"pathName": "pages/bbs/index/index",
+					"query": "id=1",
+					"scene": null
 				}
 			]
 		}

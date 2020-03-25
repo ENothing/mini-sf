@@ -37,6 +37,8 @@ var url = {
 
 
   articleCommentPost: "/bbs/post_comment",
+  userArticles: "/bbs/user_articles",
+  userDetail: "/bbs/user_detail",
 
   shopIndex: "/shop/index",
   shopGoodsList: "/shop/list",
@@ -340,10 +342,6 @@ module.exports = {
       method: "GET",
     })
   },
-
-
-
-
   articleCommentPost(data){
     return http({
       header: {
@@ -358,6 +356,25 @@ module.exports = {
         reply_id: data.reply_id,
         content: data.content
       }
+    })
+  },
+  userArticles(id,page) {
+    return http({
+      url: url.userArticles + '/' + id,
+      method: "GET",
+      data: {
+        page: page,
+      }
+    })
+  },
+  userDetail(id){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.userDetail+'/'+id,
+      method: "GET",
     })
   },
 

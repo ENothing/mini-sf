@@ -10,7 +10,7 @@
       </view>
       <view class="list-box_footer">
 
-        <view class="list-box_header" wx:if="{{content_list[item]}}" catchtap="{{content_list[item].user_id ? 'onUserAreaTap' : ''}}" data-user-id="{{content_list[item].user.userId}}">
+        <view class="list-box_header" wx:if="{{content_list[item]}}" catchtap="{{content_list[item].user_id ? 'onUserAreaTap' : ''}}" data-user-id="{{content_list[item].user_id}}">
           <view wx:if="{{content_list[item].avatar}}" class="user-avatar" style="background-image:url('{{content_list[item].avatar}}')"></view>
           <view class="user-info">
             <view wx:if="{{content_list[item].nickname}}" class="user-name">
