@@ -1,0 +1,32 @@
+<cu-custom bgColor="bg-gradual-red" isBack="{{true}}">
+  <view slot="backText"></view>
+  <view slot="content">ta的粉丝</view>
+</cu-custom>
+
+
+<view>
+
+  <view class="flex solid-bottom  justify-between bg-white" wx:for="{{users}}" wx:key>
+    <view class="   radius">
+      <view class="flex solid-bottom  align-start">
+        <view class=" padding-xs  radius" bindtap="goToPerIndex" data-user-id="{{item.follow_id}}">
+          <view class="cu-avatar lg round " style="background-image:url({{item.avatar}});"></view>
+        </view>
+        <view class=" padding-sm radius">
+          <view>
+            {{item.nickname}}
+          </view>
+          <view class="padding-top-xs">
+            {{item.created_at_format}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class=" padding-top-sm padding-right-sm  radius" bindtap="followAndUnfollow" data-user-id="{{item.user_id}}">
+      <button class="cu-btn round bg-red shadow" wx:if="{{item.attention == 0}}" >关注</button>
+      <button class="cu-btn round bg-grey shadow" wx:else  >已关注</button>
+    </view>
+  </view>
+
+
+</view>

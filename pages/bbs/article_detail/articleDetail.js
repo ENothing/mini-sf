@@ -26,7 +26,9 @@ Page({
     placeholder:"说点什么...",
     icon:"cuIcon-write",
     liked:false,
-    likes:0
+    likes:0,
+    attention:0,
+    isFollowed:0
   },
 
   /**
@@ -42,7 +44,9 @@ Page({
       this.setData({
         article_detail: data,
         liked: data.liked,
-        likes: data.likes
+        likes: data.likes,
+        attention: data.attention,
+        isFollowed:data.is_followed
       })
     })
 
@@ -172,6 +176,35 @@ Page({
       likes:this.data.liked == false ? this.data.likes +1:this.data.likes -1 
     })
 
-  }
+  },
+  followAndUnfollow(e) {
+    var user_id = e.currentTarget.dataset.userId
+    var atten = this.data.attention
+    var isFollowed = this.data.isFollowed
 
+
+    api.userFollows(user_id).then(data => {
+
+      if (atten == 0) {
+
+        isFollowed = isFollowed + 1
+
+      } else {
+
+        isFollowed = isFollowed > 0 ? isFollowed - 1 : 0
+      }
+
+      this.setData({
+        attention: atten == 0 ? 1 : 0,
+        isFollowed: isFollowed
+      })
+
+    })
+  },
+  goToPerIndex(e){
+    var user_id = e.currentTarget.dataset.userId
+    wx.navigateTo({
+      url: '/pages/bbs/index/index?id=' + user_id,
+    })
+  }
 })

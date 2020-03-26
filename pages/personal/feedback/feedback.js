@@ -73,30 +73,6 @@ Page({
       imgList: JSON.stringify(this.data.imgList) ,
       token: this.data.token
     }
-
-    console.log(data)
-
-
-    // if (data.title == "") {
-    //   wx.showToast({
-    //     icon: "none",
-    //     title: "标题不能为空哦~"
-    //   })
-    //   return
-    // }
-
-    // if (data.content == "") {
-    //   wx.showToast({
-    //     icon: "none",
-    //     title: "标题不能为空哦~"
-    //   })
-    //   return
-    // }
-
-    // console.log(data)
-
-
-
     api.feedback(data).then(resData => {
 
       wx.showToast({

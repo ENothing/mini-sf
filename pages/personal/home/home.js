@@ -12,7 +12,6 @@ Component({
     is_followed: 0,
     aorder: 0,
     sorder: 0,
-
   },
   attached() {
     let that = this;
@@ -52,5 +51,15 @@ Component({
     },
   },
   methods: {
+    follows(){
+      wx.navigateTo({
+        url: '/pages/personal/follows/follows',
+      })
+    },
+    followed(){
+      wx.navigateTo({
+        url: '/pages/personal/followed/followed',
+      })
+    }
   }
 })

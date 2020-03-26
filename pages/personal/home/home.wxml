@@ -6,12 +6,12 @@
   <image src="/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
 </view>
 <view class="padding flex text-center text-grey bg-white shadow-warp">
-  <view class="flex flex-sub flex-direction solid-right">
+  <view class="flex flex-sub flex-direction solid-right" bindtap="follows">
     <view class="text-xxl text-orange">{{follows}}</view>
     <view class="margin-top-sm">
       <text class="cuIcon-attentionfill"></text> 关注</view>
   </view>
-  <view class="flex flex-sub flex-direction solid-right">
+  <view class="flex flex-sub flex-direction solid-right" bindtap="followed">
     <view class="text-xxl text-blue">{{is_followed}}</view>
     <view class="margin-top-sm">
       <text class="cuIcon-friendfill"></text> 粉丝</view>

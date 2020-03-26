@@ -6,10 +6,20 @@
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
+		"enhance": false,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.3",
@@ -57,20 +67,6 @@
 					"name": "报名入口",
 					"pathName": "pages/activity/enter/enter",
 					"query": "id=6",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "个人中心",
-					"pathName": "pages/personal/home/home",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "个人中心",
-					"pathName": "pages/shop/home/home",
-					"query": "",
 					"scene": null
 				},
 				{
@@ -281,6 +277,34 @@
 					"name": "社区个人页面",
 					"pathName": "pages/bbs/index/index",
 					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "关注列表",
+					"pathName": "pages/personal/follows/follows",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "粉丝列表",
+					"pathName": "pages/personal/followed/followed",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 36,
+					"name": "社区关注列表",
+					"pathName": "pages/bbs/follows/follows",
+					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "社区粉丝列表",
+					"pathName": "pages/bbs/followed/followed",
+					"query": "id=2",
 					"scene": null
 				}
 			]

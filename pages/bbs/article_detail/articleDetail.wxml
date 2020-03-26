@@ -5,23 +5,21 @@
 
 <view class="author_container flex  padding-sm justify-between">
   <view>
-    <view class="flex">
-      <view class="cu-avatar round" style="background-image:url({{article_detail.avatar}});"></view>
+    <view class="flex" >
+      <view class="cu-avatar round" style="background-image:url({{article_detail.avatar}});" bindtap="goToPerIndex" data-user-id="{{article_detail.user_id}}"></view>
       <view class="user_info">
         <view class="username">{{article_detail.nickname}}</view>
-        <view class="fans">粉丝：{{article_detail.follows}}</view>
+        <view class="fans">粉丝：{{isFollowed}}</view>
       </view>
     </view>
   </view>
   <view>
-    <view class=" text-center" wx:if="{{article_detail.is_followed == 0}}">
-      <button class="cu-btn round bg-red shadow" style="height:52rpx">关注</button>
-    </view>
-    <view class=" text-center" wx:else>
-      <button class="cu-btn round bg-gray shadow" style="height:52rpx">已关注</button>
+    <view class=" text-center" bindtap="followAndUnfollow" data-user-id="{{article_detail.user_id}}">
+      <button class="cu-btn round bg-red shadow" style="height:52rpx" wx:if="{{attention == 0}}">关注</button>
+      <button class="cu-btn round bg-gray shadow" style="height:52rpx" wx:else>已关注</button>
     </view>
   </view>
-</view>
+</view> 
 
 <!-- 
 <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">

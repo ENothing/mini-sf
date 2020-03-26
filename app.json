@@ -33,7 +33,11 @@
     "pages/activity/pay_result/payResult",
     "pages/activity/refund/refund",
     "pages/personal/likes/likes",
-    "pages/bbs/index/index"
+    "pages/bbs/index/index",
+    "pages/personal/follows/follows",
+    "pages/personal/followed/followed",
+    "pages/bbs/follows/follows",
+    "pages/bbs/followed/followed"
   ],
   "window": {
     "backgroundTextStyle": "light",

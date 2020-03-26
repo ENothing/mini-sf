@@ -4,13 +4,15 @@ import {
 
 var url = {
 
+//user
   userLogin: "/user/login",
   userInfo: "/user/info",
   per_collect:"/user/per_collect",
   feedback: "/user/feedback",
+  followList:"/user/follow_list",
+  followedList: "/user/followed_list",
 
-
-
+//activity
   activityIndex: "/activity/index",
   activityCates: "/activity/cates",
 
@@ -27,7 +29,7 @@ var url = {
   activityFinish: "/activity/finish",
   activityOrderList:"/activity/order_list",
   
-
+//bbs
   articleList: "/bbs/list",
   articleDetail: "/bbs/detail",
   articleCommentList: "/bbs/comment_list",
@@ -39,7 +41,12 @@ var url = {
   articleCommentPost: "/bbs/post_comment",
   userArticles: "/bbs/user_articles",
   userDetail: "/bbs/user_detail",
+  userLikeArticles: "/bbs/user_like_articles",
+  userFollows: "/bbs/follow",
+  bbsFollowsList:"/bbs/follows_List",
+  bbsFollowedList: "/bbs/followed_List",
 
+//shop
   shopIndex: "/shop/index",
   shopGoodsList: "/shop/list",
   shopOrderList:"/shop/order_list",
@@ -80,7 +87,7 @@ var base_token = wx.getStorageSync('token')
 
 
 module.exports = {
-
+//user
   userLogin(code, iv, encryptedData) {
     return http({
       url: url.userLogin,
@@ -130,10 +137,34 @@ module.exports = {
       }
     })
   },
+  followList(page){
+    return http({
+      url: url.followList,
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      method: "GET",
+      data: {
+        page: page,
+      }
+    })
+  },
+  followedList(page) {
+    return http({
+      url: url.followedList,
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      method: "GET",
+      data: {
+        page: page,
+      }
+    })
+  },
 
-
-
-
+//activity
   activityIndex() {
     return http({
       url: url.activityIndex,
@@ -275,7 +306,7 @@ module.exports = {
     })
   },
 
-
+//bbs
   articleList(page) {
     return http({
       header: {
@@ -377,8 +408,52 @@ module.exports = {
       method: "GET",
     })
   },
-
-
+  userLikeArticles(id, page){
+    return http({
+      url: url.userLikeArticles + '/' + id,
+      method: "GET",
+      data: {
+        page: page,
+      }
+    })
+  },
+  userFollows(follow_id){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.userFollows + '/' + follow_id,
+      method: "GET",
+    })
+  },
+  bbsFollowsList(id,page){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.bbsFollowsList + '/' + id,
+      method: "GET",
+      data: {
+        page: page,
+      }
+    })
+  },
+  bbsFollowedList(id,page){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + base_token
+      },
+      url: url.bbsFollowedList + '/' + id,
+      method: "GET",
+      data: {
+        page: page,
+      }
+    })
+  },
+//shop
   shopIndex() {
     return http({
       url: url.shopIndex,
