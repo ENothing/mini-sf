@@ -10,7 +10,8 @@ Page({
     page: 1,
     users: [],
     attention: 1,
-    id: 0
+    id: 0,
+    token:""
   },
 
   /**
@@ -18,12 +19,14 @@ Page({
    */
   onLoad: function(options) {
     var id = options.id
+    var token = wx.getStorageSync('token')
     this.setData({
-      id: id
+      id: id,
+      token: token
     })
 
 
-    api.bbsFollowsList(id, 1).then(data => {
+    api.bbsFollowsList({token:token,id:id,page:1}).then(data => {
       console.log(data)
       this.setData({
         users: data.list,
@@ -41,7 +44,7 @@ Page({
       page: this.data.page + 1
     })
     var that = this;
-    api.followList(that.data.page).then(data => {
+    api.bbsFollowsList({token:that.data.token,id:that.data.id,page:that.data.page}).then(data => {
       var arr1 = that.data.users;
       var arr2 = data.list
       arr1 = arr1.concat(arr2);
@@ -59,7 +62,7 @@ Page({
   followAndUnfollow(e) {
     var user_id = e.currentTarget.dataset.userId
 
-    api.userFollows(user_id).then(data => {
+    api.userFollows({token:this.data.token,follow_id:user_id}).then(data => {
       var users = this.data.users
       for (var index in users) {
         if (users[index].follow_id == user_id) {

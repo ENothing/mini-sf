@@ -12,21 +12,24 @@ Page({
     inputkey: "",
     history: "",
     hot: null,
-    dynamic: null
+    dynamic: null,
+    token:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    api.activitySearchHistory().then(data => {
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
+    api.activitySearchHistory(token).then(data => {
       this.setData({
         history: data.history,
         hot: data.hot
       })
     })
-    console.log(this.data.history)
-
   },
   bindKeyInput(e) {
     var key = e.detail.value.replace(/\s+/g, '')
@@ -71,7 +74,7 @@ Page({
   },
   delHistory() {
     var that = this
-    api.delactivitySearchHistory().then(data => {
+    api.delactivitySearchHistory(this.data.token).then(data => {
       wx.showToast({
         icon: "none",
         title: "清除历史搜索成功~",

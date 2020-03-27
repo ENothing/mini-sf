@@ -11,7 +11,7 @@ var url = {
   feedback: "/user/feedback",
   followList:"/user/follow_list",
   followedList: "/user/followed_list",
-
+  myArticle:"/user/article",
 //activity
   activityIndex: "/activity/index",
   activityCates: "/activity/cates",
@@ -36,6 +36,10 @@ var url = {
   articleCate:"/bbs/article_cate",
   articlePublish:"/bbs/publish_article",
   articlelike: "/bbs/like",
+  editArticleDetail:"/bbs/edit_article_detail",
+  editArticle: "/bbs/edit_article",
+  delArticle:"/bbs/del_article",
+  publishArticle:"/bbs/publish",
 
 
   articleCommentPost: "/bbs/post_comment",
@@ -87,6 +91,7 @@ var base_token = wx.getStorageSync('token')
 
 
 module.exports = {
+  
 //user
   userLogin(code, iv, encryptedData) {
     return http({
@@ -99,26 +104,26 @@ module.exports = {
       }
     })
   },
-  userInfo(){
+  userInfo(token){
     return http({
       url: url.userInfo,
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + token
       },
       method: "GET",
     })
   },
-  per_collect(page){
+  per_collect(data){
     return http({
       url: url.per_collect,
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
       method: "GET",
       data: {
-        page: page,
+        page: data.page,
       }
     })
   },
@@ -137,29 +142,42 @@ module.exports = {
       }
     })
   },
-  followList(page){
+  followList(data){
     return http({
       url: url.followList,
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
       method: "GET",
       data: {
-        page: page,
+        page: data.page,
       }
     })
   },
-  followedList(page) {
+  followedList(data) {
     return http({
       url: url.followedList,
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
       method: "GET",
       data: {
-        page: page,
+        page: data.page,
+      }
+    })
+  },
+  myArticle(data){
+    return http({
+      url: url.myArticle,
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + data.token
+      },
+      method: "GET",
+      data: {
+        page: data.page,
       }
     })
   },
@@ -177,19 +195,19 @@ module.exports = {
       method: "GET"
     })
   },
-  activityList(page,cateId,sort,kword) {
+  activityList(data) {
     return http({
       url: url.activityList,
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
       method: "GET",
       data: {
-        page: page,
-        cate_id: cateId,
-        sort: sort,
-        title: kword == undefined ? "" : kword,
+        page: data.page,
+        cate_id: data.cateId,
+        sort: data.sort,
+        title: data.kword == undefined ? "" : data.kword,
       }
     })
   },
@@ -203,7 +221,7 @@ module.exports = {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
       url: url.activityEnter,
       method: "POST",
@@ -220,24 +238,24 @@ module.exports = {
       }
     })
   },
-  activityOrderDetail(id){
+  activityOrderDetail(data){
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
-      url: url.activityOrderDetail + "/" + id,
+      url: url.activityOrderDetail + "/" + data.id,
       method: "GET"
     })
   },
 
 
 
-  activitySearchHistory() {
+  activitySearchHistory(token) {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + token
       },
       url: url.activitySearchHistory,
       method: "GET",
@@ -246,9 +264,6 @@ module.exports = {
 
   activityDynamicHistory(kword) {
     return http({
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
       url: url.activityDynamicHistory,
       method: "GET",
       data: {
@@ -256,74 +271,74 @@ module.exports = {
       }
     })
   },
-  delactivitySearchHistory() {
+  delactivitySearchHistory(token) {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + token
       },
       url: url.delactivitySearchHistory,
       method: "GET",
     })
   },
 
-  activityInitiateRefund(order_id, reason){
+  activityInitiateRefund(data){
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
       url: url.activityInitiateRefund,
       method: "POST",
       data: {
-        order_id: order_id,
-        reason: reason,
+        order_id: data.order_id,
+        reason: data.reason,
       }
     })
   },
-  activityFinish(id){
+  activityFinish(data){
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
-      url: url.activityFinish + "/" + id ,
+      url: url.activityFinish + "/" + data.id ,
       method: "GET",
     })
   },
-  activityOrderList(page,status){
+  activityOrderList(data){
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
       url: url.activityOrderList,
       method: "GET",
       data: {
-        page: page,
-        status: status == undefined ? 0 : status,
+        page: data.page,
+        status: data.status == undefined ? 0 : data.status,
       }
     })
   },
 
 //bbs
-  articleList(page) {
+  articleList(data) {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
-      url: url.articleList + "?page=" + page,
+      url: url.articleList + "?page=" + data.page,
       method: "GET"
     })
   },
-  articleDetail(id) {
+  articleDetail(data) {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
-      url: url.articleDetail + "/" + id,
+      url: url.articleDetail + "/" + data.id,
       method: "GET"
     })
   },
@@ -333,17 +348,17 @@ module.exports = {
       method: "GET"
     })
   },
-  articleCommentList(id,page) {
+  articleCommentList(data) {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
       url: url.articleCommentList,
       method: "GET",
       data: {
-        page: page,
-        article_id:id
+        page: data.page,
+        article_id: data.id
       }
     })
   },
@@ -351,7 +366,7 @@ module.exports = {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
       url: url.articlePublish,
       method: "POST",
@@ -363,13 +378,61 @@ module.exports = {
       }
     })
   },
-  articlelike(id){
+  editArticleDetail(data){
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
-      url: url.articlelike+"/"+id,
+      url: url.editArticleDetail + '/' + data.id,
+      method: "GET",
+    })
+  },
+  editArticle(data){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + data.token
+      },
+      url: url.editArticle+'/'+data.id,
+      method: "POST",
+      data: {
+        thumb: data.imgList[0],
+        content: data.content,
+        cate_id: data.cate_id,
+        title: data.title,
+        is_publish: data.is_publish,
+
+      }
+    })
+  },
+  delArticle(data){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + data.token
+      },
+      url: url.delArticle + '/' + data.id,
+      method: "GET",
+    })
+  },
+  publishArticle(data){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + data.token
+      },
+      url: url.publishArticle + '/' + data.id,
+      method: "GET",
+    })
+  },
+  articlelike(data){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + data.token
+      },
+      url: url.articlelike+"/"+data.id,
       method: "GET",
     })
   },
@@ -377,7 +440,7 @@ module.exports = {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
       url: url.articleCommentPost,
       method: "POST",
@@ -398,13 +461,13 @@ module.exports = {
       }
     })
   },
-  userDetail(id){
+  userDetail(data){
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
-      url: url.userDetail+'/'+id,
+      url: url.userDetail+'/'+data.id,
       method: "GET",
     })
   },
@@ -417,39 +480,39 @@ module.exports = {
       }
     })
   },
-  userFollows(follow_id){
+  userFollows(data){
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
-      url: url.userFollows + '/' + follow_id,
+      url: url.userFollows + '/' + data.follow_id,
       method: "GET",
     })
   },
-  bbsFollowsList(id,page){
+  bbsFollowsList(data){
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
-      url: url.bbsFollowsList + '/' + id,
+      url: url.bbsFollowsList + '/' + data.id,
       method: "GET",
       data: {
-        page: page,
+        page: data.page,
       }
     })
   },
-  bbsFollowedList(id,page){
+  bbsFollowedList(data){
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
-      url: url.bbsFollowedList + '/' + id,
+      url: url.bbsFollowedList + '/' + data.id,
       method: "GET",
       data: {
-        page: page,
+        page: data.page,
       }
     })
   },
@@ -460,66 +523,66 @@ module.exports = {
       method: "GET"
     })
   },
-  shopGoodsList(page, cate_id, brand_id, kword, sort, sort_type) {
+  shopGoodsList(data) {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
       url: url.shopGoodsList,
       method: "GET",
       data: {
-        page: page,
-        cate_id: cate_id == undefined ? 0:cate_id,
-        brand_id: brand_id == undefined ? 0 : brand_id,
-        kword: kword==undefined ? "":kword,
-        sort: sort == undefined ? 0 : sort,
-        sort_type: sort_type == undefined ? 1 : sort_type,
+        page: data.page,
+        cate_id: data.cate_id == undefined ? 0 : data.cate_id,
+        brand_id: data.brand_id == undefined ? 0 : data.brand_id,
+        kword: data.kword == undefined ? "" : data.kword,
+        sort: data.sort == undefined ? 0 : data.sort,
+        sort_type: data.sort_type == undefined ? 1 : data.sort_type,
       }
     })
   },
-  shopOrderList(page,status){
+  shopOrderList(data){
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
       url: url.shopOrderList,
       method: "GET",
       data: {
-        page: page,
-        status: status == undefined ? 0 : status,
+        page: data.page,
+        status: data.status == undefined ? 0 : data.status,
       }
     })
   },
-  initiateRefund(order_id, reason, r_type, imgs){
+  initiateRefund(data){
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
       url: url.initiateRefund,
       method: "POST",
       data: {
-        order_id: order_id,
-        reason: reason,
-        r_type: r_type,
-        reason_pics: imgs
+        order_id: data.order_id,
+        reason: data.reason,
+        r_type: data.r_type,
+        reason_pics: data.imgs
       }
     })
   },
-  shopReturnInfo(refund_id, express_n, express_id){
+  shopReturnInfo(data){
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
       url: url.shopReturnInfo,
       method: "POST",
       data: {
-        refund_id: refund_id,
-        express_n: express_n,
-        express_id: express_id,
+        refund_id: data.refund_id,
+        express_n: data.express_n,
+        express_id: data.express_id,
       }
     })
   },
@@ -545,51 +608,51 @@ module.exports = {
   },
 
 
-  addressList() {
+  addressList(token) {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + token
       },
       url: url.addressList,
       method: "GET"
     })
   },
-  updateDefaultAddress(id){
+  updateDefaultAddress(data){
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
-      url: url.updateDefaultAddress+"/"+id,
+      url: url.updateDefaultAddress+"/"+data.id,
       method: "GET"
     })
   },
-  addressDetail(id){
+  addressDetail(data){
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
-      url: url.addressDetail + "/" + id,
+      url: url.addressDetail + "/" + data.id,
       method: "GET"
     })
   },
-  addAddress(name, mobile, province, city, district, detail_address){
+  addAddress(data){
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
       url: url.addAddress,
       method: "POST",
       data: {
-        name: name,
-        mobile: mobile,
-        province: province,
-        city: city,
-        district: district,
-        detail_address: detail_address
+        name: data.name,
+        mobile: data.mobile,
+        province: data.rovince,
+        city: data.city,
+        district: data.district,
+        detail_address: data.detail_address
       }
     })
   },
@@ -597,40 +660,40 @@ module.exports = {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
-      url: url.updateAddress+"/"+id,
+      url: url.updateAddress + "/" + data.id,
       method: "POST",
       data: {
-        name: name,
-        mobile: mobile,
-        province: province,
-        city: city,
-        district: district,
-        detail_address: detail_address
+        name: data.name,
+        mobile: data.mobile,
+        province: data.province,
+        city: data.city,
+        district: data.district,
+        detail_address: data.detail_address
       }
     })
   },
-  delAddress(id){
+  delAddress(data){
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
-      url: url.delAddress + "/" + id,
+      url: url.delAddress + "/" + data.id,
       method: "GET",
     })
   },
-  detailToOrder(id){
+  detailToOrder(data){
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
       url: url.detailToOrder,
       method: "GET",
       data: {
-        id: id == undefined ? 0 : id,
+        id: data.id == undefined ? 0 : data.id,
       }
     })
   },
@@ -650,30 +713,30 @@ module.exports = {
       method: "GET"
     })
   },
-  shopBuy(num, goodsSpuId, goodsId, addressId, couponId){
+  shopBuy(data){
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
       url: url.shopBuy,
       method: "POST",
       data: {
-        num: num,
-        goods_spu_id: goodsSpuId,
-        address_id: addressId,
-        coupon_id: couponId,
-        goods_id: goodsId
+        num: data.num,
+        goods_spu_id: data.goodsSpuId,
+        address_id: data.addressId,
+        coupon_id: data.couponId,
+        goods_id: data.goodsId
       }
     })
   },
-  shopOrderDetail(id){
+  shopOrderDetail(data){
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
-      url: url.shopOrderDetail + "/" + id,
+      url: url.shopOrderDetail + "/" + data.id,
       method: "GET"
     })
   },
@@ -681,28 +744,28 @@ module.exports = {
 
 
 
-  userCoupons(status, page) {
+  userCoupons(data) {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
       url: url.userCoupons,
       method: "GET",
       data: {
-        status: status,
-        page: page
+        status: data.status,
+        page: data.page
       }
     })
   },
 
 
 
-  shopSearchHistory() {
+  shopSearchHistory(token) {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + token
       },
       url: url.shopSearchHistory,
       method: "GET",
@@ -711,9 +774,6 @@ module.exports = {
 
   shopDynamicHistory(kword) {
     return http({
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
       url: url.shopDynamicHistory,
       method: "GET",
       data: {
@@ -722,11 +782,11 @@ module.exports = {
     })
   },
 
-  delShopSearchHistory() {
+  delShopSearchHistory(token) {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + base_token
+        "Authorization": "Bearer " + data.token
       },
       url: url.delShopSearchHistory,
       method: "GET",

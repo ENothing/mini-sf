@@ -1,7 +1,7 @@
 <view class="UCenter-bg">
-  <image src="{{userInfo == null ?'/images/default_head.jpg':userInfo.avatarUrl}}" class="png cu-avatar xl round avatar" mode="widthFix"></image>
+  <image src="{{userInfo == '' ?'/images/default_head.jpg':userInfo.avatarUrl}}" class="png cu-avatar xl round avatar" mode="widthFix"></image>
   <view class="text-xl">
-    <text class="personal text-white nickname padding-top-sm">{{userInfo == null?'请先登录':userInfo.nickName}}</text>
+    <text class="personal text-white nickname padding-top-sm">{{userInfo == '' ? '请先登录':userInfo.nickName}}</text>
   </view>
   <image src="/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
 </view>
@@ -89,7 +89,13 @@
             <text>反馈及建议</text>
           </navigator>
         </view>
-
+        <view class="cu-item">
+          <navigator url="/pages/personal/article/article" hover-class="none">
+            <view class="cuIcon-formfill text-blue">
+            </view>
+            <text>我的作品</text>
+          </navigator>
+        </view>
         <view class="cu-item">
           <view class="cuIcon-activityfill text-cyan">
           </view>

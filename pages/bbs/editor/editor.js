@@ -10,23 +10,52 @@ Page({
     isIOS: false,
     picker: [],
     imgList: [],
-    content:"",
-    token: wx.getStorageSync('token')
+    content: "",
+    token: wx.getStorageSync('token'),
+    id: 0,
+    article: {},
+    index: "",
   },
-  onLoad() {
-    api.articleCate(this.data.order_id).then(data => {
+  onLoad(options) {
+    var id = options.id == undefined ? 0 : options.id
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
+    const that = this
+
+    api.articleCate().then(data => {
       this.setData({
         picker: data
       })
 
     })
 
+    if (id != 0) {
+      api.editArticleDetail({token:token,id:id}).then(data => {
+        var cates = that.data.picker
+        for (var i in cates) {
+
+          if (data.cate_id == cates[i].id) {
+            this.setData({
+              index: i,
+            })
+          }
+
+        }
+        this.setData({
+          article: data,
+          imgList: this.data.imgList.concat(data.thumb)
+        })
+      })
+    }
+
     const platform = wx.getSystemInfoSync().platform
     const isIOS = platform === 'ios'
     this.setData({
-      isIOS
+      isIOS,
+      id
     })
-    const that = this
     this.updatePosition(0)
     let keyboardHeight = 0
     wx.onKeyboardHeightChange(res => {
@@ -138,8 +167,24 @@ Page({
   },
   onEditorReady() {
     const that = this
-    wx.createSelectorQuery().select('#editor').context(function(res) {
+    wx.createSelectorQuery().select('#editor').context(function (res) {
       that.editorCtx = res.context
+      if (that.data.id != 0) {
+        that.editorCtx.setContents({
+          html: that.data.article.content,
+          fail: function () {
+            wx.showToast({
+              title: '富文本内容获取失败，请重试~',
+              icon: '',
+            })
+          }
+        })
+        that.setData({
+          content: that.data.article.content,
+        })
+
+
+      }
     }).exec()
   },
   blur() {
@@ -163,14 +208,14 @@ Page({
   },
   insertDivider() {
     this.editorCtx.insertDivider({
-      success: function() {
+      success: function () {
         console.log('insert divider success')
       }
     })
   },
   clear() {
     this.editorCtx.clear({
-      success: function(res) {
+      success: function (res) {
         console.log("clear success")
       }
     })
@@ -189,7 +234,7 @@ Page({
     const that = this
     wx.chooseImage({
       count: 9,
-      success: function(res) {
+      success: function (res) {
         for (var i = 0; i < res.tempFilePaths.length; i++) {
           var imgUrl = res.tempFilePaths[i];
           wx.uploadFile({
@@ -241,17 +286,21 @@ Page({
       }
     })
   },
-  editorContent(e){
-      this.setData({
-        content:e.detail.html
-      })
+  editorContent(e) {
+    this.setData({
+      content: e.detail.html
+    })
   },
-  formSubmit(e){
+  formSubmit(e) {
+    console.log(e)
     var data = {
       imgList: this.data.imgList,
-      content:this.data.content,
+      content: this.data.content,
       cate_id: e.detail.value.cate_id,
-      title:e.detail.value.title 
+      title: e.detail.value.title,
+      is_publish: e.detail.target.dataset.status,
+      id: this.data.id,
+      token:this.data.token
     }
     console.log(data)
 
@@ -269,7 +318,7 @@ Page({
       })
       return;
     }
-    if (data.imgList.length == 0){
+    if (data.imgList.length == 0) {
       wx.showToast({
         icon: "none",
         title: "一定要选择封面哦！",
@@ -283,21 +332,47 @@ Page({
       })
       return;
     }
-    wx.showLoading({
-      title: '文章上传中...',
-    })
-    api.articlePublish(data).then(resData => {
-      wx.hideLoading()
-      wx.showToast({
-        icon: "none",
-        title: "文章上传成功,等待审核~",
-        duration: 1000,
-        success: function () {
-          wx.navigateTo({
-            url: '/pages/index/index?PageCur=bbs',
-          })
-        }
+    if (data.status) {
+      wx.showLoading({
+        title: '文章上传中...',
       })
-    })
+      api.editArticle(data).then(resData => {
+        setTimeout(function () {
+          wx.hideLoading()
+        }, 2000)
+        wx.showToast({
+          icon: "none",
+          title: "文章发布成功,等待审核~",
+          duration: 1000,
+          success: function () {
+            wx.navigateTo({
+              url: '/pages/personal/article/article',
+            })
+          }
+        })
+      })
+    } else {
+      wx.showLoading({
+        title: '保存中',
+      })
+      api.editArticle(data).then(resData => {
+        setTimeout(function () {
+          wx.hideLoading()
+        }, 2000)
+        wx.showToast({
+          icon: "none",
+          title: "文章保存成功",
+          duration: 1000,
+          success: function () {
+            wx.navigateTo({
+              url: '/pages/personal/article/article',
+            })
+          }
+        })
+      })
+    }
+
+
+
   }
 })

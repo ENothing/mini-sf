@@ -23,7 +23,7 @@
     </view>
     商城
   </view>
-  <view class="action {{PageCur=='personal'?'text-white':'text-gray'}}" bindtap="NavChange" data-cur="personal">
+  <view class="action {{PageCur=='personal'?'text-white':'text-gray'}}" bindtap="NavChange" data-cur="personal" prop-info="{{userInfo}}" prop-statistics="{{userStatistics}}" >
     <view class="cuIcon-peoplefill">
     </view>
     个人

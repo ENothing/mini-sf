@@ -7,7 +7,8 @@ Page({
    */
   data: {
     order_id:0,
-    order:""
+    order:"",
+    token:""
   },
 
   /**
@@ -15,21 +16,19 @@ Page({
    */
   onLoad: function (options) {
     var order_id = options.id
-    console.log(order_id)
+    var token = wx.getStorageSync('token')
     this.setData({
-      order_id:order_id
+      order_id:order_id,
+      token:token
     })
 
   },
   onShow: function (options) {
-    console.log(123)
-
-    api.activityOrderDetail(this.data.order_id).then(data => {
-      console.log(data)
+    var token = wx.getStorageSync('token')
+    api.activityOrderDetail({token:token,id:this.data.order_id}).then(data => {
       this.setData({
         order: data
       })
-
     })
   },
   showModal(e) {
@@ -62,8 +61,7 @@ Page({
     })
   },
   finishOrder(){
-    api.activityFinish(this.data.order_id).then(data => {
-      
+    api.activityFinish({token:this.data.token,id:this.data.order_id}).then(data => {
       this.onShow() 
     })
   }

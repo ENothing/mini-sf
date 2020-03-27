@@ -6,7 +6,6 @@ Page({
     page:1,
     modalName:"",
     choose_id:0,
-
   },
   onLoad: function (options) {
     api.per_collect(1).then(data => {

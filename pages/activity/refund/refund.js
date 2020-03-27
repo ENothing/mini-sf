@@ -8,6 +8,7 @@ Page({
    */
   data: {
     order_id: 0,
+    token:""
   },
 
   /**
@@ -15,9 +16,10 @@ Page({
    */
   onLoad: function (options) {
     var order_id = options.order_id
-    console.log(order_id)
+    var token = wx.getStorageSync('token')
     this.setData({
-      order_id: order_id
+      order_id: order_id,
+      token:token
     })
   },
   formSubmit: function (e) {
@@ -30,8 +32,7 @@ Page({
       })
       return
     }
-    api.activityInitiateRefund(order_id, reason).then(data => {
-
+    api.activityInitiateRefund({token:this.data.token,order_id:order_id,reason:reason}).then(data => {
       wx.showToast({
         icon: "none",
         title: "申请退款成功，等待审批",
@@ -42,7 +43,6 @@ Page({
           })
         }
       })
-      console.log(data)
     })
 
   },

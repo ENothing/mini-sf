@@ -16,7 +16,8 @@ Page({
       name: "全部",
     }],
     a_index: 0, 
-    kword:""
+    kword:"",
+    token:""
   },
 
   /**
@@ -26,9 +27,11 @@ Page({
     console.log(options)
     var kword = options.kword
     var cate_id = options.cate_id
+    var token = wx.getStorageSync('token')
     this.setData({
       kword: kword == undefined ? "" : kword,
-      cate_id: cate_id  == undefined ? 0:cate_id
+      cate_id: cate_id  == undefined ? 0:cate_id,
+      token: token
     })
 
 
@@ -50,7 +53,14 @@ Page({
           }
       }
     })
-    api.activityList(this.data.page, this.data.cate_id, this.data.time_sort,kword).then(data => {
+    var obj = {
+      page: this.data.page,
+      cate_id: this.data.cate_id,
+      sort: this.data.time_sort,
+      title: kword,
+      token:token
+    }
+    api.activityList(obj).then(data => {
       console.log(data)
       this.setData({
         last_page: data.last_page,
@@ -70,7 +80,14 @@ Page({
     this.setData({
       page: this.data.page + 1
     })
-    api.activityList(this.data.page, this.data.cate_id, this.data.time_sort,this.data.kword).then(data => {
+    var obj = {
+      page: this.data.page,
+      cate_id: this.data.cate_id,
+      sort: this.data.time_sort,
+      title: this.data.kword,
+      token:token
+    }
+    api.activityList(obj).then(data => {
 
       var that = this;
 
@@ -86,8 +103,14 @@ Page({
     console.log(e)
     var a_index = e.detail.value
 
-
-    api.activityList(1, this.data.activityCates[a_index].id, 0,this.data.kword).then(data => {
+    var obj = {
+      page: 1,
+      cate_id: this.data.activityCates[a_index].id,
+      sort: 0,
+      title: this.data.kword,
+      token:token
+    }
+    api.activityList(obj).then(data => {
       this.setData({
         page: 1,
         last_page: data.last_page,
@@ -109,7 +132,14 @@ Page({
     if (sort != 0){
 
       time_sort = time_sort == 1 ? 0 : 1
-      api.activityList(1, this.data.cate_id, time_sort, this.data.kword).then(data => {
+      var obj = {
+        page: 1,
+        cate_id: this.data.cate_id,
+        sort: time_sort,
+        title: this.data.kword,
+        token:token
+      }
+      api.activityList(obj).then(data => {
         console.log(data)
         this.setData({
           page:1,

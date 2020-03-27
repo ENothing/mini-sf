@@ -13,9 +13,13 @@ Component({
     page:1,
     last_page:0,
     skin: false,
+    token:""
   },
   attached() {
-
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token:token
+    })
     api.activityIndex().then(data=>{ 
       console.log(data)
       this.setData({
@@ -27,9 +31,15 @@ Component({
     })
 
 
+    var obj = {
+      page: 1,
+      cate_id: 0,
+      sort: 0,
+      title: "",
+      token:token
+    }
 
-
-    api.activityList(this.data.page).then(data => {
+    api.activityList(obj).then(data => {
       console.log(data)
       this.setData({
         last_page: data.last_page,
@@ -65,7 +75,14 @@ Component({
       this.setData({
         page:this.data.page+1
       })
-      api.activityList(this.data.page).then(data => {
+      var obj = {
+        page: this.data.page,
+        cate_id: 0,
+        sort: 0,
+        title: "",
+        token:token
+      }
+      api.activityList(obj).then(data => {
 
         var that = this;
 

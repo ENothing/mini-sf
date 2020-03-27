@@ -37,7 +37,8 @@
     "pages/personal/follows/follows",
     "pages/personal/followed/followed",
     "pages/bbs/follows/follows",
-    "pages/bbs/followed/followed"
+    "pages/bbs/followed/followed",
+    "pages/personal/article/article"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -34,7 +34,10 @@ Page({
         wx.getUserInfo({
           success: info => {
             console.log(info)
-            app.globalData.userInfo = info.userInfo
+            wx.setStorage({
+              key: "user",
+              data: info.userInfo
+            })
             if (this.userInfoReadyCallback) {
               this.userInfoReadyCallback(info)
             }
@@ -44,7 +47,10 @@ Page({
               title: '登录中',
             })
             api.userLogin(code, iv, encryptedData).then(data => {
-              wx.setStorageSync('token', data)
+              wx.setStorage({
+                key: "token",
+                data: data
+              })
               wx.hideLoading()
               wx.showToast({
                 icon: "none",

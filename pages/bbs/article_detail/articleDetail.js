@@ -23,34 +23,37 @@ Page({
     page: 1,
     parent_id: 0,
     reply_id: 0,
-    placeholder:"说点什么...",
-    icon:"cuIcon-write",
-    liked:false,
-    likes:0,
-    attention:0,
-    isFollowed:0
+    placeholder: "说点什么...",
+    icon: "cuIcon-write",
+    liked: false,
+    likes: 0,
+    attention: 0,
+    isFollowed: 0,
+    token: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     var id = options.id
-    console.log(id)
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
 
-
-    api.articleDetail(id).then(data => {
+    api.articleDetail({token:token,id:id}).then(data => {
       console.log(data)
       this.setData({
         article_detail: data,
         liked: data.liked,
         likes: data.likes,
         attention: data.attention,
-        isFollowed:data.is_followed
+        isFollowed: data.is_followed
       })
     })
 
-    api.articleCommentList(id, this.data.page).then(data => {
+    api.articleCommentList({token:token,id:id,page:1}).then(data => {
       if (data != "") {
         this.setData({
           commentList: data.articleComments,
@@ -89,7 +92,7 @@ Page({
       input_val: input_val
     })
   },
-  postComment: function(e) {
+  postComment: function (e) {
     var content = e.detail.value.comment
     var id = this.data.id
     var parent_id = this.data.parent_id
@@ -108,10 +111,11 @@ Page({
       id,
       content,
       parent_id,
-      reply_id
+      reply_id,
+      token:this.data.token
     }
     api.articleCommentPost(data).then(resData => {
-      api.articleCommentList(id, 1).then(redata => {
+      api.articleCommentList({token:token,id:id,page:1}).then(redata => {
         this.setData({
           commentList: redata.articleComments,
           total: redata.total,
@@ -129,21 +133,21 @@ Page({
     })
 
   },
-  Reply(e){
+  Reply(e) {
 
     var id = e.currentTarget.dataset.id
     var reply_id = e.currentTarget.dataset.replyId
     this.setData({
-      parent_id:id,
+      parent_id: id,
       reply_id: reply_id,
-      comment_textarea:1,
+      comment_textarea: 1,
       focus: true,
-      placeholder: "@ "+e.currentTarget.dataset.username,
-      icon:"cuIcon-roundclose"
+      placeholder: "@ " + e.currentTarget.dataset.username,
+      icon: "cuIcon-roundclose"
     })
 
   },
-  clearAt(){
+  clearAt() {
     this.setData({
       parent_id: 0,
       reply_id: 0,
@@ -151,11 +155,11 @@ Page({
       icon: "cuIcon-write"
     })
   },
-  likeAndUnlike(){
+  likeAndUnlike() {
 
 
 
-    api.articlelike(this.data.id).then(data => {
+    api.articlelike({token:this.data.token,id:this.data.id}).then(data => {
 
       if (!this.data.liked) {
         wx.showToast({
@@ -172,8 +176,8 @@ Page({
     })
 
     this.setData({
-      liked:this.data.liked == false ? true:false,
-      likes:this.data.liked == false ? this.data.likes +1:this.data.likes -1 
+      liked: this.data.liked == false ? true : false,
+      likes: this.data.liked == false ? this.data.likes + 1 : this.data.likes - 1
     })
 
   },
@@ -183,7 +187,7 @@ Page({
     var isFollowed = this.data.isFollowed
 
 
-    api.userFollows(user_id).then(data => {
+    api.userFollows({token:this.data.token,follow_id:user_id}).then(data => {
 
       if (atten == 0) {
 
@@ -201,7 +205,7 @@ Page({
 
     })
   },
-  goToPerIndex(e){
+  goToPerIndex(e) {
     var user_id = e.currentTarget.dataset.userId
     wx.navigateTo({
       url: '/pages/bbs/index/index?id=' + user_id,

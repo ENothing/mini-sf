@@ -3,65 +3,67 @@
 </cu-custom>
 
 <form bindsubmit="formSubmit">
-<view class="cu-form-group">
-  <view class="title">标题</view>
-  <input placeholder="填入您想取的标题哦~" name="title"></input>
-</view>
-<view class="cu-form-group">
-  <view class="title">文章类型</view>
-  <picker bindchange="PickerChange" value="{{picker[index].id}}" range='{{picker}}' range-key="{{'name'}}" name="cate_id">
-    <view class="picker">
-      {{index?picker[index].name:'加个分类哦~'}}
-    </view>
-  </picker>
-</view>
+  <view class="cu-form-group">
+    <view class="title">标题</view>
+    <input placeholder="填入您想取的标题哦~" name="title" value="{{article.title}}"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">文章类型</view>
+    <picker bindchange="PickerChange" value="{{picker[index].id}}" range='{{picker}}' range-key="{{'name'}}" name="cate_id">
+      <view class="picker">
+        {{index ? picker[index].name:'加个分类哦~'}}
+      </view>
+    </picker>
+  </view>
 
-<view class="cu-bar bg-white">
-  <view class="action">
-    封面
+  <view class="cu-bar bg-white">
+    <view class="action">
+      封面
+    </view>
+    <view class="action">
+      {{imgList.length}}/1
+    </view>
   </view>
-  <view class="action">
-    {{imgList.length}}/1
-  </view>
-</view>
-<view class="cu-form-group">
-  <view class="grid col-4 grid-square flex-sub">
-    <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
-      <image src='{{imgList[index]}}' mode='aspectFill'></image>
-      <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
-        <text class="cuIcon-close"></text>
+  <view class="cu-form-group">
+    <view class="grid col-4 grid-square flex-sub">
+      <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+        <image src='{{imgList[index]}}' mode='aspectFill'></image>
+        <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+          <text class="cuIcon-close"></text>
+        </view>
+      </view>
+      <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<1}}">
+        <text class="cuIcon-cameraadd"></text>
       </view>
     </view>
-    <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
-      <text class="cuIcon-cameraadd"></text>
+  </view>
+
+
+
+  <view class="container" style="height:{{editorHeight}}px;">
+
+    <view class="toolbar" catchtouchend="format">
+      <i class="iconfont icon-charutupian" catchtouchend="insertImage"></i>
+      <i class="iconfont icon-format-header-2 {{formats.header === 2 ? 'ql-active' : ''}}" data-name="header" data-value="{{2}}"></i>
+      <i class="iconfont icon-format-header-3 {{formats.header === 3 ? 'ql-active' : ''}}" data-name="header" data-value="{{3}}"></i>
+      <i class="iconfont icon-zitijiacu {{formats.bold ? 'ql-active' : ''}}" data-name="bold"></i>
+      <i class="iconfont icon-zitixieti {{formats.italic ? 'ql-active' : ''}}" data-name="italic"></i>
+      <i class="iconfont icon-zitixiahuaxian {{formats.underline ? 'ql-active' : ''}}" data-name="underline"></i>
+      <i class="iconfont icon--checklist" data-name="list" data-value="check"></i>
+      <i class="iconfont icon-youxupailie {{formats.list === 'ordered' ? 'ql-active' : ''}}" data-name="list" data-value="ordered"></i>
+      <i class="iconfont icon-wuxupailie {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
+    </view>
+    <editor id="editor" class="ql-container" placeholder="开始您的创作..." bindstatuschange="onStatusChange" bindready="onEditorReady" bindinput="editorContent">
+    </editor>
+  </view>
+
+
+
+
+  <view class="cu-bar btn-group tabbar  foot">
+    <view class="flex solid-bottom  justify-between" style="width:100%">
+      <button class="cu-btn bg-red shadow-blur round lg" form-type="submit" data-status="1">发布</button>
+      <button class="cu-btn bg-grey shadow-blur round lg" form-type="submit" data-status="0">保存</button>
     </view>
   </view>
-</view>
-
-
-
-<view class="container" style="height:{{editorHeight}}px;">
-
-<view class="toolbar" catchtouchend="format">
-  <i class="iconfont icon-charutupian" catchtouchend="insertImage"></i>
-  <i class="iconfont icon-format-header-2 {{formats.header === 2 ? 'ql-active' : ''}}" data-name="header" data-value="{{2}}"></i>
-  <i class="iconfont icon-format-header-3 {{formats.header === 3 ? 'ql-active' : ''}}" data-name="header" data-value="{{3}}"></i>
-  <i class="iconfont icon-zitijiacu {{formats.bold ? 'ql-active' : ''}}" data-name="bold"></i>
-  <i class="iconfont icon-zitixieti {{formats.italic ? 'ql-active' : ''}}" data-name="italic"></i>
-  <i class="iconfont icon-zitixiahuaxian {{formats.underline ? 'ql-active' : ''}}" data-name="underline"></i>
-  <i class="iconfont icon--checklist" data-name="list" data-value="check"></i>
-  <i class="iconfont icon-youxupailie {{formats.list === 'ordered' ? 'ql-active' : ''}}" data-name="list" data-value="ordered"></i>
-  <i class="iconfont icon-wuxupailie {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
-</view>
-  <editor id="editor" class="ql-container" placeholder="开始您的创作..." bindstatuschange="onStatusChange" bindready="onEditorReady" bindinput="editorContent">
-  </editor>
-
-</view>
-
-
-
-
-<view class="cu-bar btn-group tabbar  foot">
-  <button class="cu-btn bg-red shadow-blur round lg" form-type="submit">发布</button>
-</view>
 </form>

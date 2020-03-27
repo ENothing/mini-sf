@@ -21,13 +21,16 @@ Component({
     },
     page: 1,
     last_page: 0,
-    articles: ""
+    articles: "",
+    token:""
   },
   attached() {
-
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
     var that = this
-    api.articleList(that.data.page).then(data => {
-      console.log(data)
+    api.articleList({token:token,page:1}).then(data => {
       that.setData({
         last_page: data.last_page,
         articles: data.articles,
@@ -35,24 +38,24 @@ Component({
     })
   },
   methods: {
-    tapCard: function(event) {
+    tapCard: function (event) {
       wx.navigateTo({
         url: '/pages/bbs/article_detail/articleDetail?id=' + event.detail.card_id,
       })
 
     },
-    handleLike: function(e) {
+    handleLike: function (e) {
       var liked = e.detail.liked
-      var id  = e.detail.card_id
+      var id = e.detail.card_id
 
       api.articlelike(id).then(data => {
 
-        if(liked){
+        if (liked) {
           wx.showToast({
             icon: "none",
             title: "不喜欢！",
           })
-        }else{
+        } else {
           wx.showToast({
             icon: "none",
             title: "喜欢！",
@@ -63,7 +66,7 @@ Component({
     },
 
     // 点击用户头像区域
-    handleUserEvent: function(e) {
+    handleUserEvent: function (e) {
       var user_id = e.detail.user_id
       wx.navigateTo({
         url: '/pages/bbs/index/index?id=' + user_id,
@@ -77,7 +80,7 @@ Component({
       this.setData({
         page: this.data.page + 1
       })
-      api.articleList(this.data.page).then(data => {
+      api.articleList({token:this.data.token,page:this.data.page}).then(data => {
 
         var that = this;
 
@@ -87,8 +90,6 @@ Component({
         that.setData({
           articles: arr1 //合并后更新datalist
         })
-        console.log(arr1)
-
       })
 
     }

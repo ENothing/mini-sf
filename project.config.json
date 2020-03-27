@@ -306,6 +306,20 @@
 					"pathName": "pages/bbs/followed/followed",
 					"query": "id=2",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人文章管理",
+					"pathName": "pages/personal/article/article",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "编辑作品",
+					"pathName": "pages/bbs/editor/editor",
+					"query": "id=10",
+					"scene": null
 				}
 			]
 		}

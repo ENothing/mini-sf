@@ -1,0 +1,56 @@
+<cu-custom bgColor="bg-gradual-red" isBack="{{true}}">
+  <view slot="backText"></view>
+  <view slot="content">我的作品</view>
+</cu-custom>
+
+
+<view class="cu-card case " wx:for="{{articles}}" wx:key wx:if="{{articles.length >0}}">
+
+  <view class="cu-item item" bindtap="goToAritlceDetial" data-id="{{item.id}}" data-is-publish="{{item.is_publish}}" data-status="{{item.status}}">
+    <view class="image">
+      <image src="{{item.thumb}}" mode="aspectFill" style="height:200rpx"></image>
+      <view class="cu-tag bg-orange" wx:if="{{item.is_publish == 0}}">待发布</view>
+      <view class="cu-tag bg-blue" wx:if="{{item.is_publish == 1 && item.status == 0}}">待审核</view>
+      <view class="cu-tag bg-green" wx:if="{{item.status == 1}}">审核通过</view>
+    </view>
+    <view class="cu-list">
+      <view class="cu-item">
+        <view class="flex padding justify-between">
+          <view class="text-cut">{{item.title}}</view>
+          <view class=" text-sm cuIcon-moreandroid" catchtap="showModal" data-id="{{item.id}}" data-is-publish="{{item.is_publish}}" data-status="{{item.status}}" data-target="bottomModal">
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{articles.length == 0}}">
+  <view class="iconfont icon-nothing2 nothing text-gray flex   justify-center align-center margin-top-xl"></view>
+  <view class="flex   justify-center align-center ">╮(๑•́ ₃•̀๑)╭还没有发布作品哦~</view>
+  <view class="padding flex flex-direction">
+    <button class="cu-btn round shadow bg-red margin-tb-sm xl" bindtap="goToPost">发布作品</button>
+  </view>
+</view>
+
+
+
+<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="flex solid-bottom   justify-center ">
+      <text class="bg-white padding-sm  radius" style="width:100%" bindtap="goToPost" wx:if="{{is_publish == 1}}">发布新作品</text>
+    </view>
+    <view class="flex solid-bottom   justify-center ">
+      <text class="bg-white padding-sm  radius" style="width:100%" bindtap="doPublish" wx:if="{{is_publish == 0}}">发布</text>
+    </view>
+    <view class="flex solid-bottom  justify-center ">
+      <text class="bg-white padding-sm  radius" style="width:100%" bindtap="goToEdit" wx:if="{{is_publish == 0}}">编辑</text>
+    </view>
+    <view class="flex solid-bottom  justify-center ">
+      <text class="bg-white padding-sm radius" style="width:100%" bindtap="goToDelete">删除</text>
+    </view>
+    <view class="flex solid-bottom  justify-center">
+      <view class="bg-white padding-sm margin-xs radius" style="width:100%" bindtap="hideModal">取消</view>
+    </view>
+  </view>
+</view>

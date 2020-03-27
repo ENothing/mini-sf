@@ -12,7 +12,8 @@ Page({
     countDownNum: 60,
     picker: ['居民身份证', '护照'],
     index: null,
-    mobile:""
+    mobile:"",
+    token:""
   },
 
   /**
@@ -20,16 +21,18 @@ Page({
    */
   onLoad: function(options) {
     var id = options.id
+    var token = wx.getStorageSync('token')
     console.log(id)
     api.activityDetail(id).then(data => {
       console.log(data)
       this.setData({
-        activity: data
+        activity: data,
       })
 
     })
     this.setData({
-      id: id
+      id: id,
+      token: token
     })
   },
   PickerChange(e) {
@@ -103,7 +106,8 @@ Page({
       c_type: c_type,
       c_num: c_num,
       code: code,
-      sex: sex
+      sex: sex,
+      token: this.data.token
     }
     api.activityEnter(data).then(resData => {
       wx.navigateTo({
