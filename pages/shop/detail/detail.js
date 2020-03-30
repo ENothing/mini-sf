@@ -12,16 +12,18 @@ Page({
     modalButton: null,
     choose_key: null,
     choose_name: null,
-    id:"",
-    shop_goods_detail:"",
-    purchasers:"",
-    p_total:0
+    id: "",
+    shop_goods_detail: "",
+    purchasers: "",
+    p_total: 0,
+    token: ""
   },
   onLoad(options) {
-
+    var token = wx.getStorageSync('token')
     var id = options.id
     this.setData({
-      id: id
+      id: id,
+      token: token
     })
 
     api.shopGoodsDetail(id).then(data => {
@@ -37,9 +39,12 @@ Page({
 
     wx.hideLoading()
   },
-
-
-
+  onShow(){
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
+  },
   showModal(e) {
     this.setData({
       modalName: e.currentTarget.dataset.target
@@ -53,16 +58,13 @@ Page({
   },
   showButtonModal(e) {
     var id = e.currentTarget.dataset.id
-    console.log("id:"+id)
-    console.log("i1:" + this.data.choose_key)
-
     if (this.data.choose_key == id) {
       this.setData({
         modalButton: null,
         choose_key: null,
         choose_name: null,
       })
-    }else{
+    } else {
       this.setData({
         modalButton: e.currentTarget.dataset.target,
         choose_key: id,
@@ -72,10 +74,9 @@ Page({
 
   },
 
-  goToOrder(e){
+  goToOrder(e) {
 
-    var token = wx.getStorageSync('token')
-    if (!token) {
+    if (this.data.token == "") {
       wx.showToast({
         icon: "none",
         title: "请先登录",
@@ -88,12 +89,9 @@ Page({
       })
       return
     }
-    console.log(this.data.choose_key)
-
-
-      wx.navigateTo({
-          url: '/pages/shop/order/order?id=' + this.data.choose_key,
-      })
+    wx.navigateTo({
+      url: '/pages/shop/order/order?id=' + this.data.choose_key,
+    })
   },
 
 

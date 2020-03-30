@@ -18,33 +18,18 @@ Page({
       title: '加载中...',
       mask: true
     });
-    // var list = [{}];
-    // for (let i = 0; i < 2; i++) {
-    //   list[i] = {};
-    //   list[i].name = String.fromCharCode(65 + i);
-    //   list[i].id = i;
-    // }
-
-
-
-
     api.catesWithBrands().then(data => {
-      console.log(data)
       this.setData({
         list: data,
         listCur: data[0],
       })
     })
-
-
-
   },
   onReady() {
     wx.hideLoading()
   },
   tabSelect(e) {
     let index = e.currentTarget.dataset.id
-    console.log(this.data.list[index])
     this.setData({
       TabCur: index,
       listCur: this.data.list[index],

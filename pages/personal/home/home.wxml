@@ -33,68 +33,52 @@
 
       <view class="cu-list grid col-3 no-border">
 
-        <view class="cu-item">
-          <navigator url="/pages/personal/aorder/aorder" hover-class="none">
+        <view class="cu-item" bindtap="goToAOrder">
             <view class="cuIcon-formfill text-red">
-              <view class="cu-tag badge">{{aorder}}</view>
+              <view class="cu-tag badge" wx:if="{{aorder != 0}}">{{aorder}}</view>
             </view>
             <text>活动订单</text>
-          </navigator>
         </view>
 
 
-        <view class="cu-item">
-          <navigator url="/pages/personal/gorder/gorder" hover-class="none">
+        <view class="cu-item" bindtap="goToGorder" >
             <view class="cuIcon-formfill text-orange">
-              <view class="cu-tag badge">{{sorder}}</view>
+              <view class="cu-tag badge" wx:if="{{sorder != 0}}">{{sorder}}</view>
             </view>
             <text>商品订单</text>
-          </navigator>
         </view>
 
-        <view class="cu-item">
-          <navigator url="/pages/personal/coupon/coupon" hover-class="none">
-
+        <view class="cu-item" bindtap="goToCoupon">
             <view class="cuIcon-card text-purple">
             </view>
             <text>卡券</text>
-          </navigator>
-
         </view>
         <!-- <view class="cu-item">
             <view class="cuIcon-notificationfill text-yellow">
             </view>
             <text>消息通知</text>
           </view> -->
-        <view class="cu-item">
-          <navigator url="/pages/personal/likes/likes" hover-class="none">
+        <view class="cu-item" bindtap="goToLikes">
             <view class="cuIcon-likefill text-red">
             </view>
             <text>喜欢</text>
-          </navigator>
         </view>
 
-        <view class="cu-item">
-          <navigator url="/pages/personal/address/address" hover-class="none">
+        <view class="cu-item" bindtap="goToAddress">
             <view class="cuIcon-locationfill text-mauve">
             </view>
             <text>地址管理</text>
-          </navigator>
         </view>
 
-        <view class="cu-item">
-          <navigator url="/pages/personal/feedback/feedback" hover-class="none">
+        <view class="cu-item" bindtap="goToFeedback">
             <view class="cuIcon-writefill text-olive">
             </view>
             <text>反馈及建议</text>
-          </navigator>
         </view>
-        <view class="cu-item">
-          <navigator url="/pages/personal/article/article" hover-class="none">
+        <view class="cu-item" bindtap="goToArticle">
             <view class="cuIcon-formfill text-blue">
             </view>
             <text>我的作品</text>
-          </navigator>
         </view>
         <view class="cu-item">
           <view class="cuIcon-activityfill text-cyan">

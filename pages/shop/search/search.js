@@ -1,50 +1,29 @@
-// pages/shop/search/search.js
 import api from '../../../utils/api.js'
 const app = getApp();
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     CustomBar: app.globalData.CustomBar,
     inputkey:"",
     history:"",
     hot:null,
-    dynamic:null
+    dynamic:null,
+    token:""
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-    api.shopSearchHistory().then(data => {
+    var token = wx.getStorageSync('token')
+    this.setData({
+          token: token
+      })
+    api.shopSearchHistory(token).then(data => {
       this.setData({
         history:data.history,
         hot:data.hot
       })
     })
-    console.log( this.data.history)
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
   },
   bindKeyInput(e){
     var key = e.detail.value.replace(/\s+/g, '')
-    console.log(key)
     if(key){
       api.shopDynamicHistory(key).then(data => {
         this.setData({
@@ -56,8 +35,6 @@ Page({
         dynamic: null,
       })
     }
-
-
     this.setData({
       inputkey: key
     })
@@ -70,7 +47,6 @@ Page({
   },
   goToGoodsList(e){
     var kword = e.currentTarget.dataset.kword
-    console.log(e)
     wx.navigateTo({
       url: '/pages/shop/goods_list/goodsList?kword=' + kword,
     })
@@ -85,7 +61,7 @@ Page({
   },
   delHistory(){
     var that = this
-    api.delShopSearchHistory().then(data => {
+    api.delShopSearchHistory(this.data.token).then(data => {
       wx.showToast({
         icon: "none",
         title: "清除历史搜索成功~",

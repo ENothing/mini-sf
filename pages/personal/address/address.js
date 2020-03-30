@@ -11,15 +11,19 @@ Page({
     last_page:0,
     checked:0,
     page_status:0,
-    goods_spu_id:0
+    goods_spu_id:0,
+    token:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var token = wx.getStorageSync('token')
+    this.setData({
+          token: token
+      })
     var status = options.status
-    console.log(status)
     var goods_spu_id = options.goods_spu_id
     if (status != undefined && goods_spu_id != undefined && goods_spu_id != 0){
       this.setData({
@@ -29,8 +33,12 @@ Page({
     }
   },
   onShow:function(){
+    var token = wx.getStorageSync('token')
+    this.setData({
+          token: token
+      })
     var checked = 0
-    api.addressList().then(data => {
+    api.addressList(token).then(data => {
       if (data.default_count == 0) {
         var checked = null
       } 
@@ -59,6 +67,7 @@ Page({
 
   delAddress(e){
     var id = e.currentTarget.dataset.id;
+    var that = this
 
     wx.showModal({
       title: '删除地址',
@@ -66,8 +75,7 @@ Page({
       confirmText: '确定',
       success: res => {
         if (res.confirm) {
-          api.delAddress(id).then(data => {
-            console.log(data)
+          api.delAddress({token:that.data.token,id:id}).then(data => {
             this.setData({
               checked: null,
             })
@@ -86,8 +94,7 @@ Page({
     var index = e.currentTarget.dataset.index
     var id = e.currentTarget.dataset.id
 
-    api.updateDefaultAddress(id).then(data => {
-      console.log(data)
+    api.updateDefaultAddress({token:this.data.token,id:id}).then(data => {
       wx.showToast({
         icon: "none",
         title: "设置默认地址成功",
@@ -107,16 +114,6 @@ Page({
       })
 
     }
-
-
-
-
-
-
-
-
-
-
   }
 
 })

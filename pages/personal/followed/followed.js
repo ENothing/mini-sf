@@ -9,21 +9,30 @@ Page({
     last_page: 1,
     page: 1,
     users: [],
+    token: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    api.followedList(1).then(data => {
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
+    api.followedList({ token: token, page: 1 }).then(data => {
       console.log(data)
       this.setData({
         users: data.list,
         last_page: data.last_page
       })
-
     })
-
+  },
+  onShow() {
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
   },
   onReachBottom: function () {
     if (this.data.last_page == this.data.page) {
@@ -33,7 +42,7 @@ Page({
       page: this.data.page + 1
     })
     var that = this;
-    api.followedList(that.data.page).then(data => {
+    api.followedList({token:that.data.token,page:that.data.page}).then(data => {
       var arr1 = that.data.users;
       var arr2 = data.list
       arr1 = arr1.concat(arr2);
@@ -51,7 +60,7 @@ Page({
   followAndUnfollow(e) {
     var user_id = e.currentTarget.dataset.userId
 
-    api.userFollows(user_id).then(data => {
+    api.userFollows({token:this.data.token,follow_id:user_id}).then(data => {
       var users = this.data.users
       for (var index in users) {
         if (users[index].user_id == user_id) {

@@ -24,7 +24,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     var kword = options.kword
     var cate_id = options.cate_id
     var token = wx.getStorageSync('token')
@@ -85,7 +84,7 @@ Page({
       cate_id: this.data.cate_id,
       sort: this.data.time_sort,
       title: this.data.kword,
-      token:token
+      token:this.data.token
     }
     api.activityList(obj).then(data => {
 
@@ -108,7 +107,7 @@ Page({
       cate_id: this.data.activityCates[a_index].id,
       sort: 0,
       title: this.data.kword,
-      token:token
+      token:this.data.token
     }
     api.activityList(obj).then(data => {
       this.setData({
@@ -137,7 +136,7 @@ Page({
         cate_id: this.data.cate_id,
         sort: time_sort,
         title: this.data.kword,
-        token:token
+        token:this.data.token
       }
       api.activityList(obj).then(data => {
         console.log(data)

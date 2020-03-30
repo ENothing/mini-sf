@@ -6,17 +6,27 @@ Page({
     page: 1,
     orders: "",
     last_page: 1,
-    status: ""
+    status: "",
+    token: ""
   },
   onLoad: function (options) {
-    api.activityOrderList(this.data.page, this.data.status).then(data => {
-      console.log(data)
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
+    api.activityOrderList({ token: token, page: 1, status: this.data.status }).then(data => {
       this.setData({
         orders: data.orders,
         last_page: data.last_page,
-        page:1
+        page: 1
       })
 
+    })
+  },
+  onShow() {
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
     })
   },
   onReachBottom: function () {
@@ -27,7 +37,13 @@ Page({
       page: this.data.page + 1
     })
     var that = this;
-    api.activityOrderList(this.data.page, this.data.status).then(data => {
+    api.activityOrderList(
+      {
+        token: that.data.token,
+        page: this.data.page,
+        status: this.data.status
+      }
+    ).then(data => {
       var arr1 = that.data.orders;
       var arr2 = data.orders
       arr1 = arr1.concat(arr2);
@@ -37,14 +53,18 @@ Page({
     })
   },
   tabSelect(e) {
-    // console.log(e);
     var status = e.currentTarget.dataset.id
-    api.activityOrderList(1, status).then(data => {
-      console.log(data)
+    api.activityOrderList(
+      {
+        token: this.data.token,
+        page: 1,
+        status: status
+      }
+    ).then(data => {
       this.setData({
         orders: data.orders,
         last_page: data.last_page,
-        page:1
+        page: 1
       })
     })
     this.setData({
@@ -52,7 +72,6 @@ Page({
     })
   },
   goToOrderDetail(e) {
-    console.log(e)
     var id = e.currentTarget.dataset.id
     wx.navigateTo({
       url: '/pages/activity/order_detail/orderDetail?id=' + id,

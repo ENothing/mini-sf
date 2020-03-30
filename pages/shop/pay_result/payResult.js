@@ -16,7 +16,6 @@ Page({
     this.setData({
       order_id:order_id
     })
-    console.log('pay_order_id:'+order_id)
   },
   goToOrderDetail(){
     wx.navigateTo({

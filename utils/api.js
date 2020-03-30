@@ -656,7 +656,7 @@ module.exports = {
       }
     })
   },
-  updateAddress(id, name, mobile, province, city, district, detail_address) {
+  updateAddress(data) {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -786,7 +786,7 @@ module.exports = {
     return http({
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer " + data.token
+        "Authorization": "Bearer " + token
       },
       url: url.delShopSearchHistory,
       method: "GET",

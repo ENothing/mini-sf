@@ -21,7 +21,6 @@ Component({
       token:token
     })
     api.activityIndex().then(data=>{ 
-      console.log(data)
       this.setData({
         swiperList: data.activity_banners,
         msgList: data.activity_ann,
@@ -40,7 +39,6 @@ Component({
     }
 
     api.activityList(obj).then(data => {
-      console.log(data)
       this.setData({
         last_page: data.last_page,
         activityList: data.activities
@@ -48,7 +46,6 @@ Component({
 
     })
 
-    console.log("activity")
     wx.pageScrollTo({
       scrollTop: 0,
       duration: 0

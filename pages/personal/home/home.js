@@ -48,22 +48,98 @@ Component({
           is_followed: data.user_info.is_followed,
           aorder: data.aorder_unpay,
           sorder: data.sorder_unpay,
-          userInfo: userInfo
+          userInfo: userInfo,
+          token: token
         })
+      })
+      this.setData({
+        token: token
       })
     },
   },
 
   methods: {
     follows() {
-      wx.navigateTo({
-        url: '/pages/personal/follows/follows',
-      })
+      if (this.toLogin()) {
+        wx.navigateTo({
+          url: '/pages/personal/follows/follows',
+        })
+      }
+
     },
     followed() {
-      wx.navigateTo({
-        url: '/pages/personal/followed/followed',
-      })
+      if (this.toLogin()) {
+        wx.navigateTo({
+          url: '/pages/personal/followed/followed',
+        })
+      }
+    },
+    goToActivityOrder() {
+      if (this.toLogin()) {
+        wx.navigateTo({
+          url: '/pages/personal/aorder/aorder',
+        })
+      }
+    },
+    goToGorder() {
+      if (this.toLogin()) {
+        wx.navigateTo({
+          url: '/pages/personal/gorder/gorder',
+        })
+      }
+    },
+    goToCoupon() {
+      if (this.toLogin()) {
+        wx.navigateTo({
+          url: '/pages/personal/coupon/coupon',
+        })
+      }
+    },
+    goToLikes() {
+      if (this.toLogin()) {
+        wx.navigateTo({
+          url: '/pages/personal/likes/likes',
+        })
+      }
+    },
+    goToAddress() {
+      if (this.toLogin()) {
+        wx.navigateTo({
+          url: '/pages/personal/address/address',
+        })
+      }
+    },
+    goToFeedback() {
+      if (this.toLogin()) {
+        wx.navigateTo({
+          url: '/pages/personal/feedback/feedback',
+        })
+      }
+    },
+    goToArticle() {
+      if (this.toLogin()) {
+        wx.navigateTo({
+          url: '/pages/personal/article/article',
+        })
+      }
+    },
+    toLogin() {
+      if (!this.data.token) {
+        wx.showToast({
+          icon: "none",
+          title: "请先授权",
+          duration: 1000,
+          success: function() {
+            wx.navigateTo({
+              url: '/pages/personal/login/login',
+            })
+          }
+        })
+        return false
+      } else {
+        return true
+      }
     }
-  }
+  },
+
 })

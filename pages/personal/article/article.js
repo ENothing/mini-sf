@@ -21,6 +21,12 @@ Page({
 
     })
   },
+  onShow() {
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
+  },
   onReachBottom: function () {
     if (this.data.last_page == this.data.page) {
       return

@@ -69,6 +69,12 @@ Page({
       id: id
     })
   },
+  onShow(){
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
+  },
   getTextarea(e) {
 
     var comment_textarea = this.data.comment_textarea == 1 ? 0 : 1;

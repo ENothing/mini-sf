@@ -8,26 +8,29 @@ Page({
    */
   data: {
     rTypeArr: [{
-        type: 1,
-        text: "仅退款",
-      },
-      {
-        type: 2,
-        text: "退款退货",
-      },
+      type: 1,
+      text: "仅退款",
+    },
+    {
+      type: 2,
+      text: "退款退货",
+    },
     ],
-    r_index: 0, 
+    r_index: 0,
     order_id: 0,
     imgList: [],
+    token: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     var order_id = options.order_id
+    var token = wx.getStorageSync('token')
     this.setData({
-      order_id: order_id
+      order_id: order_id,
+      token: token
     })
   },
   bindPickerChange(e) {
@@ -35,7 +38,7 @@ Page({
       r_index: e.detail.value
     })
   },
-  formSubmit: function(e) {
+  formSubmit: function (e) {
     var order_id = this.data.order_id
     var r_type = e.detail.value.rtype
     var reason = e.detail.value.reason
@@ -45,9 +48,15 @@ Page({
         icon: "none",
         title: "申请原因不能为空哦~"
       })
-      return 
+      return
     }
-    api.initiateRefund(order_id, reason, r_type, imgs).then(data => {
+    api.initiateRefund({
+      token: this.data.token,
+      order_id: order_id,
+      reason: reason,
+      r_type: r_type,
+      imgs: imgs
+    }).then(data => {
 
       wx.showToast({
         icon: "none",
@@ -59,7 +68,6 @@ Page({
           })
         }
       })
-      console.log(data)
     })
 
   },
@@ -101,7 +109,7 @@ Page({
                 })
               }
             },
-            fail: function(e) {
+            fail: function (e) {
               wx.showToast({
                 icon: "none",
                 title: "网络错误，请重试"

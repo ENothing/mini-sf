@@ -10,22 +10,27 @@ Page({
     order:"",
     refund_order:"",
     order_id:0,
+    token:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var token = wx.getStorageSync('token')
     var id = options.id
-    console.log("order_id:"+id)
     this.setData({
       order_id: id,
+      token: token
     })
   },
   onShow:function(options){
     var id = this.data.order_id
-    api.shopOrderDetail(id).then(data => {
-      console.log(data)
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
+    api.shopOrderDetail({token:token,id:id}).then(data => {
       this.setData({
         order: data.order,
         refund_order: data.refund_order

@@ -22,19 +22,22 @@ Page({
     attention: 0,
     isFollowed: 0
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
     var id = options.id
     this.setData({
       id: id
     })
 
   },
-  onShow: function () {
+  onShow: function() {
     var token = wx.getStorageSync('token')
     this.setData({
       token: token
     })
-    api.userDetail({token:token,id:this.data.id}).then(data => {
+    api.userDetail({
+      token: token,
+      id: this.data.id
+    }).then(data => {
       console.log(data)
       this.setData({
         user: data,
@@ -111,8 +114,10 @@ Page({
     var atten = this.data.attention
     var isFollowed = this.data.isFollowed
 
-
-    api.userFollows({token:this.data.token,id:this.data.id}).then(data => {
+    api.userFollows({
+      token: this.data.token,
+      follow_id: this.data.id
+    }).then(data => {
 
       if (atten == 0) {
 

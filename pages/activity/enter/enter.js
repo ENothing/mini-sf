@@ -22,9 +22,7 @@ Page({
   onLoad: function(options) {
     var id = options.id
     var token = wx.getStorageSync('token')
-    console.log(id)
     api.activityDetail(id).then(data => {
-      console.log(data)
       this.setData({
         activity: data,
       })
@@ -34,6 +32,13 @@ Page({
       id: id,
       token: token
     })
+  },
+  onShow:function(){
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
+
   },
   PickerChange(e) {
     console.log(e);

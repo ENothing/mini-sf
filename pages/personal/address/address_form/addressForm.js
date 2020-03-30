@@ -17,11 +17,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     var id = options.id
     if (id != undefined) {
       api.addressDetail(id).then(data => {
-        console.log(data)
         this.setData({
           id: options.id,
           name: data.name,
@@ -33,8 +32,13 @@ Page({
       })
     }
   },
-
-  RegionChange: function(e) {
+  onShow:function(){
+    var token = wx.getStorageSync('token')
+    this.setData({
+          token: token
+      })
+  },
+  RegionChange: function (e) {
     this.setData({
       region: e.detail.value
     })
@@ -46,27 +50,40 @@ Page({
     var detail_address = e.detail.value.detail_address
 
     if (this.data.id != 0) {
-      api.updateAddress(this.data.id, name, mobile, region[0], region[1], region[2], detail_address).then(data => {
-        console.log(data)
+      api.updateAddress({
+        token: this.data.token,
+        id: this.data.id,
+        name: name,
+        mobile: mobile,
+        province: region[0],
+        city: region[1],
+        district: region[2],
+        detail_address: detail_address
+      }
+      ).then(data => {
         if (data == null) {
           wx.showToast({
             icon: "none",
             title: "修改地址成功",
             duration: 1000,
           })
-
           wx.navigateBack({
             delta: 1
           })
         }
       })
 
-
     } else {
 
-      api.addAddress(name, mobile, region[0], region[1], region[2], detail_address).then(data => {
-        console.log(data)
-        if (data == null){
+      api.addAddress({
+        name: name,
+        mobile: mobile,
+        province: region[0],
+        city: region[1],
+        district: region[2],
+        detail_address: detail_address
+      }).then(data => {
+        if (data == null) {
           wx.showToast({
             icon: "none",
             title: "新增地址成功",

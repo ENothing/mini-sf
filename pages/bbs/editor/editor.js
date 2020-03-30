@@ -74,6 +74,12 @@ Page({
 
     })
   },
+  onShow(){
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
+  },
   PickerChange(e) {
     console.log(e);
     this.setData({

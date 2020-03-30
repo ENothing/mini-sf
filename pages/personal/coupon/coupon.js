@@ -16,18 +16,32 @@ Page({
     exusedLastPage: 1,
     is_get_0: true,
     is_get_1: true,
-    is_get_2: true
+    is_get_2: true,
+    token: ""
   },
-  onLoad: function(options) {
-    api.userCoupons(0, this.data.unusedPage).then(data => {
-      console.log(data)
+  onLoad: function (options) {
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
+    api.userCoupons({
+      token: token,
+      status: 0,
+      page: 1
+    }).then(data => {
       this.setData({
         unusedCoupons: data.coupons,
         unusedLastPage: data.last_page,
       })
     })
   },
-  onReachBottom: function() {
+  onShow() {
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
+  },
+  onReachBottom: function () {
     var page = 1
     var coupons = null
     var is_get = true
@@ -69,8 +83,11 @@ Page({
     }
 
     if (is_get) {
-      api.userCoupons(this.data.TabCur, page).then(data => {
-        console.log(data)
+      api.userCoupons({
+        token: this.data.token,
+        status: this.data.TabCur,
+        page: page
+      }).then(data => {
         var arr = data.coupons
         coupons = coupons.concat(arr);
         switch (this.data.TabCur) {
@@ -97,7 +114,6 @@ Page({
 
   },
   tabSelect(e) {
-    console.log(e);
     var status = e.currentTarget.dataset.id
     var is_get = false
 
@@ -106,16 +122,14 @@ Page({
       scrollLeft: (e.currentTarget.dataset.id - 1) * 60,
     })
 
-
-
     switch (status) {
       case 0:
-        // if (this.data.is_get_0) {
-        //   is_get = true,
-        //     this.setData({
-        //       is_get_0: false
-        //     })
-        // }
+        if (this.data.is_get_0) {
+          is_get = true,
+            this.setData({
+              is_get_0: false
+            })
+        }
         break;
       case 1:
         if (this.data.is_get_1) {
@@ -136,28 +150,33 @@ Page({
     }
 
     if (is_get) {
-      api.userCoupons(status, 1).then(data => {
+      api.userCoupons({
+        token:this.data.token,
+        status:status,
+        page:1
+      }).then(data => {
         switch (status) {
           case 0:
-            // this.setData({
-            //   unusedCoupons: data.coupons,
-            //   unusedLastPage: data.last_page,
-            // })
+            this.setData({
+              unusedCoupons: data.coupons,
+              unusedLastPage: data.last_page,
+              unusedPage:1
+            })
             break;
           case 1:
             this.setData({
               usedCoupons: data.coupons,
               usedLastPage: data.last_page,
-
+              usedPage:1
             })
             break;
           case 2:
             this.setData({
               exusedCoupons: data.coupons,
               exusedLastPage: data.last_page,
+              exusedPage:1
             })
-            break; 
-
+            break;
         }
       })
     }

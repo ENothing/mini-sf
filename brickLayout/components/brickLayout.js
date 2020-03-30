@@ -135,7 +135,6 @@ Component({
       }
     }
   },
-
   methods: {
     /**
      * @description 计算单个默认高度

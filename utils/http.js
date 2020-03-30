@@ -20,7 +20,19 @@ const http = (params) => {
           //1. 操作成功返回数据,原则上只针对服务器端返回成功的状态（如本例中为000000）
           if (res.data.code == 0) {
             resolve(res.data.data)
-          } else if (params.url == "/order/result" && res.data.retCode == "800020") {//支付结果未知      
+          } else if (res.data.code == "10305") {//支付结果未知 
+
+            wx.showToast({
+              icon: "none",
+              title: res.data.message,
+              success:function(){
+                wx.navigateTo({
+                  url: '/pages/personal/login/login',
+                })
+              }
+            })
+          
+          }else if (params.url == "/order/result" && res.data.retCode == "800020") {//支付结果未知      
             //需要特殊处理的接口，可以单独列出来返回数据
             resolve(res.data)
           } else {

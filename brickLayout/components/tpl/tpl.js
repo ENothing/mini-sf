@@ -14,8 +14,16 @@ function init(config) {
     var card_id = e.currentTarget.dataset.cardId
     let liked = e.currentTarget.dataset.liked
     var rawData = this.data.rawData
-    console.log(rawData)
-
+    var token = wx.getStorageSync('token')
+    console.log(token)
+    this.triggerEvent('tapLike', {
+      card_id,
+      liked
+    })
+    if(!token){
+      
+      return;
+    }
 
     for (var index in rawData) {
       if (rawData[index].id == card_id) {
@@ -28,10 +36,7 @@ function init(config) {
       rawData: rawData
     })
 
-    this.triggerEvent('tapLike', {
-      card_id,
-      liked
-    })
+
   }
 
   _this.onUserAreaTap = e => {

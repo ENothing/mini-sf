@@ -16,22 +16,23 @@ Page({
     checked: 0,
     address_id: 0,
     coupon_id: 0,
-    goods_id:0
+    goods_id: 0,
+    token:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    console.log(options)
+  onLoad: function (options) {
     var id = options.id
     var address_id = options.address_id
 
-
     var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
 
     api.preOrderDetail(id, token).then(data => {
-      console.log(data)
 
       var coupon_price = 0
       var real_price = 0
@@ -64,15 +65,13 @@ Page({
         coupon_price: coupon_price,
         real_price: real_price,
         goods_id: data.goods_spu.goods_id,
-        goods_spu_id:id
+        goods_spu_id: id
       })
 
     })
 
 
-    api.detailToOrder(address_id).then(data => {
-      console.log(data)
-
+    api.detailToOrder({ token: token, id: address_id }).then(data => {
       this.setData({
         address: data,
         address_id: data.id
@@ -81,11 +80,17 @@ Page({
 
   },
   goToSubmit(e) {
-
-    api.shopBuy(1,this.data.goods_spu_id,this.data.goods_id,this.data.address_id,this.data.coupon_id).then(data => {
-      console.log(data)
+    api.shopBuy({
+      token: this.data.token,
+      num: 1,
+      goodsSpuId: this.data.goods_spu_id,
+      addressId: this.data.address_id,
+      goodsId: this.data.goods_id,
+      couponId: this.data.coupon_id
+    }
+    ).then(data => {
       wx.navigateTo({
-        url: '/pages/shop/pay_result/payResult?order_id='+data,
+        url: '/pages/shop/pay_result/payResult?order_id=' + data,
       })
     })
 

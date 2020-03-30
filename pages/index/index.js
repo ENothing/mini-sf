@@ -7,7 +7,6 @@ Page({
     userStatistics: {}
   },
   onLoad(options) {
-    console.log(options.PageCur)
     var pageCur = options.PageCur
     if (pageCur != undefined) {
       this.setData({
@@ -29,6 +28,22 @@ Page({
     })
   },
   GoToEditor(e) {
+    var token = wx.getStorageSync('token')
+    if (!token){
+
+      wx.showToast({
+        icon: "none",
+        title: "请先登录",
+        duration: 1000,
+        success: function () {
+          wx.navigateTo({
+            url: '/pages/personal/login/login',
+          })
+        }
+      })
+      return
+
+    }
 
 
     wx.navigateTo({

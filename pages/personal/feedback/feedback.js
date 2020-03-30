@@ -3,7 +3,13 @@ import api from '../../../utils/api.js'
 Page({
   data: {
     imgList: [],
-    token: wx.getStorageSync('token')
+    token: ""
+  },
+  onLoad: function (options) {
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
   },
   ChooseImage() {
     wx.chooseImage({
@@ -41,7 +47,7 @@ Page({
                 })
               }
             },
-            fail: function(e) {
+            fail: function (e) {
               wx.showToast({
                 icon: "none",
                 title: "网络错误，请重试"
@@ -70,7 +76,7 @@ Page({
     var data = {
       title: e.detail.value.title,
       content: e.detail.value.content,
-      imgList: JSON.stringify(this.data.imgList) ,
+      imgList: JSON.stringify(this.data.imgList),
       token: this.data.token
     }
     api.feedback(data).then(resData => {
@@ -80,7 +86,7 @@ Page({
         icon: 'none',
         duration: 1000, //持续的时间
         success: (res) => {
-          setTimeout(function() {
+          setTimeout(function () {
             wx.navigateBack({
               delta: 1
             })
