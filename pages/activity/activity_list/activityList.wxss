@@ -62,3 +62,11 @@
 .activity-icon {
   border-radius: 50%;
 }
+
+.item{
+  margin: 15rpx 30rpx !important ;
+}
+
+.nothing{
+  font-size: 350rpx
+}

@@ -29,7 +29,7 @@
 
 
 
-<view class="activity_list bg-white">
+<view class="activity_list bg-white" wx:if="{{activityList.length > 0}}">
   <navigator url="/pages/activity/detail/detail?id={{item.id}}" hover-class="none" wx:for="{{activityList}}">
     <view class="activity_item grid col-2">
       <view class="bg-img" style="background-image:url({{item.thumb}});"></view>
@@ -48,4 +48,9 @@
       </view>
     </view>
   </navigator>
+</view>
+
+<view wx:if="{{activityList.length == 0}}" >
+  <view class="iconfont icon-nothing2 nothing text-gray flex   justify-center align-center margin-top-xl"></view>
+  <view class="flex  text-gray justify-center align-center ">╮(๑•́ ₃•̀๑)╭再怎么找也没有啦</view>
 </view>

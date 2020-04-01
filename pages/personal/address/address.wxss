@@ -22,3 +22,12 @@
 .default_address_text{
   align-items: center;
 }
+
+.item{
+  margin: 15rpx 30rpx !important ;
+}
+
+.nothing{
+  font-size: 350rpx
+}
+

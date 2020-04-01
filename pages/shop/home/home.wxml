@@ -1,7 +1,7 @@
 
   <view class="cu-bar bg-white">
 
-    <navigator class="action" url="/pages/shop/category/category">
+    <navigator class="action" url="/pages/shop/category/category" hover-class="none">
       <text class="cuIcon-circlefill text-gray"></text>
     </navigator>
 

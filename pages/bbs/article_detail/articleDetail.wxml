@@ -5,7 +5,7 @@
 
 <view class="author_container flex  padding-sm justify-between">
   <view>
-    <view class="flex" >
+    <view class="flex">
       <view class="cu-avatar round" style="background-image:url({{article_detail.avatar}});" bindtap="goToPerIndex" data-user-id="{{article_detail.user_id}}"></view>
       <view class="user_info">
         <view class="username">{{article_detail.nickname}}</view>
@@ -19,7 +19,7 @@
       <button class="cu-btn round bg-gray shadow" style="height:52rpx" wx:else>已关注</button>
     </view>
   </view>
-</view> 
+</view>
 
 <!-- 
 <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
@@ -35,9 +35,10 @@
 </view>
 
 <view class="article_content bg-white">
-  <parser html="{{article_detail.content}}" />
-  <view class="padding-top bg-white text-gray text-sm">{{article_detail.created_at_format}}</view>
-
+  <view style="min-height:380rpx">
+    <parser html="{{article_detail.content}}" />
+  </view>
+  <view class="article_time padding-top bg-white text-gray text-sm">{{article_detail.created_at_format}}</view>
 </view>
 
 
@@ -81,7 +82,7 @@
   </view>
 </view>
 
-<view class="text-center padding-xl"  wx:if="{{commentList == ''}}" >
+<view class="text-center padding-xl" wx:if="{{commentList == ''}}">
 
   <view class="iconfont icon-sofa sofa text-gray"></view>
   <view class="text-gray">赶快留言吧~</view>
@@ -117,4 +118,3 @@
     </view>
   </view>
 </form>
-

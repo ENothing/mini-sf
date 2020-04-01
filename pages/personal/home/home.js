@@ -74,7 +74,7 @@ Component({
         })
       }
     },
-    goToActivityOrder() {
+    goToAOrder() {
       if (this.toLogin()) {
         wx.navigateTo({
           url: '/pages/personal/aorder/aorder',

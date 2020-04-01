@@ -20,6 +20,9 @@ Component({
     this.setData({
       token:token
     })
+    wx.showLoading({
+      title: '正在加载...',
+    })
     api.activityIndex().then(data=>{ 
       this.setData({
         swiperList: data.activity_banners,
@@ -43,6 +46,7 @@ Component({
         last_page: data.last_page,
         activityList: data.activities
       })
+      wx.hideLoading()
 
     })
 
@@ -77,7 +81,7 @@ Component({
         cate_id: 0,
         sort: 0,
         title: "",
-        token:token
+        token:this.data.token
       }
       api.activityList(obj).then(data => {
 

@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    addresses:"",
+    addresses:[],
     last_page:0,
     checked:0,
     page_status:0,

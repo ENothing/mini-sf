@@ -23,9 +23,11 @@ Page({
     isFollowed: 0
   },
   onLoad: function(options) {
+    var token = wx.getStorageSync('token')
     var id = options.id
     this.setData({
-      id: id
+      id: id,
+      token: token
     })
 
   },

@@ -4,7 +4,7 @@ Page({
   data: {
     CustomBar: app.globalData.CustomBar,
     page: 1,
-    orders: "",
+    orders: [],
     last_page: 1,
     status: "",
     token: ""
@@ -75,6 +75,11 @@ Page({
     var id = e.currentTarget.dataset.id
     wx.navigateTo({
       url: '/pages/activity/order_detail/orderDetail?id=' + id,
+    })
+  },
+  goToActivity(){
+    wx.navigateTo({
+      url: '/pages/index/index',
     })
   }
 })

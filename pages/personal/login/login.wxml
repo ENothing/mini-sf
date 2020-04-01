@@ -17,5 +17,5 @@
 
 <view class="padding flex flex-direction">
   <button class="cu-btn bg-red lg" open-type="getUserInfo" bindgetuserinfo="getUserInfo">微信登录</button>
-  <button class="cu-btn bg-grey margin-tb-sm lg">手机号登陆/注册</button>
+  <!-- <button class="cu-btn bg-grey margin-tb-sm lg">手机号登陆/注册</button> -->
 </view>

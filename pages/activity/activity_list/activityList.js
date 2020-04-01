@@ -54,7 +54,7 @@ Page({
     })
     var obj = {
       page: this.data.page,
-      cate_id: this.data.cate_id,
+      cateId: this.data.cate_id,
       sort: this.data.time_sort,
       title: kword,
       token:token
@@ -81,7 +81,7 @@ Page({
     })
     var obj = {
       page: this.data.page,
-      cate_id: this.data.cate_id,
+      cateId: this.data.cate_id,
       sort: this.data.time_sort,
       title: this.data.kword,
       token:this.data.token
@@ -104,7 +104,7 @@ Page({
 
     var obj = {
       page: 1,
-      cate_id: this.data.activityCates[a_index].id,
+      cateId: this.data.activityCates[a_index].id,
       sort: 0,
       title: this.data.kword,
       token:this.data.token
@@ -133,7 +133,7 @@ Page({
       time_sort = time_sort == 1 ? 0 : 1
       var obj = {
         page: 1,
-        cate_id: this.data.cate_id,
+        cateId: this.data.cate_id,
         sort: time_sort,
         title: this.data.kword,
         token:this.data.token

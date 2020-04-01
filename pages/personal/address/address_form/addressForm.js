@@ -11,13 +11,18 @@ Page({
     address: "",
     name: "",
     mobile: "",
-    detail_address: ""
+    detail_address: "",
+    token:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
     var id = options.id
     if (id != undefined) {
       api.addressDetail(id).then(data => {
@@ -48,6 +53,28 @@ Page({
     var mobile = e.detail.value.mobile
     var region = e.detail.value.region
     var detail_address = e.detail.value.detail_address
+
+    if(name == ""){
+      wx.showToast({
+        icon: "none",
+        title: "姓名不能为空哦~",
+      })
+      return;
+    }
+    if (mobile == "") {
+      wx.showToast({
+        icon: "none",
+        title: "手机号不能为空哦~",
+      })
+      return;
+    }
+    if (detail_address == "") {
+      wx.showToast({
+        icon: "none",
+        title: "详细地址不能为空哦~",
+      })
+      return;
+    }
 
     if (this.data.id != 0) {
       api.updateAddress({
@@ -81,7 +108,8 @@ Page({
         province: region[0],
         city: region[1],
         district: region[2],
-        detail_address: detail_address
+        detail_address: detail_address,
+        token:this.data.token
       }).then(data => {
         if (data == null) {
           wx.showToast({

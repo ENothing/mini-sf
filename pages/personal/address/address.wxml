@@ -3,7 +3,7 @@
 </cu-custom>
 
 
-<view class="address_container bg-white" wx:for="{{addresses}}" wx:key data-id="{{item.id}}" bindtap="needGoToOrder">
+<view class="address_container bg-white" wx:for="{{addresses}}" wx:key data-id="{{item.id}}" bindtap="needGoToOrder" wx:if="{{addresses.length > 0}}">
   <view class="address_info">
     <view class="flex justify-between">
       <view class="">{{item.name}}</view>
@@ -23,6 +23,10 @@
   </view>
 </view>
 
+<view  wx:if="{{addresses.length == 0}}">
+  <view class="iconfont icon-nothing2 nothing text-gray flex   justify-center align-center margin-top-xl"></view>
+  <view class="flex  text-gray justify-center align-center ">╮(๑•́ ₃•̀๑)╭赶快去添加新地址吧</view>
+</view>
 
 
 

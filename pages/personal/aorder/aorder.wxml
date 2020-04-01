@@ -26,7 +26,7 @@
 </scroll-view>
 
 
-<view class="main_container">
+<view class="main_container" wx:if="{{orders.length > 0}}">
 
   <view class="f_order_container bg-white shadow-warp" wx:for="{{orders}}">
 
@@ -140,4 +140,17 @@
 
   </view>
 </view>
+
+
+<view wx:if="{{orders.length == 0}}">
+  <view class="iconfont icon-nothing2 nothing text-gray flex   justify-center align-center margin-top-xl"></view>
+  <view class="flex  text-gray justify-center align-center ">╮(๑•́ ₃•̀๑)╭赶快去参加活动吧</view>
+  <view class="padding flex flex-direction">
+    <button class="cu-btn round shadow bg-red margin-tb-sm xl" bindtap="goToActivity">去活动</button>
+  </view>
+</view>
+
+
+
+
 <view class='cu-tabbar-height'></view>

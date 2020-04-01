@@ -5,7 +5,7 @@ Page({
   data: {
     CustomBar: app.globalData.CustomBar,
     page: 1,
-    orders: "",
+    orders:[],
     last_page: 1,
     status: "",
     token: ""
@@ -58,6 +58,11 @@ Page({
     var id = e.currentTarget.dataset.id
     wx.navigateTo({
       url: '/pages/shop/order_detail/orderDetail?id=' + id,
+    })
+  },
+  goToShop(){
+    wx.navigateTo({
+      url: '/pages/index/index?PageCur=shop',
     })
   }
 })

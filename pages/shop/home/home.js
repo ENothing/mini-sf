@@ -19,7 +19,9 @@ Component({
     this.setData({
       token: token
     })
-
+    wx.showLoading({
+      title: '正在加载...',
+    })
     api.shopIndex().then(data => {
       this.setData({
         shop_banners: data.shop_banners,
@@ -40,6 +42,7 @@ Component({
         goodsList: data.goods,
         last_page: data.last_page
       })
+      wx.hideLoading()
     })
 
 

@@ -30,6 +30,9 @@ Component({
     this.setData({
       token: token
     })
+    wx.showLoading({
+      title: '正在加载...',
+    })
     var that = this
     api.articleList({
       token: token,
@@ -39,6 +42,7 @@ Component({
         last_page: data.last_page,
         articles: data.articles,
       })
+      wx.hideLoading()
     })
   },
   pageLifetimes: {
