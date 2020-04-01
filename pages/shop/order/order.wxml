@@ -9,7 +9,7 @@
       <view class="flex justify-between">
         <view>
           <text class='cuIcon-location' decode='true'>&emsp;</text>
-          <text class="reveiver_name">{{address != '' ? address.name : '添加收货地址'}}</text>
+          <text class="reveiver_name">{{address_id != 0 ? address.name : '添加收货地址'}}</text>
         </view>
         <view>
           <text class='phone' decode='true'>{{address != '' ?address.mobile:''}}&ensp;</text>

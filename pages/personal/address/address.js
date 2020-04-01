@@ -51,6 +51,7 @@ Page({
   },
   goToForm(e){
     var id = e.currentTarget.dataset.id;
+    console.log(id)
 
     var url = '/pages/personal/address/address_form/addressForm'
 

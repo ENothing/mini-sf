@@ -649,7 +649,7 @@ module.exports = {
       data: {
         name: data.name,
         mobile: data.mobile,
-        province: data.rovince,
+        province: data.province,
         city: data.city,
         district: data.district,
         detail_address: data.detail_address

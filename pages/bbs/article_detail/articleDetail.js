@@ -120,8 +120,9 @@ Page({
       reply_id,
       token:this.data.token
     }
+    var that = this
     api.articleCommentPost(data).then(resData => {
-      api.articleCommentList({token:token,id:id,page:1}).then(redata => {
+      api.articleCommentList({token:that.data.token,id:id,page:1}).then(redata => {
         this.setData({
           commentList: redata.articleComments,
           total: redata.total,

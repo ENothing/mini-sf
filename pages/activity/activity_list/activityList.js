@@ -56,7 +56,7 @@ Page({
       page: this.data.page,
       cateId: this.data.cate_id,
       sort: this.data.time_sort,
-      title: kword,
+      kword: kword,
       token:token
     }
     api.activityList(obj).then(data => {
@@ -83,7 +83,7 @@ Page({
       page: this.data.page,
       cateId: this.data.cate_id,
       sort: this.data.time_sort,
-      title: this.data.kword,
+      kword: this.data.kword,
       token:this.data.token
     }
     api.activityList(obj).then(data => {
@@ -106,7 +106,7 @@ Page({
       page: 1,
       cateId: this.data.activityCates[a_index].id,
       sort: 0,
-      title: this.data.kword,
+      kword: this.data.kword,
       token:this.data.token
     }
     api.activityList(obj).then(data => {
@@ -135,7 +135,7 @@ Page({
         page: 1,
         cateId: this.data.cate_id,
         sort: time_sort,
-        title: this.data.kword,
+        kword: this.data.kword,
         token:this.data.token
       }
       api.activityList(obj).then(data => {

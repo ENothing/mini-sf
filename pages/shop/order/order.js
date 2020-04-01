@@ -72,6 +72,7 @@ Page({
 
 
     api.detailToOrder({ token: token, id: address_id }).then(data => {
+      console.log(data)
       this.setData({
         address: data,
         address_id: data.id
@@ -80,6 +81,15 @@ Page({
 
   },
   goToSubmit(e) {
+    console.log(this.data.address_id)
+    if(this.data.address_id == 0){
+      wx.showToast({
+        icon: "none",
+        title: "还没有选择地址哦~",
+      })
+      return;
+    }
+
     api.shopBuy({
       token: this.data.token,
       num: 1,

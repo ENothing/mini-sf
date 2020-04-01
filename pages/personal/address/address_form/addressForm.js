@@ -20,12 +20,13 @@ Page({
    */
   onLoad: function (options) {
     var token = wx.getStorageSync('token')
+    var id = options.id
     this.setData({
+      id:id,
       token: token
     })
-    var id = options.id
     if (id != undefined) {
-      api.addressDetail(id).then(data => {
+      api.addressDetail({token:token,id:id}).then(data => {
         this.setData({
           id: options.id,
           name: data.name,
