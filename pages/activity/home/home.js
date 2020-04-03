@@ -11,7 +11,7 @@ Component({
     iconList:"",
     video_url: "",
     page:1,
-    last_page:0,
+    last_page:1,
     skin: false,
     token:""
   },
@@ -69,9 +69,12 @@ Component({
 
 
     getList(){
-
+      var token = wx.getStorageSync('token')
+      this.setData({
+        token:token
+      })
       if (this.data.last_page == this.data.page){
-        return
+        return;
       }
       this.setData({
         page:this.data.page+1
@@ -81,7 +84,7 @@ Component({
         cate_id: 0,
         sort: 0,
         title: "",
-        token:this.data.token
+        token:token
       }
       api.activityList(obj).then(data => {
 
