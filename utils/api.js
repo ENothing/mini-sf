@@ -28,6 +28,8 @@ var url = {
   activityInitiateRefund: "/activity/initiate_refund",
   activityFinish: "/activity/finish",
   activityOrderList:"/activity/order_list",
+
+  activitySendSms:"/activity/send_sms",
   
 //bbs
   articleList: "/bbs/list",
@@ -82,6 +84,8 @@ var url = {
 
 
   delShopSearchHistory: "/shop/del_search_history",
+
+  shopDeliver:"/shop/exp_info"
 
 
 
@@ -317,6 +321,20 @@ module.exports = {
       data: {
         page: data.page,
         status: data.status == undefined ? 0 : data.status,
+      }
+    })
+  },
+
+  activitySendSms(data){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + data.token
+      },
+      url: url.activitySendSms,
+      method: "POST",
+      data: {
+        mobile: data.mobile,
       }
     })
   },
@@ -790,6 +808,20 @@ module.exports = {
       },
       url: url.delShopSearchHistory,
       method: "GET",
+    })
+  },
+
+  shopDeliver(data){
+    return http({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Bearer " + data.token
+      },
+      url: url.shopDeliver,
+      method: "GET",
+      data: {
+        order_id: data.order_id,
+      }
     })
   }
 

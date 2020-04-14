@@ -55,6 +55,30 @@ Component({
       duration: 0
     })
   },
+  pageLifetimes: {
+    show: function () {
+      var token = wx.getStorageSync('token')
+      this.setData({
+        token: token
+      })
+      var obj = {
+        page: 1,
+        cate_id: 0,
+        sort: 0,
+        title: "",
+        token: token
+      }
+
+      api.activityList(obj).then(data => {
+        this.setData({
+          last_page: data.last_page,
+          activityList: data.activities
+        })
+        wx.hideLoading()
+
+      })
+    },
+  },
   methods: {
     showModal(e) {
       this.setData({

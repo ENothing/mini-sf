@@ -12,8 +12,8 @@ Page({
     countDownNum: 60,
     picker: ['居民身份证', '护照'],
     index: null,
-    mobile:"",
-    token:""
+    mobile: "",
+    token: ""
   },
 
   /**
@@ -33,7 +33,7 @@ Page({
       token: token
     })
   },
-  onShow:function(){
+  onShow: function() {
     var token = wx.getStorageSync('token')
     this.setData({
       token: token
@@ -121,9 +121,9 @@ Page({
     })
 
   },
-  bindMobileInput(e){
+  bindMobileInput(e) {
     this.setData({
-      mobile:e.detail.value
+      mobile: e.detail.value
     })
   },
   sendSmS() {
@@ -137,10 +137,15 @@ Page({
       return;
     }
     if (this.data.countDownNum == 60) {
-      this.countDown();
-      wx.showToast({
-        icon: "none",
-        title: "验证码发送成功~",
+      api.activitySendSms({
+        mobile: mobile,
+        token: this.data.token
+      }).then(res => {
+        this.countDown();
+        wx.showToast({
+          icon: "none",
+          title: "验证码发送成功~",
+        })
       })
     }
   },

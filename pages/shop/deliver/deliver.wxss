@@ -1,16 +1,24 @@
-.deliverNo_container{
+page {
+  background: #fff;
+}
+
+.deliverNo_container {
   height: 40rpx;
   background: #fff;
   padding: 40rpx 40rpx 60rpx 40rpx;
 }
 
-.deliverNo{
-  font-size: .9rem
+.deliverNo {
+  font-size: 0.9rem;
 }
 
-.copyDeliverNoButton{
+.copyDeliverNoButton {
   border: 1rpx solid #000;
   border-radius: 10rpx;
-  font-size: .6rem;
-  padding: 5rpx 15rpx
+  font-size: 0.6rem;
+  padding: 5rpx 15rpx;
+}
+
+.deliver_empty{
+  font-size:10rem
 }

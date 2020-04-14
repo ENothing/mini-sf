@@ -2,52 +2,28 @@
   <view slot="content">订单跟踪</view>
 </cu-custom>
 
-<view class="deliverNo_container">
-<view class="flex justify-between">
-  <view class="deliverNo">快递单号：251587567644</view>
-  <view class="copyDeliverNoButton" bindtap='copyDeliverNo' data-text="251587567644">复制</view>
-</view>
+<view class="deliverNo_container" wx:if="{{deliver != ''}}">
+  <view class="flex justify-between">
+    <view class="deliverNo">{{deliver.expressName}}：{{deliver.delivery_n}}</view>
+    <view class="copyDeliverNoButton" bindtap='copyDeliverNo' data-text="{{deliver.delivery_n}}">复制</view>
+  </view>
 </view>
 
 
-<view class="cu-timeline">
-  <view class="cu-time">昨天</view>
+<view class="cu-timeline" wx:for="{{deliver.path.data}}" wx:if="{{deliver.path.data != null}}">
+  <!-- <view class="cu-time">{{item.time}}</view> -->
   <view class="cu-item">
     <view class="content bg-grey shadow-blur">
-      <text>01:30</text> 【喵星】 MX-12138 已揽收，准备发往银河系
-    </view>
-  </view>
-  <view class="cu-item">
-    <view class="content bg-grey shadow-blur">
-      <text>01:30</text> 【喵星】 MX-12138 已揽收，准备发往银河系
-    </view>
-  </view>
-  <view class="cu-item">
-    <view class="content bg-grey shadow-blur">
-      <text>01:30</text> 【喵星】 MX-12138 已揽收，准备发往银河系
-    </view>
-  </view>
-  <view class="cu-item">
-    <view class="content bg-grey shadow-blur">
-      <text>01:30</text> 【喵星】 MX-12138 已揽收，准备发往银河系
+      <view>
+        <text>{{item.time}}</text> </view>
+      <view>
+        <text>{{item.context}}</text>
+      </view>
     </view>
   </view>
 </view>
 
-<view class="cu-timeline">
-  <view class="cu-time">06-17</view>
-  <view class="cu-item">
-    <view class="content bg-grey shadow-blur">
-      <text>01:30</text> 【喵星】 MX-12138 已揽收，准备发往银河系
-    </view>
-  </view>
-</view>
-
-<view class="cu-timeline">
-  <view class="cu-time">06-16</view>
-  <view class="cu-item">
-    <view class="content bg-grey shadow-blur">
-      <text>01:30</text> 【喵星】 MX-12138 已揽收，准备发往银河系
-    </view>
-  </view>
+<view wx:if="{{deliver.path.data == null}}">
+  <view class="iconfont icon-delivery_order deliver_empty  text-gray flex   justify-center align-center margin-top-xl "></view>
+  <view class="flex  text-gray justify-center align-center ">╮(๑•́ ₃•̀๑)小主别急，再等等~</view>
 </view>

@@ -1,8 +1,8 @@
 /**
  * 封装http 请求方法
  */
-const apiUrl = "https://api.ericnothing.cn/app/v1"; //服务器api地址
-// const apiUrl = "http://127.0.0.1:8081/app/v1"; //服务器api地址
+// const apiUrl = "https://api.ericnothing.cn/app/v1"; //服务器api地址
+const apiUrl = "http://127.0.0.1:8081/app/v1"; //服务器api地址
 const http = (params) => {
   //返回promise 对象
   return new Promise((resolve, reject) => {
