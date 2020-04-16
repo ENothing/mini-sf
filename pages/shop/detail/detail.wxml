@@ -7,7 +7,7 @@
 
 <swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
   <swiper-item wx:for="{{shop_goods_detail.decode_banners}}" wx:key>
-    <image src="{{item}}" mode="aspectFill" ></image>
+    <image src="{{item}}" mode="aspectFill"></image>
     <!-- <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video> -->
   </swiper-item>
 </swiper>
@@ -17,9 +17,14 @@
     <view class="trade-name">
       <text class="  text-black">{{shop_goods_detail.name}}</text>
     </view>
-    <view>
-      <text class='text-bold text-black'>￥</text>
-      <text class='trade-price'>{{shop_goods_detail.cur_price}}</text>
+    <view class="flex justify-center">
+      <view>
+        <text class='text-bold text-black'>￥</text>
+        <text class='trade-price'>{{shop_goods_detail.cur_price}}</text>
+      </view>
+      <view class="share shadow shadow-lg" bindtap="showPosterModal" data-target="1">
+        <text>分享</text>
+      </view>
     </view>
   </view>
 </view>
@@ -84,7 +89,7 @@
 
 
 <view class=" bg-white margin-top solid-bottom">
-          <rich-text nodes="{{shop_goods_detail.goods_content}}" ></rich-text>
+  <rich-text nodes="{{shop_goods_detail.goods_content}}"></rich-text>
 
 </view>
 
@@ -154,3 +159,41 @@
 <view class="buy-button cu-bar bg-white tabbar border shop foot " bindtap="showModal" data-target="buy">
   <view class="bg-red submit  text-xl padding">立即购买</view>
 </view>
+
+
+
+<view class="cu-modal {{poster==1?'show':''}}">
+  <view class="cu-dialog">
+    <view class="bg-img" style="background-image: url('{{imagePath}}');height:200px;">
+      <view class="cu-bar justify-end text-white">
+        <view class="action" bindtap="hidePosterModal">
+          <text class="cuIcon-close "></text>
+        </view>
+      </view>
+    </view>
+
+  <view class="canvas-box">
+      <canvas  style="width: 200rpx;height: 500rpx" canvas-id="mycanvas"/>
+  </view>  
+
+
+
+
+
+
+    <view class="cu-bar bg-white">
+      <view class="action margin-0 flex-sub  solid-left" bindtap="hidePosterModal">我知道了</view>
+    </view>
+  </view>
+</view>
+
+    <view class='imagePathBox'>
+      <image src="{{imagePath}}" class='shengcheng'></image>
+      <button class='baocun' bindtap='baocun'>保存相册，分享到朋友圈</button>
+    </view>
+   <view  class="mask"></view> 
+  <view class="canvas-box">
+      <canvas  style="width: 375px;height: 667px;position:fixed;" canvas-id="mycanvas"/>
+  </view> 
+
+

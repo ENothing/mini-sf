@@ -23,6 +23,7 @@ Page({
     var id = options.id
     var token = wx.getStorageSync('token')
     api.activityDetail(id).then(data => {
+      console.log(data)
       this.setData({
         activity: data,
       })
@@ -59,7 +60,7 @@ Page({
     var c_num = e.detail.value.c_num
     var code = e.detail.value.code
     var sex = e.detail.value.sex
-
+    var that = this
     console.log(e)
     if (name == "") {
       wx.showToast({
@@ -115,8 +116,20 @@ Page({
       token: this.data.token
     }
     api.activityEnter(data).then(resData => {
+      
+      var jsonData = {
+        order_id: resData,
+        qr: that.data.activity.action_qr,
+        key: that.data.activity.action_key,
+        status:1
+      }
+
+      jsonData = JSON.stringify(jsonData)
+      console.log(jsonData)
+
+
       wx.navigateTo({
-        url: '/pages/activity/pay_result/payResult?order_id=' + resData,
+        url: '/pages/activity/pay_result/payResult?jsonData=' + jsonData,
       })
     })
 

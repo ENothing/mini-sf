@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    order_id:0
+    order_id:0,
+    status:1
   },
 
   /**

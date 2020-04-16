@@ -66,7 +66,7 @@
 					"id": 1,
 					"name": "报名入口",
 					"pathName": "pages/activity/enter/enter",
-					"query": "id=6",
+					"query": "id=1",
 					"scene": null
 				},
 				{
@@ -319,6 +319,20 @@
 					"name": "编辑作品",
 					"pathName": "pages/bbs/editor/editor",
 					"query": "id=10",
+					"scene": null
+				},
+				{
+					"id": 38,
+					"name": "活动支付结果页",
+					"pathName": "pages/activity/pay_result/payResult",
+					"query": "jsonData={\"order_id\":24,\"qr\":\"http://soulfire-media.ericnothing.cn/images/fcee718dcc1df5f321397964fb901f7a.jpg\",\"key\":\"鼠你会玩\"}",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测试",
+					"pathName": "pages/shop/test/test",
+					"query": "",
 					"scene": null
 				}
 			]

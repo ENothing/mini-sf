@@ -16,9 +16,12 @@ Page({
     shop_goods_detail: "",
     purchasers: "",
     p_total: 0,
-    token: ""
+    token: "",
+    poster:0,
+    imagePath:""
   },
   onLoad(options) {
+    
     var token = wx.getStorageSync('token')
     var id = options.id
     this.setData({
@@ -39,6 +42,8 @@ Page({
 
 
     wx.hideLoading()
+    this.createNImg()
+
   },
   onShow(){
     var token = wx.getStorageSync('token')
@@ -95,8 +100,28 @@ Page({
     })
   },
 
+  share(){
+    var id = this.data.id
 
 
+
+
+
+  },
+  showPosterModal(e) {
+    console.log(e)
+
+
+    this.setData({
+      poster: e.currentTarget.dataset.target
+    })
+
+  },
+  hidePosterModal(e) {
+    this.setData({
+      poster: 0
+    })
+  },
 
 
 })

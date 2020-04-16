@@ -31,3 +31,8 @@
   margin-top: 200rpx
 
 }
+
+.shibai {
+  font-size: 200rpx;
+  margin: 250rpx 0 0 0;
+}

@@ -19,7 +19,7 @@
 }
 
 .res_remark_container {
-  margin-top: 27rpx
+  margin-top: 27rpx;
 }
 
 .res_remark {
@@ -27,7 +27,31 @@
   font-size: 28rpx;
 }
 
-.button_container{
-  margin-top: 200rpx
+.success_container {
+  width: 100%;
+}
 
+.button_container {
+  padding-top: 100rpx;
+  width: 100%;
+}
+
+.action_qr {
+  display: flex;
+  justify-content: center;
+}
+
+.action_qr image {
+  width: 350rpx;
+  height: 350rpx;
+}
+
+.nothing {
+  font-size: 200rpx;
+  margin: 150rpx 0 0 0;
+}
+
+.shibai {
+  font-size: 200rpx;
+  margin: 250rpx 0 0 0;
 }

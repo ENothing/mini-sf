@@ -1,20 +1,28 @@
-<view class="bags_container flex  justify-center">
-  <image class="bags" src="/images/bags.png"></image>
-</view>
-
-<view class="res_container flex justify-center">
-  <text class="res">支付成功</text>
-</view>
-
-<view class="res_remark_container">
-  <view class="flex justify-center">
-    <text class="res_remark">您的包裹很快就会送到您的手中</text>
+<view wx:if="{{status == 1}}">
+  <view class="bags_container flex  justify-center">
+    <image class="bags" src="/images/bags.png"></image>
   </view>
-  <view class="flex justify-center">
-    <text class="res_remark">感谢您选择我们！</text>
+
+  <view class="res_container flex justify-center">
+    <text class="res">支付成功</text>
+  </view>
+
+  <view class="res_remark_container">
+    <view class="flex justify-center">
+      <text class="res_remark">您的包裹很快就会送到您的手中</text>
+    </view>
+    <view class="flex justify-center">
+      <text class="res_remark">感谢您选择我们！</text>
+    </view>
   </view>
 </view>
 
+
+<view wx:if="{{status == 0}}">
+  <view class="iconfont icon-zhifushibai shibai text-black flex   justify-center align-center "></view>
+  <view class="flex   justify-center align-center text-lg padding-top-xs text-bold">支付失败</view>
+  <view class="flex   justify-center align-center padding-top-xs">如遇技术问题请联系客服</view>
+</view>
 
 <view class="button_container">
   <view class="padding flex flex-direction">
