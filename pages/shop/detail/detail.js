@@ -42,7 +42,6 @@ Page({
 
 
     wx.hideLoading()
-    this.createNImg()
 
   },
   onShow(){

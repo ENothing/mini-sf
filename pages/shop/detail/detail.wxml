@@ -172,10 +172,6 @@
       </view>
     </view>
 
-  <view class="canvas-box">
-      <canvas  style="width: 200rpx;height: 500rpx" canvas-id="mycanvas"/>
-  </view>  
-
 
 
 
@@ -186,14 +182,3 @@
     </view>
   </view>
 </view>
-
-    <view class='imagePathBox'>
-      <image src="{{imagePath}}" class='shengcheng'></image>
-      <button class='baocun' bindtap='baocun'>保存相册，分享到朋友圈</button>
-    </view>
-   <view  class="mask"></view> 
-  <view class="canvas-box">
-      <canvas  style="width: 375px;height: 667px;position:fixed;" canvas-id="mycanvas"/>
-  </view> 
-
-

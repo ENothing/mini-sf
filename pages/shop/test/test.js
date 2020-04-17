@@ -12,19 +12,51 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+
+
+
+
+
+
     this.createNImg()
 
   },
 
   createNImg() {
+
+    // var path = "http://soulfire-media.ericnothing.cn/images/O1CN01LaHvrD1WgghA9wisT_!!0-item_pic.jpg_180x180.jpg";
+    // var path = "https://pic.ibaotu.com/homeSp/20200414/5e957a34660b7.jpg"
+    var path = "http://img0.imgtn.bdimg.com/it/u=3841322606,2022499346&fm=26&gp=0.jpg"
+    // var path = "/images/thumb.jpg"
+    var logo = "/images/logo.jpg"
+    var path5 = "/images/qrcode.jpg";
+
     var that = this;
     var context = wx.createCanvasContext('mycanvas');
-    // context.setFillStyle("#fff")
-    context.setFillStyle('black')
+    context.setFillStyle("#fff")
     context.fillRect(0, 0, 375, 667)
-    var path = "http://soulfire-media.ericnothing.cn/images/O1CN01LaHvrD1WgghA9wisT_!!0-item_pic.jpg_180x180.jpg";
-    context.drawImage(path, 1, 1, 1, 1);
-    var path5 = "/images/qrcode.jpg";
+
+
+    wx.getImageInfo({
+      src: path,
+      success(re) {
+        console.log(re)
+        context.drawImage(re.path, 15, 100, 350, 350);
+      },
+
+    })
+
+
+
+    
+
+
+
+
+
+
+    context.drawImage(logo, 0, 0, 20, 20);
     var name = "123";
 
     //绘制左下角文字
